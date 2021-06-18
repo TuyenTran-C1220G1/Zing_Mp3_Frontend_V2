@@ -1,0 +1,28 @@
+<div class="song_heading_wrapper m24_cover">
+  <div class="m24_heading_wrapper">
+    <h1>top songs </h1>
+  </div>
+  <div class="relaese_viewall_wrapper">
+    <a routerLink="/user/allsongs"> view all <i class="flaticon-right-arrow"></i></a>
+  </div>
+  <div class="top_songs_list m24_cover" *ngFor="let song of songs; index as i" >
+    <div class="top_songs_list_left row">
+      <div class="treanding_slider_main_box top_lis_left_content">
+        <div class="top_songs_list0img">
+          <img src="{{song.imageUrl}}" alt="img" height="50px" style="margin-left: 15px">
+          <div class="m24_treanding_box_overlay">
+            <div class="m24_tranding_box_overlay"></div>
+
+          </div>
+        </div>
+        <div class="release_content_artist top_list_content_artist">
+          <p><a href="#">{{song.nameSong}}</a></p>
+          <p class="various_artist_text"><a href="#">{{song?.artist?.nameArtist}}</a></p>
+        </div>
+      </div>
+    </div>
+    <audio controls>
+      <source src="{{song.songUrl}}" style="width: 300px; height: auto">
+    </audio>
+  </div>
+</div>
