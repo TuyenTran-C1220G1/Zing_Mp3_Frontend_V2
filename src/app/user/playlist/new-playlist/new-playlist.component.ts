@@ -11,10 +11,14 @@ declare var $: any;
 })
 export class NewPlaylistComponent implements OnInit {
   newPlaylists: Playlist[] = [];
-  constructor(private playlistService: PlaylistService) { }
+  constructor(private playlistService: PlaylistService) {
+    this.getNewPlaylist();
+    console.log(this.newPlaylists);
+  }
 
   ngOnInit() {
     this.getNewPlaylist();
+
     $(function() {
       $('.treanding_song_slider .owl-carousel').owlCarousel({
         loop: !0,

@@ -98,30 +98,6 @@ export class ListenMusicService {
     });
   }
 
-  // @ts-ignore
-  streamObserverMutilSong(url: string): Observable<any> {
-      this.audioObj.src = url;
-      this.audioObj.load();
-      this.audioObj.play();
-    //   // this.duration = this.audioObj.duration;
-    //   const handler = (eventTarget: Event) => {
-    //     this.seek = this.audioObj.currentTime;
-    //     this.duration = this.timeFormat(this.audioObj.duration);
-    //     this.currentTime = this.timeFormat(this.audioObj.currentTime);
-    //     const hms = this.duration;   // your input string
-    //     const a = hms.split(':'); // split it at the colons
-    //     this.maxInput = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
-    //   };
-    //   this.addEvent(this.audioObj, this.audioEvents, handler);
-    //   return () => {
-    //     this.audioObj.pause();
-    //     this.audioObj.currentTime = 0;
-    //     this.removeEvent(this.audioObj, this.audioEvents, handler);
-    //   };
-    // });
-  }
-
-
   addEvent(obj, events, handlerr: any) {
     events.forEach( element => {
       obj.addEventListener(element, handlerr); // Khi nay e de sai tham so element thanh events
