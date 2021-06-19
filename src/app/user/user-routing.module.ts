@@ -18,6 +18,7 @@ import {YourPlaylistComponent} from './playlist/your-playlist/your-playlist.comp
 import {TopPlaylistComponent} from './playlist/top-playlist/top-playlist.component';
 import {NewPlaylistComponent} from './playlist/new-playlist/new-playlist.component';
 import {DetailLayoutComponent} from '../layout/detail-layout/detail-layout.component';
+import {DetailPlaylistComponent} from './playlist/detail-playlist/detail-playlist.component';
 
 
 const routes: Routes = [
@@ -86,6 +87,10 @@ const routes: Routes = [
   {
     path: 'allplaylists',
     component: ListPlaylistComponent,
+  },
+  {
+    path: 'playlistSong/:id',
+    component: DetailPlaylistComponent,
   }
 ];
 

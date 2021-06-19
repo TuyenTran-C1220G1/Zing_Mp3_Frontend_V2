@@ -235,7 +235,8 @@
                         }
                     }
                 })
-            }), $(document).ready(function() {
+            }),
+              $(document).ready(function() {
                 $(".m24_tranding_more_icon").on("click", function(e) {
                     if (e.preventDefault(), e.stopImmediatePropagation(), void 0 !== $(this).attr("data-other")) var t = $(this).parent().parent();
                     else t = $(this).parent();

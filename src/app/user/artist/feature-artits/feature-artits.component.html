@@ -7,9 +7,9 @@
     <div class="owl-carousel owl-theme">
       <div class="item" >
         <div class="featured_artist_list m24_cover" >
-          <img src="{{artists[0].avatar}}" class="img-responsive" alt="img">
+          <img src="{{artists[0]?.avatar}}" class="img-responsive" alt="img">
           <div class="featured_artist_detail">
-            <p><a href="#">{{artists[0].nameArtist}}</a></p>
+            <p><a href="#">{{artists[0]?.nameArtist}}</a></p>
             <p class="various_artist_text"><a href="#">51 tracks</a> {{artists[0].likes}} Like</p>
             <div class="lang_apply_btn">
               <ul>
@@ -66,7 +66,7 @@
           <img src="{{artists[2].avatar}}" class="img-responsive" alt="img">
           <div class="featured_artist_detail">
             <p><a href="#">{{artists[2].nameArtist}}</a></p>
-            <p class="various_artist_text"><a href="#">51 tracks</a> {{artists[3].likes}} Like</p>
+            <p class="various_artist_text"><a href="#">51 tracks</a> {{artists[2].likes}} Like</p>
             <div class="lang_apply_btn">
               <ul>
                 <li>

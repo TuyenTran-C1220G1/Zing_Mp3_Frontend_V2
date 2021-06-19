@@ -3,7 +3,7 @@ import {Song} from "../../../model/song";
 import {SongService} from "../../../service/song.service";
 import {Playlist} from "../../../model/playlist";
 import {PlaylistService} from "../../../service/playlist.service";
-
+declare var $: any;
 @Component({
   selector: 'app-song-list',
   templateUrl: './song-list.component.html',
@@ -21,7 +21,15 @@ export class SongListComponent implements OnInit {
   ngOnInit() {
     this.getAll();
     this.getMyPlaylist();
-
+    $(document).ready(function() {
+      $(".m24_tranding_more_icon").on("click", function(e) {
+        if (e.preventDefault(), e.stopImmediatePropagation(), void 0 !== $(this).attr("data-other")) var t = $(this).parent().parent();
+        else t = $(this).parent();
+        t.find("ul.tranding_more_option").hasClass("tranding_open_option") ? t.find("ul.tranding_more_option").removeClass("tranding_open_option") : ($("ul.tranding_more_option.tranding_open_option").removeClass("tranding_open_option"), t.find("ul.tranding_more_option").addClass("tranding_open_option"))
+      }), $(document).on("click", function(e) {
+        $("ul.tranding_more_option.tranding_open_option").removeClass("tranding_open_option")
+      })
+    });
   }
 
   getMyPlaylist(){

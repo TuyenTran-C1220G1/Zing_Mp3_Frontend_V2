@@ -61,7 +61,7 @@ export class EditPlaylistComponent implements OnInit {
         genre: new FormControl(playlists.genre.id,[Validators.required]),
         description: new FormControl(playlists.description, [Validators.required]),
         image: new FormControl(playlists.image),
-        song: new FormControl(playlists.song)
+        song: new FormControl(playlists.songs)
       });
     });
   }
@@ -103,8 +103,6 @@ export class EditPlaylistComponent implements OnInit {
       this.genres = genres;
     });
   }
-  resetForm() {
-    this.playlistForm.reset();
-  }
+
 
 }

@@ -9,5 +9,5 @@ export interface Playlist {
   status?: boolean;
   views?: number;
   likes?: number;
-  song?: any;
+  songs?: any;
 }
