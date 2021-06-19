@@ -9,11 +9,14 @@
     <div class="top_songs_list_left row">
       <div class="treanding_slider_main_box top_lis_left_content">
         <div class="top_songs_list0img">
-          <img src="{{song.imageUrl}}" alt="img" height="50px" style="margin-left: 15px">
-          <div class="m24_treanding_box_overlay">
-            <div class="m24_tranding_box_overlay"></div>
 
+          <img src="{{song.imageUrl}}" alt="img" height="50px" style="margin-left: 10px">
+          <a (click)="getInforSong(song)">
+          <div class="m24_treanding_box_overlay">
+            <div class="m24_tranding_box_overlay" style="cursor: pointer">
+            </div>
           </div>
+          </a>
         </div>
         <div class="release_content_artist top_list_content_artist">
           <p><a href="#">{{song.nameSong}}</a></p>

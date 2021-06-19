@@ -6,6 +6,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Song} from '../../../model/song';
 import {Playlist} from '../../../model/playlist';
 import {SongService} from '../../../service/song.service';
+import {ListenMusicService} from '../../listen-music.service';
 
 
 @Component({
@@ -15,28 +16,40 @@ import {SongService} from '../../../service/song.service';
 })
 export class DetailPlaylistComponent implements OnInit {
   id?: number;
-  // songs?: Song[] = [];
-  playlist?: Playlist;
+  songs: Song[] = [{songUrl:null},{songUrl:null},{songUrl:null}];
+  song: Song;
+  playlist?: Playlist={
+    songs:null
+  };
 
   constructor(private playlistService: PlaylistService,
               private httClient: HttpClient,
               private fb: FormBuilder, private songService: SongService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private listenMusicService: ListenMusicService) {
     this.activatedRoute.paramMap.subscribe(async (paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
       this.playlist = await this.getPlaylist(this.id);
+      this.songs = this.playlist.songs;
+      console.log(this.playlist.songs[0]);
+      console.log(this.playlist);
     });
-
   }
 
   ngOnInit() {
 
     this.getPlaylist(this.id);
+    console.log(this.playlist);
   }
 
   getPlaylist(id: number) {
     return this.playlistService.findById(id).toPromise()
   }
-
+  getInforSong(song) {
+    this.listenMusicService.statusSong.next(true);
+    this.listenMusicService.songs = this.playlist.songs;
+    this.listenMusicService.songObject.next(song);
+    this.listenMusicService.openFile(song);
+  }
 }
 

@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Song} from '../../../model/song';
 import {SongService} from '../../../service/song.service';
 import {Router} from '@angular/router';

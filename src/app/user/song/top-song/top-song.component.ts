@@ -5,6 +5,7 @@ import {Artist} from "../../../model/artist";
 import {Genre} from "../../../model/genre";
 import {ArtistService} from "../../../service/artist.service";
 import {GenreService} from "../../../service/genre.service";
+import {ListenMusicService} from '../../listen-music.service';
 
 @Component({
   selector: 'app-top-song',
@@ -17,7 +18,15 @@ export class TopSongComponent implements OnInit {
   artists: Artist[] = []
   genres: Genre[] = []
   constructor(private songService: SongService,
-              private artistService: ArtistService, private genreService: GenreService,) {
+              private artistService: ArtistService,
+              private genreService: GenreService,
+              private listenMusicService: ListenMusicService) {
+    this.songService.getYourSong().subscribe(songs => {
+      this.songs = songs;
+      console.log(this.songs);
+    }, error => {
+      console.log('error', error);
+    });
     this.getAllGenre();
     this.getAllArtist();
   }
@@ -42,5 +51,18 @@ export class TopSongComponent implements OnInit {
     this.genreService.getAll().subscribe(genres => {
       this.genres = genres;
     })
+  }
+  getYourSong() {
+    this.songService.getYourSong().subscribe(songs => {
+      this.songs = songs;
+    }, error => {
+      console.log('error', error);
+    });
+  }
+  getInforSong(song) {
+    this.listenMusicService.statusSong.next(true);
+    this.listenMusicService.songs = this.songs;
+    this.listenMusicService.songObject.next(song);
+    this.listenMusicService.openFile(song);
   }
 }
