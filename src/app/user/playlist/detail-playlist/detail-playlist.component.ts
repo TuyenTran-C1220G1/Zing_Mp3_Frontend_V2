@@ -37,5 +37,6 @@ export class DetailPlaylistComponent implements OnInit {
   getPlaylist(id: number) {
     return this.playlistService.findById(id).toPromise()
   }
+
 }
 
