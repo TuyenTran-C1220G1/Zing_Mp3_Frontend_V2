@@ -3,6 +3,7 @@ import {Song} from "../../../model/song";
 import {SongService} from "../../../service/song.service";
 import {Playlist} from "../../../model/playlist";
 import {PlaylistService} from "../../../service/playlist.service";
+import {ListenMusicService} from '../../listen-music.service';
 declare var $: any;
 @Component({
   selector: 'app-song-list',
@@ -15,7 +16,12 @@ export class SongListComponent implements OnInit {
   playlists: Playlist[]=[];
 
 
-  constructor(private songService: SongService, private playlistService: PlaylistService) {
+  constructor(private songService: SongService, private playlistService: PlaylistService, private listenMusicService: ListenMusicService) {
+    this.songService.getAll().subscribe(songs => {
+      this.songs = songs.content;
+    }, error => {
+      console.log("error", error)
+    });
   }
 
   ngOnInit() {
@@ -50,5 +56,10 @@ export class SongListComponent implements OnInit {
   addSongToPlaylist(idPlaylist:number,idSong:number){
     this.playlistService.addSongToPlaylist(idPlaylist,idSong).subscribe();
   }
-
+  getInforSong(song) {
+    this.listenMusicService.statusSong.next(true);
+    this.listenMusicService.songs = this.songs;
+    this.listenMusicService.songObject.next(song);
+    this.listenMusicService.openFile(song);
+  }
 }
