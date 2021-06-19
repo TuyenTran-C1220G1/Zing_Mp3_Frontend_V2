@@ -35,22 +35,22 @@
             <div class="player-controls">
 
               <a class="jp-shuffle jp_shuffle_responsive" role="button" tabindex="0">
-                <i class="fa fa-random" aria-hidden="true" style="font-size: 24px;"></i>
+                <i class="fa fa-random"  #mixElement (click)="mixSong()" aria-hidden="true" style="font-size: 24px;"></i>
               </a>
               <div class="control-primary">
                 <a class="jp-previous" role="button" tabindex="0">
-                  <i class="fa fa-fast-backward" aria-hidden="true" style="font-size: 24px;"></i>
+                  <i class="fa fa-fast-backward" (click)="previousSong(indexSong)" aria-hidden="true" style="font-size: 24px;"></i>
                 </a>
                 <a class="jp-play" role="button" tabindex="0">
                   <i *ngIf="status" (click)="play()" class="fa fa-play-circle" style="font-size:24px"></i>
                   <i *ngIf="!status" (click)="play()" class="fa fa-pause" style="font-size:24px"></i>
                 </a>
                 <a class="jp-next" role="button" tabindex="0">
-                  <i class="fa fa-fast-forward" aria-hidden="true" style="font-size: 24px;"></i>
+                  <i class="fa fa-fast-forward" (click)="nextSong(indexSong)" aria-hidden="true" style="font-size: 24px;"></i>
                 </a>
               </div>
               <a class="jp-repeat jp_repeat_responsive" role="button" tabindex="0">
-                <i class="fa fa-repeat" aria-hidden="true" style="font-size: 24px"></i>
+                <i class="fa fa-repeat" #repeatElement (click)="repeatSong()"  style="font-size: 24px;" aria-hidden="true"></i>
               </a>
             </div>
           </div>

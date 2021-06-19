@@ -20,7 +20,7 @@ import {SongEditComponent} from './song/song-edit/song-edit.component';
 import {SongCreateComponent} from './song/song-create/song-create.component';
 import {UploadModule} from '../upload/upload.module';
 import { UserEditComponent } from './user-edit/user-edit.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import {SongUserComponent} from './song/song-user/song-user.component';
 import {SongPlayComponent} from './song/song-play/song-play.component';
@@ -87,6 +87,7 @@ DetailPlaylistComponent
         UploadModule,
         ReactiveFormsModule,
         NgbCarouselModule,
+        FormsModule,
     ],
 
 })

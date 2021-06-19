@@ -1,22 +1,102 @@
 import { Component, OnInit } from '@angular/core';
 import {Artist} from '../../../model/artist';
 import {ArtistService} from '../../../service/artist.service';
+import {Song} from '../../../model/song';
 declare var $: any;
 
+
+// @ts-ignore
 @Component({
   selector: 'app-feature-artits',
   templateUrl: './feature-artits.component.html',
   styleUrls: ['./feature-artits.component.css']
 })
+// class Artist {
+//   id?: number;
+//   nameArtist?: string;
+//   description?: string;
+//   avatar?: string;
+//   songUrl?: string;
+//   dob?: Date;
+//   likes?: number;
+//   gender?: any;
+//   songs?: Song[];
+// }
 export class FeatureArtitsComponent implements OnInit {
 
-  artists: Artist[] = [];
+  // @ts-ignore
+  artists: Artist[] = [{
+      id: null,
+      nameArtist: null,
+      description: null,
+      avatar:null,
+      songUrl:null,
+      dob: null,
+      likes: null,
+      gender: null,
+  },{
+    id: null,
+    nameArtist: null,
+    description: null,
+    avatar:null,
+    songUrl:null,
+    dob: null,
+    likes: null,
+    gender: null,
+  },{
+    id: null,
+    nameArtist: null,
+    description: null,
+    avatar:null,
+    songUrl:null,
+    dob: null,
+    likes: null,
+    gender: null,
+  },{
+    id: null,
+    nameArtist: null,
+    description: null,
+    avatar:null,
+    songUrl:null,
+    dob: null,
+    likes: null,
+    gender: null,
+  },{
+    id: null,
+    nameArtist: null,
+    description: null,
+    avatar:null,
+    songUrl:null,
+    dob: null,
+    likes: null,
+    gender: null,
+  },{
+    id: null,
+    nameArtist: null,
+    description: null,
+    avatar:null,
+    songUrl:null,
+    dob: null,
+    likes: null,
+    gender: null,
+  }];
+  artists2: Artist[];
 
   constructor(private artistService: ArtistService) {
+    console.log('vao contructor')
+    this.artistService.getTopArtis().subscribe(artists => {
+      console.log(artists);
+      this.artists = artists;
+      console.log('đã lấy được')
+    }, error => {console.log('error:', error); });
   }
 
   ngOnInit() {
-    this.getTopArtist();
+    this.artistService.getTopArtis().subscribe(artists => {
+      console.log(artists);
+      this.artists = artists;
+      console.log('đã lấy được')
+    }, error => {console.log('error:', error); });
     $(function() {
       $('.treanding_song_slider .owl-carousel').owlCarousel({
         loop: !0,
@@ -50,6 +130,7 @@ export class FeatureArtitsComponent implements OnInit {
     this.artistService.getTopArtis().subscribe(artists => {
       console.log(artists);
       this.artists = artists;
-    }, error => {console.log('error', error); });
+      console.log('đã lấy được')
+    }, error => {console.log('error:', error); });
   }
 }

@@ -32,8 +32,8 @@
                       <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
                     </ul>
                     <div class="tranding_play_icon">
-                      <a href="#">
-                        <i class="flaticon-play-button">{{playlist.namePlaylist}}</i>
+                      <a [routerLink]="['/user/playlistSong/',playlist.id]">
+                      <i class="flaticon-play-button">{{playlist.namePlaylist}}</i>
                       </a>
                     </div>
                   </div>
