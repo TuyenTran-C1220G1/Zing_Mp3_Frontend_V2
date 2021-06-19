@@ -19,17 +19,20 @@
     <div class="row">
       <div class="col-md-12 col-lg-12">
         <div class="album_list_wrapper2">
+          <div class="lang_apply_btn home_btn m24_cover" style="padding-bottom: 20px;padding-top: -10px">
+            <a (click)="getInforSong(songs[0])">Play all</a>
+          </div>
           <div class="album_list_wrapper album_list_wrapper_shop">
             <ul class="album_list_name m24_cover">
               <li>#</li>
               <li class="song_title_width">Song Title</li>
-              <li class="song_title_width">Artist</li>
-              <li class="text-center">time</li>
-              <li class="text-center"></li>
-              <li class="text-center"></li>
+              <li class="text-center song_title_width">Artist</li>
+              <li class="text-center">Like</li>
+              <li class="text-center">View</li>
+              <li class="text-center">AddPlaylist</li>
             </ul>
             <ul class="album_inner_list_padding" *ngFor="let song of songs; index as i">
-              <li><a href="#"><span class="play_no">{{i + 1}}</span><span class="play_hover"><i
+              <li><a (click)="getInforSong(song)"><span class="play_no">{{i + 1}}</span><span class="play_hover"><i
                 class="flaticon-play-button"></i></span></a></li>
               <li class="song_title_width">
                 <div class="top_song_artist_wrapper">
@@ -42,8 +45,10 @@
 
                 </div>
               </li>
-              <li class="song_title_width"><a href="#">{{song?.artist?.nameArtist}}</a></li>
-              <li><div class="top_song_list_picks featured_list_dropdown">
+              <li class="text-center song_title_width"><a href="#">{{song?.artist?.nameArtist}}</a></li>
+              <li class="text-center">{{song.likes}}</li>
+              <li class="text-center">{{song.views}}</li>
+              <li class="top_song_list_picks featured_list_dropdown">
                 <div class="m24_tranding_more_icon">
                   <i class="flaticon-menu"></i>
                 </div>
@@ -51,21 +56,8 @@
                   <li  *ngFor="let playlist of playlists" [value]="playlist.id">
                     <button class="btn btn-link" (click)="addSongToPlaylist(playlist.id,song.id)"><span class="opt_icon"><i class="flaticon-playlist"></i></span>{{playlist.namePlaylist}}</button>
                   </li>
-                  <!--                  <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>-->
-                  <!--                  <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>-->
-                  <!--                  <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a>-->
-                  <!--                  </li>-->
-                  <!--                  <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>-->
                 </ul>
-              </div></li>
-
-              <!--             <li>-->
-<!--                <select>-->
-<!--                  <option *ngFor="let playlist of playlists" [value]="playlist.id">-->
-<!--                    <a >{{playlist.namePlaylist}}</a></option>-->
-<!--                </select>-->
-<!--              </li>-->
-
+              </li>
               <li class="text-center top_song_artist_playlist">
             </ul>
           </div>

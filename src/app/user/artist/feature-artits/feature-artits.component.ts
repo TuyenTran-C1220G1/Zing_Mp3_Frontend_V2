@@ -11,29 +11,19 @@ declare var $: any;
   templateUrl: './feature-artits.component.html',
   styleUrls: ['./feature-artits.component.css']
 })
-// class Artist {
-//   id?: number;
-//   nameArtist?: string;
-//   description?: string;
-//   avatar?: string;
-//   songUrl?: string;
-//   dob?: Date;
-//   likes?: number;
-//   gender?: any;
-//   songs?: Song[];
-// }
+
 export class FeatureArtitsComponent implements OnInit {
 
   // @ts-ignore
   artists: Artist[] = [{
-      id: null,
-      nameArtist: null,
-      description: null,
-      avatar:null,
-      songUrl:null,
-      dob: null,
-      likes: null,
-      gender: null,
+    id: null,
+    nameArtist: null,
+    description: null,
+    avatar:null,
+    songUrl:null,
+    dob: null,
+    likes: null,
+    gender: null,
   },{
     id: null,
     nameArtist: null,
