@@ -18,11 +18,11 @@ import Swal from 'sweetalert2';
 })
 export class DetailPlaylistComponent implements OnInit {
   id?: number;
-  songs: Song[] = [{songUrl:null},{songUrl:null},{songUrl:null}];
+  songs: Song[] = [{songUrl: null}, {songUrl: null}, {songUrl: null}];
   song: Song;
-  playlist?: Playlist={
-    songs:null
-  }
+  playlist?: Playlist = {
+    songs: null
+  };
 
 
   constructor(private playlistService: PlaylistService,
@@ -32,6 +32,7 @@ export class DetailPlaylistComponent implements OnInit {
               private listenMusicService: ListenMusicService) {
     this.activatedRoute.paramMap.subscribe(async (paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
+      // @ts-ignore
       this.playlist = await this.getPlaylist(this.id);
       this.songs = this.playlist.songs;
       console.log(this.playlist.songs[0]);
@@ -47,18 +48,21 @@ export class DetailPlaylistComponent implements OnInit {
   }
 
   getPlaylist(id: number) {
-    return this.playlistService.findById(id).toPromise()
+    return this.playlistService.findById(id).subscribe(playlist => {
+      this.playlist = playlist;
+    });
   }
+
   getInforSong(song) {
     this.listenMusicService.statusSong.next(true);
     this.listenMusicService.songs = this.playlist.songs;
     this.listenMusicService.songObject.next(song);
     this.listenMusicService.openFile(song);
   }
+
   remoteSong(id: number, idSong: number) {
-    this.playlistService.remoteSongInPlaylist(id,idSong).subscribe(playlist1 => {
-      this.playlist = playlist1;
-     this.getPlaylist(id);
+    this.playlistService.remoteSongInPlaylist(id, idSong).subscribe(playlist1 => {
+      this.getPlaylist(id);
     }, error => {
       $(function() {
         const Toast = Swal.mixin({
@@ -68,7 +72,7 @@ export class DetailPlaylistComponent implements OnInit {
           timer: 3000
         });
         // @ts-ignore
-        Toast.fire( {
+        Toast.fire({
           icon: 'error',
           type: 'success',
           title: 'You do not permission',

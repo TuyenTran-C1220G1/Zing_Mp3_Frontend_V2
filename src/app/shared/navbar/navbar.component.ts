@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '../../service/authentication.service';
 import * as $ from 'jquery';
 import Swal from 'sweetalert2';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -16,6 +17,10 @@ export class NavbarComponent implements OnInit {
   hasRoleAdmin = false;
   hasRoleUser = false;
   user: User;
+  formGroup = new FormGroup({
+    searchName: new FormControl()
+  })
+
   constructor(private router: Router,
               private authenticationService: AuthenticationService) {
     // this.authenticationService.currentUser.subscribe(value => {
@@ -65,5 +70,12 @@ export class NavbarComponent implements OnInit {
       }, 'slow') : $('#sidebar').animate({
         left: '0'
       }, 'slow');
+  }
+
+  search() {
+    const searchValue = this.formGroup.get('searchName').value;
+    // @ts-ignore
+    this.router.navigate([`/user/search/${searchValue}`], { queryParams: { search: searchValue } }).then((e) => {
+    });
   }
 }

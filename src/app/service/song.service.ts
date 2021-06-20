@@ -37,7 +37,7 @@ export class SongService {
 
 
   findById(id: number): Observable<Song> {
-    return this.http.get<Song>(`http://localhost:8080/songs/detail/${id}`);
+    return this.http.get<Song>(`${API_URL}/songs/detail/${id}`);
   }
 
   updateSong(id: number, song: Song): Observable<Song> {
@@ -51,7 +51,7 @@ export class SongService {
     return this.http.get<any>(`${API_URL}/playlists/${id}/songs`);
   }
 
-  search(name: string): Observable<any> {
+  searchSong(name: string): Observable<any> {
     return this.http.get<any>(`${API_URL}/songs/search/${name}`);
   }
 }
