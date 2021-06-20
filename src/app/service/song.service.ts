@@ -50,4 +50,8 @@ export class SongService {
   getAllSongByPlaylistId(id: number): Observable<any> {
     return this.http.get<any>(`${API_URL}/playlists/${id}/songs`);
   }
+
+  search(name: string): Observable<any> {
+    return this.http.get<any>(`${API_URL}/songs/search/${name}`);
+  }
 }

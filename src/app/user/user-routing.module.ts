@@ -19,9 +19,15 @@ import {TopPlaylistComponent} from './playlist/top-playlist/top-playlist.compone
 import {NewPlaylistComponent} from './playlist/new-playlist/new-playlist.component';
 import {DetailLayoutComponent} from '../layout/detail-layout/detail-layout.component';
 import {DetailPlaylistComponent} from './playlist/detail-playlist/detail-playlist.component';
+import {SearchResultComponent} from './search/search-result/search-result.component';
 
 
 const routes: Routes = [
+  {
+    path: 'search' ,
+    component: SearchResultComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: 'edit' ,
     component: UserEditComponent,
