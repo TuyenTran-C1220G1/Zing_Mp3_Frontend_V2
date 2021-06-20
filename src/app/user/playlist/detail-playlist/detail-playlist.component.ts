@@ -7,6 +7,8 @@ import {Song} from '../../../model/song';
 import {Playlist} from '../../../model/playlist';
 import {SongService} from '../../../service/song.service';
 import {ListenMusicService} from '../../listen-music.service';
+import * as $ from 'jquery';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class DetailPlaylistComponent implements OnInit {
   song: Song;
   playlist?: Playlist={
     songs:null
-  };
+  }
+
 
   constructor(private playlistService: PlaylistService,
               private httClient: HttpClient,
@@ -34,6 +37,7 @@ export class DetailPlaylistComponent implements OnInit {
       console.log(this.playlist.songs[0]);
       console.log(this.playlist);
     });
+
   }
 
   ngOnInit() {
@@ -51,5 +55,27 @@ export class DetailPlaylistComponent implements OnInit {
     this.listenMusicService.songObject.next(song);
     this.listenMusicService.openFile(song);
   }
+  remoteSong(id: number, idSong: number) {
+    this.playlistService.remoteSongInPlaylist(id,idSong).subscribe(playlist1 => {
+      this.playlist = playlist1;
+     this.getPlaylist(id);
+    }, error => {
+      $(function() {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        // @ts-ignore
+        Toast.fire( {
+          icon: 'error',
+          type: 'success',
+          title: 'You do not permission',
+        });
+      });
+    });
+  }
+
 }
 
