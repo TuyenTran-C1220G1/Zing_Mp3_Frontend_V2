@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {AngularFireStorage, AngularFireStorageReference} from '@angular/fire/storage';
 import {HttpClient} from '@angular/common/http';
 
@@ -15,7 +15,7 @@ export class FileComponent implements OnInit {
   checkUploadFile :boolean = true;
   @Output()
   giveURLtoCreate = new EventEmitter<string>();
-
+  @ViewChild('inputSong',null) inputSong;
   constructor(private httpClient: HttpClient,
               private afStorage: AngularFireStorage) {
     console.log('vao contructor');
@@ -60,17 +60,9 @@ export class FileComponent implements OnInit {
     }
 
   }
-  // setFile(event) {
-  //   let files: FileList = event.target.files;
-  //   if (files.length > 0) {
-  //     this.file = files[0];
-  //   }
-  //   if(this.file.name.match(/\.(avi|mp3|mp4|mpeg|ogg)$/i)){
-  //     let obUrl = URL.createObjectURL(this.file);
-  //     this.dom_audio.nativeElement.setAttribute('src', obUrl);
-  //   }
-  // }
+
   removeSong() {
+    this.inputSong.nativeElement.value = '';
     this.downloadURL = null;
     this.selectedFile = null;
   }

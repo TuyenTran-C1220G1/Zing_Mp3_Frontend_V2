@@ -1,19 +1,13 @@
-<script>
-  function removeSong() {
-    var elem = document.getElementById('yourSong');
-    elem.parentNode.removeChild(elem);
-    return false;
-  }
-</script>
-<form action="">
+
   <div style="margin: auto">
-    <input class="form-control" type="file" (change)="onFileChanged($event)" required >
+    <input class="form-control" type="file" (change)="onFileChanged($event)" required="required" >
     <div style="margin-bottom: 10px; margin-top: 10px">
       <button (click)="onUpload($event)" class="button_like_a" type="button" style="margin-right: 10px"
               *ngIf="selectedFile && checkUploadFile">Upload File Mp3
       </button>
-      <button class="button_like_a" (click)="removeSong()" type="reset">Reset</button>
-      <p *ngIf="!checkUploadFile" style="color: red">Không đúng loại file</p>
+      <button #inputSong class="button_like_a" (click)="removeSong()" type="reset">Reset</button>
+      <p *ngIf="!checkUploadFile" style="color: red">Uploaded file is not in the correct format</p>
+      <p *ngIf="!selectedFile" style="color: red">No file of correct format selected</p>
     </div>
     <div id="yourSong" *ngIf="downloadURL" style="margin-bottom: 10px; margin-top: 10px">
       <audio controls>
@@ -21,6 +15,5 @@
       </audio>
     </div>
   </div>
-</form>
 
 

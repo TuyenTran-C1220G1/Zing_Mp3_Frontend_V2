@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {AngularFireStorage, AngularFireStorageReference} from '@angular/fire/storage';
 import {HttpClient} from '@angular/common/http';
 
@@ -17,6 +17,8 @@ export class ImageComponent implements OnInit {
   giveURLtoCreate = new EventEmitter<string>();
   @Output()
   sendAvatarUrl = new EventEmitter<string>();
+  @ViewChild('inputImage',null) inputImage;
+
   constructor(private httClient: HttpClient,
               private afStorage: AngularFireStorage) { }
 
@@ -59,6 +61,7 @@ export class ImageComponent implements OnInit {
   }
 
   removeImage() {
+    this.inputImage.nativeElement.value = '';
     this.downloadURL = null;
     this.selectedFile = null;
   }
