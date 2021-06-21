@@ -35,9 +35,8 @@ export class SongService {
     return this.http.post<Song>(API_URL + '/songs', song);
   }
 
-
   findById(id: number): Observable<Song> {
-    return this.http.get<Song>(`http://localhost:8080/songs/detail/${id}`);
+    return this.http.get<Song>(`${API_URL}/songs/detail/${id}`);
   }
 
   updateSong(id: number, song: Song): Observable<Song> {
@@ -49,5 +48,9 @@ export class SongService {
   }
   getAllSongByPlaylistId(id: number): Observable<any> {
     return this.http.get<any>(`${API_URL}/playlists/${id}/songs`);
+  }
+  findAllSongByArtist(idArtist: number): Observable<any>{
+    return this.http.get<any>(`${API_URL}/songs/artists/${idArtist}`);
+
   }
 }

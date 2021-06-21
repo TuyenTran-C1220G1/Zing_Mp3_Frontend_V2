@@ -19,6 +19,9 @@ import {TopPlaylistComponent} from './playlist/top-playlist/top-playlist.compone
 import {NewPlaylistComponent} from './playlist/new-playlist/new-playlist.component';
 import {DetailLayoutComponent} from '../layout/detail-layout/detail-layout.component';
 import {DetailPlaylistComponent} from './playlist/detail-playlist/detail-playlist.component';
+import {CreteArtistComponent} from './artist/crete-artist/crete-artist.component';
+import {AllArtistComponent} from './artist/all-artist/all-artist.component';
+import {DetailArtistComponent} from './artist/detail-artist/detail-artist.component';
 
 
 const routes: Routes = [
@@ -91,7 +94,20 @@ const routes: Routes = [
   {
     path: 'playlistSong/:id',
     component: DetailPlaylistComponent,
-  }
+  },
+  {
+    path: 'artists/create',
+    component: CreteArtistComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'allartists',
+    component: AllArtistComponent,
+  },
+  {
+    path: 'detail/artists/:id',
+    component: DetailArtistComponent,
+  },
 ];
 
 @NgModule({

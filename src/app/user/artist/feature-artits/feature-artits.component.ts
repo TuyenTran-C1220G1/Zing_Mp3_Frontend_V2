@@ -20,7 +20,6 @@ export class FeatureArtitsComponent implements OnInit {
     nameArtist: null,
     description: null,
     avatar:null,
-    songUrl:null,
     dob: null,
     likes: null,
     gender: null,
@@ -29,7 +28,6 @@ export class FeatureArtitsComponent implements OnInit {
     nameArtist: null,
     description: null,
     avatar:null,
-    songUrl:null,
     dob: null,
     likes: null,
     gender: null,
@@ -38,7 +36,6 @@ export class FeatureArtitsComponent implements OnInit {
     nameArtist: null,
     description: null,
     avatar:null,
-    songUrl:null,
     dob: null,
     likes: null,
     gender: null,
@@ -47,7 +44,6 @@ export class FeatureArtitsComponent implements OnInit {
     nameArtist: null,
     description: null,
     avatar:null,
-    songUrl:null,
     dob: null,
     likes: null,
     gender: null,
@@ -56,7 +52,6 @@ export class FeatureArtitsComponent implements OnInit {
     nameArtist: null,
     description: null,
     avatar:null,
-    songUrl:null,
     dob: null,
     likes: null,
     gender: null,
@@ -65,7 +60,6 @@ export class FeatureArtitsComponent implements OnInit {
     nameArtist: null,
     description: null,
     avatar:null,
-    songUrl:null,
     dob: null,
     likes: null,
     gender: null,
@@ -73,54 +67,50 @@ export class FeatureArtitsComponent implements OnInit {
   artists2: Artist[];
 
   constructor(private artistService: ArtistService) {
-    console.log('vao contructor')
-    this.artistService.getTopArtis().subscribe(artists => {
-      console.log(artists);
-      this.artists = artists;
-      console.log('đã lấy được')
-    }, error => {console.log('error:', error); });
+    // console.log('vao contructor')
+    // this.artistService.getTopArtis().subscribe(artists => {
+    //   console.log(artists);
+    //   this.artists = artists;
+    //   console.log('đã lấy được')
+    // }, error => {console.log('error:', error); });
   }
 
   ngOnInit() {
     this.artistService.getTopArtis().subscribe(artists => {
-      console.log(artists);
       this.artists = artists;
-      console.log('đã lấy được')
-    }, error => {console.log('error:', error); });
-    $(function() {
-      $('.treanding_song_slider .owl-carousel').owlCarousel({
-        loop: !0,
-        margin: 15,
-        autoplay: !1,
-        smartSpeed: 1200,
-        responsiveClass: !0,
-        navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
-        responsive: {
-          0: {
-            items: 1,
-            nav: !0
-          },
-          600: {
-            items: 3,
-            nav: !0
-          },
-          1000: {
-            items: 5,
-            nav: !0,
-            loop: !0,
-            margin: 20
+      $(document).ready(function() {
+        $(".featured_song_slider .owl-carousel").owlCarousel({
+          loop: !0,
+          margin: 15,
+          autoplay: !0,
+          smartSpeed: 1200,
+          responsiveClass: !0,
+          navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
+          responsive: {
+            0: {
+              items: 1,
+              nav: !0
+            },
+            600: {
+              items: 1,
+              nav: !0
+            },
+            1000: {
+              items: 1,
+              nav: !0,
+              loop: !0,
+              margin: 20
+            }
           }
-        }
+        })
       });
-    });
+    }, error => {console.log('error:', error); });
 
   }
 
   getTopArtist() {
     this.artistService.getTopArtis().subscribe(artists => {
-      console.log(artists);
       this.artists = artists;
-      console.log('đã lấy được')
     }, error => {console.log('error:', error); });
   }
 }

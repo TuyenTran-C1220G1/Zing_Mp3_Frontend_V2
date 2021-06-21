@@ -5,9 +5,9 @@ import {Genre} from '../../../model/genre';
 import {GenreService} from '../../../service/genre.service';
 import {AuthenticationService} from '../../../service/authentication.service';
 import {ArtistService} from '../../../service/artist.service';
-import * as $ from 'jquery';
 import Swal from 'sweetalert2';
-
+import {Playlist} from '../../../model/playlist';
+declare var $: any
 
 @Component({
   selector: 'app-create-playlist',
@@ -19,6 +19,7 @@ export class CreatePlaylistComponent implements OnInit {
   submitted = false;
   avatar = '';
   genres: Genre[] = [];
+  myPlaylist: Playlist[]=[];
   playlistForm: FormGroup;
 
   constructor(private auth: AuthenticationService, private playlistService: PlaylistService,
@@ -32,52 +33,72 @@ export class CreatePlaylistComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getAllGenre();
+    this.getMyPlayList()
     this.playlistForm = this.fb.group({
       namePlaylist: ['', [Validators.required, Validators.max(30)]],
       description: ['', [Validators.required, Validators.max(50)]],
       genre: ['', [Validators.required]],
       image: ['']
     });
+
   }
 
+  getMyPlayList() {
+    this.playlistService.showMyPlaylist().subscribe(playLists => {
+      this.myPlaylist = playLists;
+    });
+  }
   createPlaylist() {
     this.submitted = true;
-    if (this.playlistForm.valid) {
-      const playlists = this.playlistForm.value;
-      playlists.image = this.avatar;
-      playlists.genre = {
-        id: playlists.genre
-      };
-      this.playlistService.createNewPlaylist(playlists).subscribe(() => {
-        this.success = true;
-        this.submitted = false;
-
-        $(function() {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
+    if (this.myPlaylist.length<=20) {
+      if (this.playlistForm.valid) {
+        const playlists = this.playlistForm.value;
+        playlists.image = this.avatar;
+        playlists.genre = {
+          id: playlists.genre
+        };
+        this.playlistService.createNewPlaylist(playlists).subscribe(() => {
+          this.success = true;
+          this.submitted = false;
+          $(function() {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            // @ts-ignore
+            Toast.fire({
+              icon: 'success',
+              type: 'success',
+              title: ' Successful playlist creation',
+            });
           });
-          // @ts-ignore
-          Toast.fire( {
-            icon: 'success',
-            type: 'success',
-            title: ' Successful playlist creation',
-          });
+          this.playlistForm.reset();
+        }, e => {
         });
-        this.playlistForm.reset();
-      }, e => {
-        console.log(e);
+      }
+    }$(function() {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
       });
-    }
-    this.success = false;
+      // @ts-ignore
+      Toast.fire( {
+        icon: 'error',
+        type: 'success',
+        title: 'The number of Playlists is too limited',
+      });
+    });
   }
   getAllGenre() {
     this.genreService.getAll().subscribe(genres => {
       this.genres = genres;
     });
   }
+
 
   resetForm() {
     this.playlistForm.reset();

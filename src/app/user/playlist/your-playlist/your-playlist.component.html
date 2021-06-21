@@ -58,12 +58,12 @@
               <li class="text-center"><a href="#">{{p.namePlaylist}}</a></li>
               <li class="text-center" style="color: white">White</li>
               <li class="text-center"><a href="#">{{p.likes}}</a></li>
+              <li class="text-center"><a [routerLink]="['/user/playlistSong/',p.id]">{{p.songs.length}} Tracks</a></li>
               <li class="text-center top_song_artist_playlist">
                 <div class="m24_tranding_more_icon">
                 </div>
                 <a style="text-decoration: none" [routerLink]="['/user/playlists/edit',p.id]">Edit</a>
               </li>
-              <li class="text-center"><a [routerLink]="['/user/playlistSong/',p.id]">List Song</a></li>
               <li class="text-center"><a type="button" (click)="deletePlaylist(p.id)"><i
                 class="fas fa-times-circle"></i></a></li>
             </ul>

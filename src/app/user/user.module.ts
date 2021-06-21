@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { UserRoutingModule } from './user-routing.module';
-import { FeatureArtitsComponent } from './artist/feature-artits/feature-artits.component';
+import {UserRoutingModule} from './user-routing.module';
+import {FeatureArtitsComponent} from './artist/feature-artits/feature-artits.component';
 import {TopSongComponent} from './song/top-song/top-song.component';
 import {TreandingSongsComponent} from './song/treanding-songs/treanding-songs.component';
 import {ArtistModule} from './artist/artist.module';
@@ -19,13 +19,16 @@ import {SongListComponent} from './song/song-list/song-list.component';
 import {SongEditComponent} from './song/song-edit/song-edit.component';
 import {SongCreateComponent} from './song/song-create/song-create.component';
 import {UploadModule} from '../upload/upload.module';
-import { UserEditComponent } from './user-edit/user-edit.component';
+import {UserEditComponent} from './user-edit/user-edit.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import {SongUserComponent} from './song/song-user/song-user.component';
 import {SongPlayComponent} from './song/song-play/song-play.component';
 import {YourPlaylistComponent} from './playlist/your-playlist/your-playlist.component';
 import {DetailPlaylistComponent} from './playlist/detail-playlist/detail-playlist.component';
+import {CreteArtistComponent} from './artist/crete-artist/crete-artist.component';
+import {AllArtistComponent} from './artist/all-artist/all-artist.component';
+import {DetailArtistComponent} from './artist/detail-artist/detail-artist.component';
 
 
 @NgModule({
@@ -47,11 +50,15 @@ import {DetailPlaylistComponent} from './playlist/detail-playlist/detail-playlis
     SongUserComponent,
     SongPlayComponent,
     YourPlaylistComponent,
-DetailPlaylistComponent
+    DetailPlaylistComponent,
+    CreteArtistComponent,
+    AllArtistComponent,
+    DetailArtistComponent
   ],
 
 
   exports: [
+    AllArtistComponent,
     FeatureArtitsComponent,
     TopSongComponent,
     TreandingSongsComponent,
@@ -78,17 +85,19 @@ DetailPlaylistComponent
     EditPlaylistComponent,
     SongPlayComponent,
     YourPlaylistComponent,
-    DetailPlaylistComponent
-
+    DetailPlaylistComponent,
+    CreteArtistComponent,
+    DetailArtistComponent
   ],
-    imports: [
-        CommonModule,
-        UserRoutingModule,
-        UploadModule,
-        ReactiveFormsModule,
-        NgbCarouselModule,
-        FormsModule,
-    ],
+  imports: [
+    CommonModule,
+    UserRoutingModule,
+    UploadModule,
+    ReactiveFormsModule,
+    NgbCarouselModule,
+    FormsModule,
+  ],
 
 })
-export class UserModule { }
+export class UserModule {
+}

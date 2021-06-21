@@ -3,8 +3,10 @@ import {JwtResponse} from '../../interface/jwt-response';
 import {User} from '../../model/user';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../service/authentication.service';
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
 import Swal from 'sweetalert2';
+declare var $: any;
+
 
 @Component({
   selector: 'app-navbar',
@@ -57,6 +59,7 @@ export class NavbarComponent implements OnInit {
   }
   ngOnInit() {
     this.currentUser  = JSON.parse(localStorage.getItem('currentUser'));
+    // $("select").niceSelect();
   }
 
   openMenu() {
