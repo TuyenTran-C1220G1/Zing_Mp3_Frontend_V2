@@ -39,7 +39,7 @@
                   <img src="{{playlist.image}}" alt="img" >
                 </div>
               </li>
-              <li class="song_title_width">{{playlist.namePlaylist}}</li>
+              <li class="song_title_width"><a [routerLink]="['/user/playlists/comments/',playlist.id]">{{playlist.namePlaylist}}</a></li>
               <li class="text-center"><a>{{playlist.views}}</a></li>
               <li class="text-center"><a>{{playlist.likes}}</a></li>
               <li class="text-center">
