@@ -128,6 +128,10 @@ const routes: Routes = [
     path: 'detail/artists/:id',
     component: DetailArtistComponent,
   },
+  {
+    path: 'search/:name' ,
+    component: SearchResultComponent,
+  },
 ];
 
 @NgModule({

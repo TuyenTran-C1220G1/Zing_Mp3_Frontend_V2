@@ -18,11 +18,6 @@ export class SongListComponent implements OnInit {
 
   constructor(private songService: SongService, private playlistService: PlaylistService,
               private listenMusicService: ListenMusicService) {
-    this.songService.getAll().subscribe(songs => {
-      this.songs = songs.content;
-    }, error => {
-      console.log("error", error)
-    });
   }
 
   ngOnInit() {
