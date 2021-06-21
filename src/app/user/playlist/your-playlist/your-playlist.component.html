@@ -55,7 +55,7 @@
                 </div>
 
               </li>
-              <li class="text-center"><a href="#">{{p.namePlaylist}}</a></li>
+              <li class="text-center"><a [routerLink]="['/user/playlists/comments/',p.id]">{{p.namePlaylist}}</a></li>
               <li class="text-center" style="color: white">White</li>
               <li class="text-center"><a href="#">{{p.likes}}</a></li>
               <li class="text-center"><a [routerLink]="['/user/playlistSong/',p.id]">{{p.songs.length}} Tracks</a></li>
