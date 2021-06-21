@@ -7,6 +7,9 @@ import {HttpClient} from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {SongCommentService} from '../../../service/song-comment.service';
+import {AuthenticationService} from '../../../service/authentication.service';
+import {JwtResponse} from '../../../interface/jwt-response';
+import {User} from '../../../model/user';
 
 @Component({
   selector: 'app-comment-song',
@@ -17,6 +20,9 @@ export class CommentSongComponent implements OnInit {
   success: boolean;
   submitted = false;
   commentSongs: CommentSong[] = [];
+  currentUser: JwtResponse;
+  user: User;
+  hasRoleUser = false;
   song: Song = {
     likes:null
   };
@@ -31,7 +37,20 @@ export class CommentSongComponent implements OnInit {
               private songCommentService: SongCommentService,
               private httClient: HttpClient,
               private fb: FormBuilder,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUserSubject.asObservable().subscribe(user => {
+      this.currentUser = user;
+    });
+    if (this.currentUser) {
+      const roleList = this.currentUser.roles;
+      for (const role of roleList) {
+        if (role.authority === 'ROLE_USER') {
+          this.hasRoleUser = true;
+        }
+      }
+    }
+
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
       this.getAllComment(this.id);
