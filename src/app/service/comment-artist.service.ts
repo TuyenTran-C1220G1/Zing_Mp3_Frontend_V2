@@ -25,4 +25,10 @@ export class CommentArtistService {
   likeArtist(id: number): Observable<LikeArist> {
     return this.http.post<LikeArist>(`${API_URL}/likes/artists/${id}`, id);
   }
+
+  statusLike(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${API_URL}/likes/artists/${id}`);
+  }
+
+
 }

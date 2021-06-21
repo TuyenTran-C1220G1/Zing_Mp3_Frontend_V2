@@ -6,9 +6,6 @@ import {SongService} from '../../../service/song.service';
 import {HttpClient} from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, ParamMap} from '@angular/router';
-import {Commentplaylist} from '../../../model/commentplaylist';
-import {Playlist} from '../../../model/playlist';
-import {Likeplaylist} from '../../../model/likeplaylist';
 import {SongCommentService} from '../../../service/song-comment.service';
 
 @Component({
@@ -25,7 +22,6 @@ export class CommentSongComponent implements OnInit {
   };
   commentSongForm: FormGroup;
   likeSong: LikeSong = {
-    // isLike:null,
   };
   id?: number;
   statusLike : boolean;
@@ -36,18 +32,25 @@ export class CommentSongComponent implements OnInit {
               private httClient: HttpClient,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = +paramMap.get('id');
+      this.getAllComment(this.id);
+      this.getSong(this.id);
+    });
+    this.songCommentService.getStatus(this.id).subscribe(data =>{
+      this.statusLike = data;
+      if(this.statusLike){
+        this.likeElement.nativeElement.style.color = 'red';
+      }else{
+        this.likeElement.nativeElement.style.color = 'black';
+      }
+    })
 
   }
 
   ngOnInit() {
     this.commentSongForm = this.fb.group({
       content: ['', [Validators.required, Validators.max(200)]],
-    });
-    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.id = +paramMap.get('id');
-      this.getAllComment(this.id);
-      this.getSong(this.id);
-      this.handleLikeSong(this.id);
     });
   }
 
@@ -76,15 +79,14 @@ export class CommentSongComponent implements OnInit {
     }
   }
   handleLikeSong(id: number) {
-    this.likeSong.isLike = !this.likeSong.isLike;
-    if(this.likeSong.isLike){
-      this.likeElement.nativeElement.style.color = 'red';
-    }else{
+    if( this.statusLike){
+      this.statusLike = false;
       this.likeElement.nativeElement.style.color = 'black';
+    }else{
+      this.statusLike = true;
+      this.likeElement.nativeElement.style.color = 'red';
     }
     this.songCommentService.likePlaylist(id).subscribe(newLikePL =>{
-      console.log('update success');
-      console.log(this.likeSong.isLike);
       this.getSong(id);
     })
   }

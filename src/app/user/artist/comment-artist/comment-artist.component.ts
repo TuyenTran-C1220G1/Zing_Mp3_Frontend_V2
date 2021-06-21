@@ -23,10 +23,9 @@ export class CommentArtistComponent implements OnInit {
   };
   commentAristForm: FormGroup;
   likeArtis: LikeArist = {
-    // isLike:null,
   };
   id?: number;
-  statusLike : boolean;
+  statusLike = false ;
   // @ts-ignore
   @ViewChild('likeElement') likeElement : ElementRef;
   constructor(private artistService: ArtistService,
@@ -34,6 +33,19 @@ export class CommentArtistComponent implements OnInit {
               private httClient: HttpClient,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = +paramMap.get('id');
+      this.getAllComment(this.id);
+      this.getArtist(this.id);
+    });
+    this.commentArtistService.statusLike(this.id).subscribe(data =>{
+        this.statusLike = data;
+        if(this.statusLike){
+          this.likeElement.nativeElement.style.color = 'red';
+        }else{
+          this.likeElement.nativeElement.style.color = 'black';
+        }
+    })
 
   }
 
@@ -45,13 +57,7 @@ export class CommentArtistComponent implements OnInit {
       this.id = +paramMap.get('id');
       this.getAllComment(this.id);
       this.getArtist(this.id);
-      this.handleLikeAritst(this.id);
     });
-    // this.playlistService.likePlaylist(this.id).subscribe(likePlaylist =>{
-    //   this.likePlaylist = likePlaylist;
-    //   console.log('contructor:',this.likePlaylist.isLike);
-    //   // this.statusLike = this.likePlaylist.isLike;
-    // })
   }
 
   getAllComment(id: number) {
@@ -79,17 +85,15 @@ export class CommentArtistComponent implements OnInit {
     }
   }
   handleLikeAritst(id: number) {
-    this.likeArtis.isLike = !this.likeArtis.isLike;
-    if(this.likeArtis.isLike){
+    if( this.statusLike){
+      this.statusLike = false;
       this.likeElement.nativeElement.style.color = 'black';
     }else{
+      this.statusLike = true;
       this.likeElement.nativeElement.style.color = 'red';
     }
     this.commentArtistService.likeArtist(id).subscribe(newLikePL =>{
-      console.log('update success');
-      console.log(this.likeArtis.isLike);
       this.getArtist(id)
     })
   }
-
 }

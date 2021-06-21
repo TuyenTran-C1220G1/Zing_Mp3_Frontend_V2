@@ -24,4 +24,9 @@ export class SongCommentService {
   likePlaylist(id: number): Observable<LikeSong> {
     return this.http.post<LikeSong>(`${API_URL}/likes/songs/${id}`, id);
   }
+
+  getStatus(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${API_URL}/likes/songs/${id}`);
+  }
+
 }

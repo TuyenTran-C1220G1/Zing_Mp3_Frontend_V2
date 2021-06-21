@@ -34,6 +34,19 @@ export class CommentPlaylistComponent implements OnInit {
               private httClient: HttpClient,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = +paramMap.get('id');
+      this.getAllComment(this.id);
+      this.getPlaylist(this.id);
+    });
+    this.playlistComment.getStatus(this.id).subscribe(data =>{
+      this.statusLike = data;
+      if(this.statusLike){
+        this.likeElement.nativeElement.style.color = 'red';
+      }else{
+        this.likeElement.nativeElement.style.color = 'black';
+      }
+    })
 
   }
 
@@ -41,12 +54,7 @@ export class CommentPlaylistComponent implements OnInit {
     this.commentForm = this.fb.group({
       content: ['', [Validators.required, Validators.max(200)]],
     });
-    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.id = +paramMap.get('id');
-      this.getAllComment(this.id);
-      this.getPlaylist(this.id);
-      this.handleLike(this.id);
-    });
+
   }
 
   getAllComment(id: number) {
@@ -74,15 +82,14 @@ export class CommentPlaylistComponent implements OnInit {
     }
   }
   handleLike(id: number) {
-    this.likePlaylist.isLike = !this.likePlaylist.isLike;
-    if(this.likePlaylist.isLike){
+    if( this.statusLike){
+      this.statusLike = false;
       this.likeElement.nativeElement.style.color = 'black';
     }else{
+      this.statusLike = true;
       this.likeElement.nativeElement.style.color = 'red';
     }
     this.playlistComment.likePlaylist(id).subscribe(newLikePL =>{
-      console.log('update success');
-      console.log(this.likePlaylist.isLike);
       this.getPlaylist(id);
     })
   }
