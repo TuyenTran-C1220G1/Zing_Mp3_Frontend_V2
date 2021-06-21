@@ -41,8 +41,8 @@ export class SongListComponent implements OnInit {
   getMyPlaylist(){
     this.playlistService.showMyPlaylist().subscribe( plasLists=>{
       this.playlists = plasLists}, error => {
-        console.log("error", error)
-      });
+      console.log("error", error)
+    });
   }
 
   getAll() {

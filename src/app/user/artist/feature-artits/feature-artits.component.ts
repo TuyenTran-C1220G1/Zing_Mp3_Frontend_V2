@@ -11,29 +11,19 @@ declare var $: any;
   templateUrl: './feature-artits.component.html',
   styleUrls: ['./feature-artits.component.css']
 })
-// class Artist {
-//   id?: number;
-//   nameArtist?: string;
-//   description?: string;
-//   avatar?: string;
-//   songUrl?: string;
-//   dob?: Date;
-//   likes?: number;
-//   gender?: any;
-//   songs?: Song[];
-// }
+
 export class FeatureArtitsComponent implements OnInit {
 
   // @ts-ignore
   artists: Artist[] = [{
-      id: null,
-      nameArtist: null,
-      description: null,
-      avatar:null,
-      songUrl:null,
-      dob: null,
-      likes: null,
-      gender: null,
+    id: null,
+    nameArtist: null,
+    description: null,
+    avatar:null,
+    songUrl:null,
+    dob: null,
+    likes: null,
+    gender: null,
   },{
     id: null,
     nameArtist: null,
@@ -97,21 +87,25 @@ export class FeatureArtitsComponent implements OnInit {
       this.artists = artists;
       console.log('đã lấy được')
     }, error => {console.log('error:', error); });
-    $(function() {
-      $('.treanding_song_slider .owl-carousel').owlCarousel({
+    $(document).ready(function() {
+      $(".partner_slider_wraper .owl-carousel").owlCarousel({
         loop: !0,
-        margin: 15,
-        autoplay: !1,
-        smartSpeed: 1200,
+        margin: 10,
+        autoplay: !0,
         responsiveClass: !0,
+        smartSpeed: 1200,
         navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
         responsive: {
           0: {
             items: 1,
             nav: !0
           },
-          600: {
+          500: {
             items: 3,
+            nav: !0
+          },
+          700: {
+            items: 4,
             nav: !0
           },
           1000: {
@@ -121,8 +115,8 @@ export class FeatureArtitsComponent implements OnInit {
             margin: 20
           }
         }
-      });
-    });
+      })
+    })
 
   }
 
