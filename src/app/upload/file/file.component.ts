@@ -12,38 +12,66 @@ export class FileComponent implements OnInit {
   selectedFile: File;
   ref: AngularFireStorageReference;
   downloadURL: string;
-  checkUploadFile = false;
+  checkUploadFile :boolean = true;
   @Output()
   giveURLtoCreate = new EventEmitter<string>();
 
   constructor(private httpClient: HttpClient,
               private afStorage: AngularFireStorage) {
+    console.log('vao contructor');
   }
 
   ngOnInit(): void {
   }
 
   onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
-  }
-
-  onUpload() {
     this.checkUploadFile = true;
-    const id = Math.random().toString(36).substring(2);
-    this.ref = this.afStorage.ref(id);
-    this.ref.put(this.selectedFile)
-      .then(snapshot => {
-        return snapshot.ref.getDownloadURL();
-      })
-      .then(downloadURL => {
-        this.downloadURL = downloadURL;
-        this.giveURLtoCreate.emit(this.downloadURL);
-        this.checkUploadFile = false;
-        return downloadURL;
-      })
-      .catch(error => {
-        console.log(`Failed to upload file and get link -${error}`);
-      });
+    this.selectedFile = null;
+    let files: FileList = event.target.files;
+      if (files.length > 0) {
+        if(event.target.files[0].name.match(/\.(avi|mp3|mp4|mpeg|ogg)$/i)){
+          this.selectedFile = event.target.files[0];
+          return;
+        }
+      }
+    this.checkUploadFile = false;
   }
 
+  onUpload(event) {
+    console.log('onUpload')
+    if(this.checkUploadFile){
+      const id = Math.random().toString(36).substring(2);
+      this.ref = this.afStorage.ref(id);
+      this.ref.put(this.selectedFile)
+        .then(snapshot => {
+          return snapshot.ref.getDownloadURL();
+        })
+        .then(downloadURL => {
+          this.downloadURL = downloadURL;
+          this.giveURLtoCreate.emit(this.downloadURL);
+          return downloadURL;
+        })
+        .catch(error => {
+          console.log(`Failed to upload file and get link -${error}`);
+        });
+      this.selectedFile = null;
+    }else{
+      console.log('wrong file mp3');
+    }
+
+  }
+  // setFile(event) {
+  //   let files: FileList = event.target.files;
+  //   if (files.length > 0) {
+  //     this.file = files[0];
+  //   }
+  //   if(this.file.name.match(/\.(avi|mp3|mp4|mpeg|ogg)$/i)){
+  //     let obUrl = URL.createObjectURL(this.file);
+  //     this.dom_audio.nativeElement.setAttribute('src', obUrl);
+  //   }
+  // }
+  removeSong() {
+    this.downloadURL = null;
+    this.selectedFile = null;
+  }
 }

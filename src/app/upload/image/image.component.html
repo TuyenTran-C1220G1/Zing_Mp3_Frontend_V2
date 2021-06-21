@@ -1,11 +1,14 @@
-<div>
-  <input class="form-control" type="file" (change)="onFileChanged($event)">
-  <!--  <mat-progress-bar *ngIf="checkUploadAvatar" mode="indeterminate"></mat-progress-bar>-->
-  <div style="margin-bottom: 10px; margin-top: 10px ">
-    <button (click)="onUpload()" class="btn btn-primary" type="button"
-            *ngIf="downloadURL?!selectedFile:selectedFile">Upload Image</button>
+<form action="">
+  <div>
+    <input class="form-control" type="file" (change)="onFileChanged($event)" required>
+    <div style="margin-bottom: 10px; margin-top: 10px ">
+      <button (click)="onUpload()" class="button_like_a" type="button"
+              *ngIf="selectedFile && checkUploadAvatar" style="margin-right: 10px">Upload Image</button>
+      <button class="button_like_a" (click)="removeImage()" type="reset">Reset</button>
+        <span class="ms_inline" *ngIf="!checkUploadAvatar" style="color: red;margin-left: 10px;" >Không đúng loại file</span>
+    </div>
+    <div id="yourImage" *ngIf="downloadURL" style="margin-bottom: 10px; margin-top: 10px">
+      <img [src]="downloadURL" style="width: 300px; height: auto">
+    </div>
   </div>
-  <div *ngIf="downloadURL" style="margin-bottom: 10px; margin-top: 10px">
-    <img [src]="downloadURL" style="width: 300px; height: auto">
-  </div>
-</div>
+</form>

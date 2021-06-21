@@ -49,6 +49,29 @@
 <!--<script src="assets/js/mp3/player.js"></script>-->
 <script src="assets/js/custom.js"></script>
 <!-- custom js-->
-
+<script>
+  function removeSong() {
+    try{
+      var elem = document.getElementById('yourSong');
+      if(elem.parentNode !==null){
+        elem.parentNode.removeChild(elem);
+      }
+    }catch (error){
+      // console.log(error)
+    }
+    return false;
+  }
+  function removeImage() {
+    try{
+      var elem = document.getElementById('yourImage');
+      if(elem.parentNode !==null){
+        elem.parentNode.removeChild(elem);
+      }
+    }catch (error){
+      // console.log(error)
+    }
+    return false;
+  }
+</script>
 </body>
 </html>
