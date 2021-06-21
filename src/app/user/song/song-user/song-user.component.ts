@@ -6,6 +6,8 @@ import {Router} from '@angular/router';
 import {ListenMusicService} from '../../listen-music.service';
 import {Subscription} from 'rxjs';
 import {UserService} from '../../../service/user/user.service';
+import * as $ from 'jquery';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-song-user',
@@ -43,12 +45,44 @@ export class SongUserComponent implements OnInit {
   }
 
   deleteSong(id: number) {
-    this.songService.deleteSong(id).subscribe(song => {
-      this.song = song;
-      this.getYourSong();
-    }, error => {
-      console.log('error', error);
-    });
+      Swal.fire({
+        title: 'Are you sure want to remove?',
+        text: 'You will not be able to recover this song!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          this.songService.deleteSong(id).subscribe(song => {
+            this.song = song;
+            this.getYourSong();
+          }, error => {
+            console.log('error', error);
+          });
+          Swal.fire(
+            'Deleted!',
+            'Your song has been deleted.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Your song file is safe :)',
+            'error'
+          )
+        }
+      })
+
+    // console.log('abb',statusDelete);
+    // if(statusDelete){
+    //   this.songService.deleteSong(id).subscribe(song => {
+    //     this.song = song;
+    //     this.getYourSong();
+    //   }, error => {
+    //     console.log('error', error);
+    //   });
+    // }
   }
 
 

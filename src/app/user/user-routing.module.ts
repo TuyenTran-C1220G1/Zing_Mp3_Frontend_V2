@@ -28,6 +28,10 @@ import {DetailArtistComponent} from './artist/detail-artist/detail-artist.compon
 
 const routes: Routes = [
   {
+    path: 'search/:name' ,
+    component: SearchResultComponent,
+  },
+  {
     path: 'edit' ,
     component: UserEditComponent,
     canActivate: [AuthGuard]
@@ -98,20 +102,19 @@ const routes: Routes = [
     component: DetailPlaylistComponent,
   },
   {
-    path: 'songs/comment/:id',
+    path: 'songs/comments/:id',
     component: CommentSongComponent,
-    canActivate: [AuthGuard]
   },
   {
-    path: 'artists/comment/:id',
+    path: 'artists/comments/:id',
     component: CommentArtistComponent,
   },
   {
-    path: 'songs/comment/:id',
+    path: 'songs/comments/:id',
     component: CommentSongComponent,
   },
   {
-    path: 'playlists/comment/:id',
+    path: 'playlists/comments/:id',
     component: CommentPlaylistComponent
   },
 
