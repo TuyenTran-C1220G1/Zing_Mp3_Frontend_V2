@@ -7034,3 +7034,18 @@ span.ovrly_text2 {
   border-radius: 50px;
   font-family: 'Oswald';
 }
+
+.ms_inline{
+  width: 130px;
+  float: left;
+  font-size: 15px;
+  color: #fff;
+  height: 45px;
+  /*text-transform: uppercase;*/
+  line-height: 20px;
+  text-align: center;
+  border: none;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+}

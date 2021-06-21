@@ -7,16 +7,18 @@ import { FileComponent } from './file/file.component';
 import {FormsModule} from "@angular/forms";
 
 
+
 @NgModule({
     declarations: [ImageComponent, FileComponent],
   exports: [
     FileComponent,
     ImageComponent
   ],
-  imports: [
-    CommonModule,
-    UploadRoutingModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        UploadRoutingModule,
+        FormsModule,
+
+    ]
 })
 export class UploadModule { }
