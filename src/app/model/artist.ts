@@ -6,5 +6,5 @@ export interface Artist {
   dob?: Date;
   likes?: number;
   gender?: string;
-  songs?: any
+  songs?: any;
 }

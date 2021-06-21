@@ -15,6 +15,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {UploadModule} from './upload/upload.module';
 import {LogoutModule} from './logout/logout.module';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ContactComponent } from './user/contact/contact.component';
 
 @NgModule({
   declarations: [

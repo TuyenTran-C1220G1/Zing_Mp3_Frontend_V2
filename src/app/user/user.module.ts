@@ -33,6 +33,7 @@ import {CommentArtistComponent} from './artist/comment-artist/comment-artist.com
 import {CreteArtistComponent} from './artist/crete-artist/crete-artist.component';
 import {AllArtistComponent} from './artist/all-artist/all-artist.component';
 import {DetailArtistComponent} from './artist/detail-artist/detail-artist.component';
+import {ContactComponent} from './contact/contact.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import {DetailArtistComponent} from './artist/detail-artist/detail-artist.compon
     CommentArtistComponent,
     CreteArtistComponent,
     AllArtistComponent,
-    DetailArtistComponent
+    DetailArtistComponent,
+    ContactComponent
   ],
 
 
@@ -93,7 +95,8 @@ import {DetailArtistComponent} from './artist/detail-artist/detail-artist.compon
     EditPlaylistComponent,
     SongPlayComponent,
     YourPlaylistComponent,
-    DetailPlaylistComponent
+    DetailPlaylistComponent,
+    ContactComponent
 
   ],
     imports: [

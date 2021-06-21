@@ -30,7 +30,7 @@ export class DetailArtistComponent implements OnInit {
 
   ngOnInit() {
     this.getAllSongByArtist(this.id);
-    this.getInforSong(this.song)
+    this.getInforSong(this.song);
   }
 
   getArtist(id: number) {

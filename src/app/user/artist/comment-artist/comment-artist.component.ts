@@ -7,6 +7,9 @@ import {Artist} from '../../../model/artist';
 import {ArtistService} from '../../../service/artist.service';
 import {LikeArist} from '../../../model/like-arist';
 import {CommentArtistService} from '../../../service/comment-artist.service';
+import {Song} from '../../../model/song';
+import {SongService} from '../../../service/song.service';
+import {ListenMusicService} from '../../listen-music.service';
 
 @Component({
   selector: 'app-comment-artist',
@@ -14,12 +17,13 @@ import {CommentArtistService} from '../../../service/comment-artist.service';
   styleUrls: ['./comment-artist.component.css']
 })
 export class CommentArtistComponent implements OnInit {
-
+  songs: Song[] = [{songUrl: null}, {songUrl: null}, {songUrl: null}];
+  song: Song;
   success: boolean;
   submitted = false;
   commentArists: CommentArist[] = [];
   artist: Artist = {
-    likes:null,
+    likes: null,
   };
   commentAristForm: FormGroup;
   likeArtis: LikeArist = {
@@ -27,25 +31,27 @@ export class CommentArtistComponent implements OnInit {
   id?: number;
   statusLike = false ;
   // @ts-ignore
-  @ViewChild('likeElement') likeElement : ElementRef;
+  @ViewChild('likeElement') likeElement: ElementRef;
   constructor(private artistService: ArtistService,
               private commentArtistService: CommentArtistService,
               private httClient: HttpClient,
               private fb: FormBuilder,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private songService: SongService,
+              private listenMusicService: ListenMusicService) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
       this.getAllComment(this.id);
       this.getArtist(this.id);
     });
-    this.commentArtistService.statusLike(this.id).subscribe(data =>{
+    this.commentArtistService.statusLike(this.id).subscribe(data => {
         this.statusLike = data;
-        if(this.statusLike){
+        if (this.statusLike) {
           this.likeElement.nativeElement.style.color = 'red';
-        }else{
+        } else {
           this.likeElement.nativeElement.style.color = 'black';
         }
-    })
+    });
 
   }
 
@@ -81,19 +87,25 @@ export class CommentArtistComponent implements OnInit {
         this.submitted = false;
         this.commentAristForm.reset();
         this.getAllComment(id);
-      })
+      });
     }
   }
   handleLikeAritst(id: number) {
-    if( this.statusLike){
+    if ( this.statusLike) {
       this.statusLike = false;
       this.likeElement.nativeElement.style.color = 'black';
-    }else{
+    } else {
       this.statusLike = true;
       this.likeElement.nativeElement.style.color = 'red';
     }
-    this.commentArtistService.likeArtist(id).subscribe(newLikePL =>{
-      this.getArtist(id)
-    })
+    this.commentArtistService.likeArtist(id).subscribe(newLikePL => {
+      this.getArtist(id);
+    });
+  }
+  getInforSong(song) {
+    this.listenMusicService.statusSong.next(true);
+    this.listenMusicService.songs = this.songs;
+    this.listenMusicService.songObject.next(song);
+    this.listenMusicService.openFile(song);
   }
 }
