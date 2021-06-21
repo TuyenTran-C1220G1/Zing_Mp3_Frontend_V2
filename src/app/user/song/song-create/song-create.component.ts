@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../../service/authentication.service";
 import {SongService} from "../../../service/song.service";
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ArtistService} from "../../../service/artist.service";
 import {Artist} from "../../../model/artist";
 import {Genre} from "../../../model/genre";
@@ -24,7 +24,11 @@ export class SongCreateComponent implements OnInit {
   files = '';
   artists: Artist[] = []
   genres: Genre[] = []
-  songForm: FormGroup;
+  songForm: FormGroup = new FormGroup({
+      songUrl: new FormControl(''),
+      imageUrl : new FormControl('')
+    }
+  );
 
   constructor(private auth: AuthenticationService, private songService: SongService,
               private artistService: ArtistService, private genreService: GenreService,
@@ -63,7 +67,11 @@ export class SongCreateComponent implements OnInit {
 
   createSong() {
     this.submitted = true;
-    if (this.songForm.valid) {
+    // @ts-ignore
+    console.log('avatar:',this.avatar)
+    console.log('songForm:',this.songForm.value)
+
+    if (this.songForm.valid && this.avatar && this.files) {
       const song = this.songForm.value;
       song.imageUrl = this.avatar;
       song.songUrl = this.files;
@@ -93,6 +101,21 @@ export class SongCreateComponent implements OnInit {
         this.songForm.reset();
       }, e => {
         console.log(e);
+      });
+    }else{
+      $(function() {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        // @ts-ignore
+        Toast.fire({
+          icon: 'error',
+          type: 'error',
+          title: 'Create new failed',
+        });
       });
     }
     this.success = false;
