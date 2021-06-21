@@ -33,6 +33,7 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('ACCESS_TOKEN');
     this.currentUserSubject.next(null);
   }
 

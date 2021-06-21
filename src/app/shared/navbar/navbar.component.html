@@ -1,5 +1,5 @@
 <!-- top navi wrapper end -->
-<div class="m24_navi_main_wrapper m24_cover">
+<div style="position: fixed" class="m24_navi_main_wrapper m24_cover">
   <div class="container-fluid">
     <div class="m24_logo_wrapper">
       <div class="m24_logo_div">
@@ -60,10 +60,14 @@
         </ul>
       </div>
       <!-- mainmenu end -->
-      <div class="navi_searchbar_wrapper">
-        <i class="flaticon-magnifying-glass"></i>
-        <input type="text" id="" placeholder="Search for Songs, Artists, Playlists and More.." style="width: 450px" />
-      </div>
+      <form [formGroup]="formGroup">
+        <div class="navi_searchbar_wrapper">
+          <i class="flaticon-magnifying-glass"></i>
+          <input (keydown)="search()" formControlName="searchName" type="text" id="" placeholder="Search for Songs, Artists, Playlists and More.." style="width: 450px" />
+<!--          <button type="submit">Search</button>-->
+        </div>
+      </form>
+
       <div class="d-block d-sm-block d-md-block d-lg-block d-xl-none">
         <div class="search_bar">
           <div class="res_search_bar" id="search_button"> <i class="fa fa-ellipsis-v"></i>

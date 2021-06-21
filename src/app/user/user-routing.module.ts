@@ -11,14 +11,16 @@ import {ListPlaylistComponent} from './playlist/list-playlist/list-playlist.comp
 import {AuthGuard} from '../helper/auth-guard';
 import {UserEditComponent} from './user-edit/user-edit.component';
 import {SongUserComponent} from './song/song-user/song-user.component';
-import {SongPlayComponent} from './song/song-play/song-play.component';
 
 import {YourPlaylistComponent} from './playlist/your-playlist/your-playlist.component';
 
 import {TopPlaylistComponent} from './playlist/top-playlist/top-playlist.component';
 import {NewPlaylistComponent} from './playlist/new-playlist/new-playlist.component';
-import {DetailLayoutComponent} from '../layout/detail-layout/detail-layout.component';
 import {DetailPlaylistComponent} from './playlist/detail-playlist/detail-playlist.component';
+import {SearchResultComponent} from './search/search-result/search-result.component';
+import {CommentSongComponent} from './song/comment-song/comment-song.component';
+import {CommentArtistComponent} from './artist/comment-artist/comment-artist.component';
+import {CommentPlaylistComponent} from './playlist/comment-playlist/comment-playlist.component';
 import {CreteArtistComponent} from './artist/crete-artist/crete-artist.component';
 import {AllArtistComponent} from './artist/all-artist/all-artist.component';
 import {DetailArtistComponent} from './artist/detail-artist/detail-artist.component';
@@ -95,6 +97,24 @@ const routes: Routes = [
     path: 'playlistSong/:id',
     component: DetailPlaylistComponent,
   },
+  {
+    path: 'songs/comment/:id',
+    component: CommentSongComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'artists/comment/:id',
+    component: CommentArtistComponent,
+  },
+  {
+    path: 'songs/comment/:id',
+    component: CommentSongComponent,
+  },
+  {
+    path: 'playlists/comment/:id',
+    component: CommentPlaylistComponent
+  },
+
   {
     path: 'artists/create',
     component: CreteArtistComponent,

@@ -25,7 +25,7 @@
             <div class="login_form_wrapper">
               <label style="color: chocolate">User name</label>
               <div class="icon_form comments_form">
-                <input type="text" formControlName="username" class="form-control">
+                <input type="text" formControlName="username" class="form-control" readonly>
                 <i class="fas fa-user"></i>
               </div>
 
@@ -86,8 +86,8 @@
                 <i class="fas fa-image"></i>
               </div>
 
-              <div style="color: red" class="alert alert-danger" role="alert" *ngIf="submitted && editForm.get('phone').errors">
-                <span style="color: red" *ngIf="editForm.get('phone').hasError('required')">Avatar is required</span>
+              <div style="color: red" class="alert alert-danger" role="alert" *ngIf="submitted && editForm.get('avatar').errors">
+                <span style="color: red" *ngIf="editForm.get('avatar').hasError('required')">Avatar is required</span>
               </div>
 <!--              <div style="color: red" class="alert alert-danger" role="alert" *ngIf="checkSuccess.messagedb === 'dbphone'">-->
 <!--                <span style="color: red" >{{checkSuccess.message}}</span>-->

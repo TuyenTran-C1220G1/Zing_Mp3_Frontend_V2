@@ -382,7 +382,7 @@
                     })
                 }
            })
-        // $("select").niceSelect();
+        $("select").niceSelect();
             var adonisObj = {};
             jQuery(document).ready(function(t) {
                 adonisObj.toggleOffCanvas = function(e) {

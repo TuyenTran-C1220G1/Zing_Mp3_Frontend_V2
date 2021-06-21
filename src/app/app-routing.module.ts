@@ -22,18 +22,22 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then(module => module.UserModule)
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'logout',
-    component: LogoutComponent
-  },
-  {
-    path: 'demo',
-    canActivate: [AuthGuard],
-    component: DemoAuthGuardComponent
+    path: '**',
+    redirectTo: ''
   }
+  // {
+  //   path: 'login',
+  //   component: LoginComponent
+  // },
+  // {
+  //   path: 'logout',
+  //   component: LogoutComponent
+  // },
+  // {
+  //   path: 'demo',
+  //   canActivate: [AuthGuard],
+  //   component: DemoAuthGuardComponent
+  // }
 ];
 
 @NgModule({

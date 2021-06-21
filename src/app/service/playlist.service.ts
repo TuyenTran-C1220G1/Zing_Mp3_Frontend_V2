@@ -3,7 +3,6 @@ import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Playlist} from '../model/playlist';
-import {Song} from '../model/song';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -56,4 +55,5 @@ export class PlaylistService {
   remoteSongInPlaylist(idPlaylist: number,idSong:number){
     return this.http.get<Playlist>(`${API_URL}/playlists/${idPlaylist}/songs/${idSong}`);
   }
+
 }

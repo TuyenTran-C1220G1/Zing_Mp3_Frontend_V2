@@ -1,8 +1,8 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import {UserRoutingModule} from './user-routing.module';
-import {FeatureArtitsComponent} from './artist/feature-artits/feature-artits.component';
+import { UserRoutingModule } from './user-routing.module';
+import { FeatureArtitsComponent } from './artist/feature-artits/feature-artits.component';
 import {TopSongComponent} from './song/top-song/top-song.component';
 import {TreandingSongsComponent} from './song/treanding-songs/treanding-songs.component';
 import {ArtistModule} from './artist/artist.module';
@@ -26,6 +26,10 @@ import {SongUserComponent} from './song/song-user/song-user.component';
 import {SongPlayComponent} from './song/song-play/song-play.component';
 import {YourPlaylistComponent} from './playlist/your-playlist/your-playlist.component';
 import {DetailPlaylistComponent} from './playlist/detail-playlist/detail-playlist.component';
+import {SearchResultComponent} from './search/search-result/search-result.component';
+import {CommentPlaylistComponent} from './playlist/comment-playlist/comment-playlist.component';
+import {CommentSongComponent} from './song/comment-song/comment-song.component';
+import {CommentArtistComponent} from './artist/comment-artist/comment-artist.component';
 import {CreteArtistComponent} from './artist/crete-artist/crete-artist.component';
 import {AllArtistComponent} from './artist/all-artist/all-artist.component';
 import {DetailArtistComponent} from './artist/detail-artist/detail-artist.component';
@@ -51,6 +55,10 @@ import {DetailArtistComponent} from './artist/detail-artist/detail-artist.compon
     SongPlayComponent,
     YourPlaylistComponent,
     DetailPlaylistComponent,
+    SearchResultComponent,
+    CommentPlaylistComponent,
+    CommentSongComponent,
+    CommentArtistComponent,
     CreteArtistComponent,
     AllArtistComponent,
     DetailArtistComponent
@@ -85,19 +93,17 @@ import {DetailArtistComponent} from './artist/detail-artist/detail-artist.compon
     EditPlaylistComponent,
     SongPlayComponent,
     YourPlaylistComponent,
-    DetailPlaylistComponent,
-    CreteArtistComponent,
-    DetailArtistComponent
+    DetailPlaylistComponent
+
   ],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    UploadModule,
-    ReactiveFormsModule,
-    NgbCarouselModule,
-    FormsModule,
-  ],
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        UploadModule,
+        ReactiveFormsModule,
+        NgbCarouselModule,
+        FormsModule,
+    ],
 
 })
-export class UserModule {
-}
+export class UserModule { }
