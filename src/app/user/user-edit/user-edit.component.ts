@@ -78,7 +78,7 @@ export class UserEditComponent implements OnInit {
           Toast.fire({
             icon: 'success',
             type: 'success',
-            title: 'update User successfully',
+            title: 'Update user successfully',
           });
         });
       }, e => {

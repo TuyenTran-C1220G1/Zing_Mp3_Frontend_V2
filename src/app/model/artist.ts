@@ -3,9 +3,8 @@ export interface Artist {
   nameArtist?: string;
   description?: string;
   avatar?: string;
-  songUrl?: string;
   dob?: Date;
   likes?: number;
-  gender?: any;
-
+  gender?: string;
+  songs?: any
 }

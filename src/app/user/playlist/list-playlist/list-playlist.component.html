@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="indx_title_left_wrapper m24_cover">
-          <h2>Playlist</h2>
+          <h2>All Playlist</h2>
           <ul>
             <li><a routerLink="/">Home</a></li>
 <!--            <li>All Songs In Playlist</li>-->
@@ -28,7 +28,7 @@
               <li>#</li>
               <li class="song_title_width">Playlist</li>
               <li class="song_title_width">Name Playlist</li>
-              <li class="text-center">Quanlity</li>
+              <li class="text-center">View</li>
               <li class="text-center">Like</li>
               <li class="text-center">List Song</li>
             </ul>
@@ -40,20 +40,23 @@
                 </div>
               </li>
               <li class="song_title_width">{{playlist.namePlaylist}}</li>
-              <li class="text-center">{{playlist.songs.length}}</li>
-              <li class="text-center">{{playlist.likes}}</li>
-              <li class="text-center top_song_artist_playlist">
-                <a [routerLink]="['/user/playlistSong/',playlist.id]"> <i
-                  class="flaticon-play-button"></i></a>
+              <li class="text-center"><a>{{playlist.views}}</a></li>
+              <li class="text-center"><a>{{playlist.likes}}</a></li>
+              <li class="text-center">
+                <a [routerLink]="['/user/playlistSong/',playlist.id]">{{playlist.songs.length}} Tracks</a>
               </li>
             </ul>
           </div>
 
-          <div class="lang_apply_btn home_btn m24_cover">
-            <div style="text-align: center">
-              <button class="btn btn-link" (click)="previous()" style="color: darkred"><i class="flaticon-left-arrow" ></i></button>
-              <button class="btn btn-link" (click)="next()" style="color: darkred"><i class="flaticon-right-arrow" ></i></button>
-            </div>
+          <div class="blog_pagination_section m24_cover">
+            <ul>
+              <li>
+                <a type="button" class="prev" (click)="previous()" > <i class="flaticon-left-arrow"></i> </a>
+              </li>
+              <li>
+                <a type="button" class="next" (click)="next()"><i class="flaticon-right-arrow"></i></a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

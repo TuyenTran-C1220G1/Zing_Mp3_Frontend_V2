@@ -14,6 +14,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {UploadModule} from './upload/upload.module';
 import {LogoutModule} from './logout/logout.module';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {LogoutModule} from './logout/logout.module';
     AngularFireDatabaseModule,
     UploadModule,
     LogoutModule,
+    NgxPaginationModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

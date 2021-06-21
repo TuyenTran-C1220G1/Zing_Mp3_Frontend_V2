@@ -16,7 +16,8 @@ export class SongListComponent implements OnInit {
   playlists: Playlist[]=[];
 
 
-  constructor(private songService: SongService, private playlistService: PlaylistService, private listenMusicService: ListenMusicService) {
+  constructor(private songService: SongService, private playlistService: PlaylistService,
+              private listenMusicService: ListenMusicService) {
     this.songService.getAll().subscribe(songs => {
       this.songs = songs.content;
     }, error => {

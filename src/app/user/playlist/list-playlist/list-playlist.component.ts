@@ -10,7 +10,7 @@ import {PlaylistService} from '../../../service/playlist.service';
 export class ListPlaylistComponent implements OnInit {
   playlist: Playlist[] = [];
   page = 0;
-  size = 5;
+  size = 10;
   constructor(
     private playlistService: PlaylistService
   ) {
@@ -26,12 +26,12 @@ export class ListPlaylistComponent implements OnInit {
     });
   }
   next() {
-    this.page++;
+    this.page=1;
     this.getAllPlayList(this.page, this.size);
   }
 
   previous() {
-    this.page--;
+    this.page=0;
     this.getAllPlayList(this.page, this.size);
   }
 }
