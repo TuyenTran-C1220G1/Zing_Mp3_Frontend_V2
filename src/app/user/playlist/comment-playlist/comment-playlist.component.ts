@@ -7,6 +7,9 @@ import {Playlist} from '../../../model/playlist';
 import {Commentplaylist} from '../../../model/commentplaylist';
 import {Likeplaylist} from '../../../model/likeplaylist';
 import {PlaylistCommentService} from '../../../service/playlist-comment.service';
+import {User} from '../../../model/user';
+import {AuthenticationService} from '../../../service/authentication.service';
+import {JwtResponse} from '../../../interface/jwt-response';
 
 @Component({
   selector: 'app-comment-playlist',
@@ -16,6 +19,9 @@ import {PlaylistCommentService} from '../../../service/playlist-comment.service'
 export class CommentPlaylistComponent implements OnInit {
   success: boolean;
   submitted = false;
+  user: User;
+  currentUser: JwtResponse;
+  hasRoleUser = false;
   commentplaylists: Commentplaylist[] = [];
   playlistSong: Playlist = {
     likes:null,
@@ -33,7 +39,19 @@ export class CommentPlaylistComponent implements OnInit {
               private playlistService: PlaylistService,
               private httClient: HttpClient,
               private fb: FormBuilder,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUserSubject.asObservable().subscribe(user => {
+      this.currentUser = user;
+    });
+    if (this.currentUser) {
+      const roleList = this.currentUser.roles;
+      for (const role of roleList) {
+        if (role.authority === 'ROLE_USER') {
+          this.hasRoleUser = true;
+        }
+      }
+    }
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
       this.getAllComment(this.id);

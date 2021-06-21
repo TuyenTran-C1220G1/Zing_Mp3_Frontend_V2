@@ -24,7 +24,7 @@
             </div>
             <div class="jp_blog_single_client_cont">
               <h3 style="color: red" >{{song.nameSong}}</h3>
-              <p style="font-style: italic">{{song.description}}</p>
+              <p style="font-style: italic">Description : {{song.description}}</p>
               <p>View : {{song.views}}</p>
               <p>Likes : {{song.likes}}</p>
 <!--              <div class="lang_apply_btn author_btn">-->
@@ -46,7 +46,8 @@
           </div>
           <div class="comment_heading_bottom m24_cover">
             <h1>
-              <a ><i #likeElement (click)="handleLikeSong(song.id)" class="fa fa-heart" >
+              <a *ngIf="currentUser" style="cursor: pointer" ><i  #likeElement (click)="handleLikeSong(song.id)" style="font-size: 20px" class="fa fa-heart" ></i> like</a>
+              <a *ngIf="!currentUser" style="cursor: pointer" href="#login_modal" data-toggle="modal" data-dismiss="modal" ><i style="font-size: 20px"  class="fa fa-heart"  style="color: black">
               </i> like</a>
             </h1>
           </div>
@@ -74,7 +75,8 @@
             <div class="lang_apply_btn comment_btn">
               <ul>
                 <li>
-                  <a type="button" (click)="getPostComment(song.id)"> <i class="flaticon-play-button"></i>post comment</a>
+                  <a type="button" *ngIf="currentUser" (click)="getPostComment(song.id)"> <i class="flaticon-play-button"></i>post comment</a>
+                  <a type="button" *ngIf="!currentUser" href="#login_modal" data-toggle="modal" data-dismiss="modal"> <i class="flaticon-play-button"></i>post comment</a>
                 </li>
               </ul>
             </div>

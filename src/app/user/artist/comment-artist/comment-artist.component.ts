@@ -7,6 +7,8 @@ import {Artist} from '../../../model/artist';
 import {ArtistService} from '../../../service/artist.service';
 import {LikeArist} from '../../../model/like-arist';
 import {CommentArtistService} from '../../../service/comment-artist.service';
+import {AuthenticationService} from '../../../service/authentication.service';
+import {JwtResponse} from '../../../interface/jwt-response';
 
 @Component({
   selector: 'app-comment-artist',
@@ -17,6 +19,8 @@ export class CommentArtistComponent implements OnInit {
 
   success: boolean;
   submitted = false;
+  currentUser: JwtResponse;
+  hasRoleUser =  false;
   commentArists: CommentArist[] = [];
   artist: Artist = {
     likes:null,
@@ -32,7 +36,19 @@ export class CommentArtistComponent implements OnInit {
               private commentArtistService: CommentArtistService,
               private httClient: HttpClient,
               private fb: FormBuilder,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private authenticationService: AuthenticationService) {
+      this.authenticationService.currentUserSubject.asObservable().subscribe(user => {
+        this.currentUser = user;
+      });
+      if (this.currentUser) {
+        const roleList = this.currentUser.roles;
+        for (const role of roleList) {
+          if (role.authority === 'ROLE_USER') {
+            this.hasRoleUser = true;
+          }
+        }
+      }
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
       this.getAllComment(this.id);
