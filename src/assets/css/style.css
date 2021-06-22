@@ -7049,3 +7049,12 @@ span.ovrly_text2 {
   -moz-border-radius: 50px;
   border-radius: 50px;
 }
+
+#inputSong{
+  background: #fa5840;
+  background: -moz-linear-gradient(-45deg, rgb(254, 121, 69) 0%, #fa5840 86%);
+  background: -webkit-linear-gradient(-45deg, rgb(254, 121, 69) 0%, #fa5840 86%);
+  background: linear-gradient(135deg, rgb(254, 121, 69) 0%, #fa5840 86%);
+  width: 0;
+  height: 3px
+}

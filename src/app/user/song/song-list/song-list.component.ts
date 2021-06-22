@@ -19,6 +19,7 @@ export class SongListComponent implements OnInit {
 
   constructor(private songService: SongService, private playlistService: PlaylistService,
               private listenMusicService: ListenMusicService) {
+    console.log('vao contructor')
   }
 
   ngOnInit() {
@@ -46,6 +47,7 @@ export class SongListComponent implements OnInit {
   getAll() {
     this.songService.getAll().subscribe(songs => {
       this.songs = songs;
+      console.log('songs:',this.songs);
     }, error => {
       console.log("error", error)
     });
