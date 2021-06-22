@@ -6,8 +6,8 @@
         <div class="indx_title_left_wrapper m24_cover">
           <h2>My Songs</h2>
           <ul>
-            <li><a routerLink="/user/yoursongs">My Song</a> &nbsp;&nbsp;&nbsp;/</li>
-            <li>Edit Song</li>
+            <li><a routerLink="/">Home</a> /</li>
+            <li><a routerLink="/user/yoursongs">My Songs</a></li>
           </ul>
         </div>
       </div>
@@ -25,14 +25,14 @@
           <h1 style="margin: auto">Edit Song</h1>
         </div>
         <div class="login_form_wrapper">
-          <div style="color: chocolate">Title</div>
+          <div >Title</div>
           <div class="icon_form comments_form">
             <input type="text" class="form-control" formControlName="nameSong">
             <i class="fas fa-music"></i>
           </div>
           <span style="color: red"
                 *ngIf="submitted && editForm.get('nameSong').hasError('required')">Title is required!</span>
-          <div style="color: chocolate">Author</div>
+          <div >Author</div>
           <div class="icon_form comments_form">
             <input type="text" class="form-control" formControlName="author">
             <i class="far fa-user"></i>
@@ -40,7 +40,7 @@
           <span style="color: red"
                 *ngIf="submitted && editForm.get('author').hasError('required')">Author is required!</span>
 
-          <div style="color: chocolate">Artist</div>
+          <div >Artist</div>
           <div>
             <select class="browser-default custom-select" formControlName="artist">
               <option disabled>Select Artist</option>
@@ -50,7 +50,7 @@
           <span style="color: red"
                 *ngIf="submitted && editForm.get('artist').hasError('required')">Artist is required!</span>
           <br>
-          <div style="color: chocolate">Genre</div>
+          <div >Genre</div>
           <div class="icon_form comments_form" style="color: chocolate">
             <select class="browser-default custom-select" formControlName="genre">
               <option disabled>Selection Genre</option>
@@ -61,24 +61,24 @@
                 *ngIf="submitted && editForm.get('genre').hasError('required')">Genre is required!</span>
 
           <br>
-          <div style="color: chocolate">Album</div>
+          <div >Album</div>
           <div class="icon_form comments_form">
             <input type="text" class="form-control" formControlName="album">
             <i class="flaticon-vinyl"></i>
           </div>
-          <div style="color: chocolate">Description</div>
+          <div >Description</div>
           <div class="icon_form comments_form">
             <textarea class="form-control" formControlName="description"></textarea>
             <i class="fas fa-file"></i>
           </div>
           <span style="color: red" *ngIf="submitted && editForm.get('description').hasError('required')">Description is required!</span>
 
-          <div style="color: chocolate">Select Music</div>
+          <div >Select Music</div>
           <div class="icon_form comments_form">
             <app-file (giveURLtoCreate)="onChangeFile($event)"></app-file>
             <i class="fas fa-music"></i>
           </div>
-          <div style="color: chocolate">Select Avatar</div>
+          <div >Select Avatar</div>
           <div class="icon_form comments_form">
             <app-image (giveURLtoCreate)="onChangeAvatar($event)"></app-image>
             <i class="fas fa-image"></i>

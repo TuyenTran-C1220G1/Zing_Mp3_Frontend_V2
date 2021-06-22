@@ -76,6 +76,21 @@ export class CreatePlaylistComponent implements OnInit {
           });
           this.playlistForm.reset();
         }, e => {
+          $(function() {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            // @ts-ignore
+            Toast.fire({
+              icon: 'error',
+              type: 'success',
+              title: ' Create failure',
+            });
+          });
+
         });
       }
     }$(function() {

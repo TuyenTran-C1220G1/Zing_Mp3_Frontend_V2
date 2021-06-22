@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthenticationService} from '../../../service/authentication.service';
 import {ArtistService} from '../../../service/artist.service';
 // import * as $ from 'jquery';
 import Swal from 'sweetalert2';
+
 declare var $: any;
 import * as moment from 'moment';
+import {Artist} from '../../../model/artist';
 
 
 @Component({
@@ -18,8 +20,13 @@ export class CreteArtistComponent implements OnInit {
   success: boolean;
   submitted = false;
   avatar = '';
-  artistForm: FormGroup;
+  artistForm: FormGroup =new FormGroup({
+    nameArtist: new FormControl(),
+  });
   today: any = this.formatDate(Date.now());
+  artists: Artist[];
+
+
 
   constructor(private auth: AuthenticationService,
               private artistService: ArtistService,
@@ -32,7 +39,8 @@ export class CreteArtistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formatDate(this.today)
+    this.formatDate(this.today);
+    this.findAllArtist();
     // this.dobValidator(this.artistForm);
     this.artistForm = this.fb.group({
       nameArtist: ['', [Validators.required, Validators.max(20)]],
@@ -47,9 +55,34 @@ export class CreteArtistComponent implements OnInit {
     return (moment(date)).format('yyyy-MM-DD');
   }
 
+  findAllArtist() {
+    return this.artistService.getAll().subscribe(artists => {
+      this.artists = artists;
+    });
+  }
+
   createArtist() {
     this.submitted = true;
-    console.log(this.artistForm)
+    console.log(this.artistForm);
+    for (let i=0; i<this.artists.length;i++){
+      if (this.artists[i].nameArtist===this.artistForm.value.nameArtist){
+        return  $(function() {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          // @ts-ignore
+          Toast.fire({
+            icon: 'error',
+            type: 'success',
+            title: 'Singers already exist ',
+          });
+        });
+
+      }
+    }
     if (this.artistForm.valid && this.avatar) {
       const artist = this.artistForm.value;
       artist.avatar = this.avatar;
@@ -76,7 +109,7 @@ export class CreteArtistComponent implements OnInit {
       }, e => {
         console.log(e);
       });
-    }else{
+    } else {
       // this.artistForm.
     }
     this.success = false;
@@ -85,6 +118,7 @@ export class CreteArtistComponent implements OnInit {
   resetForm() {
     this.artistForm.reset();
   }
+
   // dobValidator(control: AbstractControl) {
   //   let currentDate = new Date();
   //   if (control.value) {

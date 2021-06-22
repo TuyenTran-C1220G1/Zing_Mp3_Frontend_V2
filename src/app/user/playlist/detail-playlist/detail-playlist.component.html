@@ -6,8 +6,8 @@
         <div class="indx_title_left_wrapper m24_cover">
           <h2>Playlist</h2>
           <ul>
-            <li><a routerLink="/">Home</a> &nbsp;&nbsp;&nbsp;/</li> <li><a routerLink="/user/allplaylists">All Playlist</a> &nbsp;&nbsp;&nbsp;/</li>
-            <li>Playlist Detail</li>
+            <li><a routerLink="/">Home</a> &nbsp;&nbsp;&nbsp;/</li>
+            <li><a routerLink="/user/allplaylists">All Playlist</a>
           </ul>
         </div>
       </div>
@@ -31,7 +31,7 @@
                   <a (click)="getInforSong(playlist.songs[0])" ><i  class="flaticon-play-button"></i> play all</a>
               </div>
               <div class="cancel_wrapper">
-                <a ><i class="fas fa-heart"></i> Like : {{playlist.likes}}</a>
+                <a [routerLink]="['/user/playlists/comments/',playlist.id]"><i class="fas fa-comment"></i>Comment</a>
               </div>
             </div>
           </div>

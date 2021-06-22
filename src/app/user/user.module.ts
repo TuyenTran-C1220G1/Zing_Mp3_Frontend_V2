@@ -33,6 +33,7 @@ import {CommentArtistComponent} from './artist/comment-artist/comment-artist.com
 import {CreteArtistComponent} from './artist/crete-artist/crete-artist.component';
 import {AllArtistComponent} from './artist/all-artist/all-artist.component';
 import {DetailArtistComponent} from './artist/detail-artist/detail-artist.component';
+import {ContactComponent} from './contact/contact.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 
@@ -62,7 +63,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CommentArtistComponent,
     CreteArtistComponent,
     AllArtistComponent,
-    DetailArtistComponent
+    DetailArtistComponent,
+    ContactComponent
   ],
 
 
@@ -94,7 +96,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     EditPlaylistComponent,
     SongPlayComponent,
     YourPlaylistComponent,
-    DetailPlaylistComponent
+    DetailPlaylistComponent,
+    ContactComponent
 
   ],
     imports: [
