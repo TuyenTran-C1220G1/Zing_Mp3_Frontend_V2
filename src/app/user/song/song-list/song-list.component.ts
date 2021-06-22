@@ -15,7 +15,7 @@ export class SongListComponent implements OnInit {
   songs: Song[] = [];
   playlists: Playlist[]=[];
   page = 1;
-  pageSize =15;
+  pageSize =10;
 
   constructor(private songService: SongService, private playlistService: PlaylistService,
               private listenMusicService: ListenMusicService) {
