@@ -10,13 +10,13 @@
       </li>
       <li><a routerLink="/user/allsongs"><i class="flaticon-clock"></i>All songs</a>
       </li>
-      <li><a routerLink="/user/yoursongs"><i class="flaticon-playlist-1"></i>My Songs</a>
+      <li><a *ngIf="currentUser" routerLink="/user/yoursongs"><i class="flaticon-playlist-1"></i>My Songs</a>
 <!--        <ul>-->
 <!--          <li><a routerLink="/user/yoursongs"><i class="flaticon-download"></i>Your songs</a></li>-->
 <!--          <li><a routerLink="/user/yourplaylists"><i class="flaticon-heart"></i>Your playlists</a></li>-->
 <!--        </ul>-->
       </li>
-      <li><a routerLink="/user/yourplaylists"><i class="flaticon-playlist"></i>My Playlists</a>
+      <li><a *ngIf="currentUser" routerLink="/user/yourplaylists"><i class="flaticon-playlist"></i>My Playlists</a>
 <!--        <ul>-->
 <!--          <li><a href="blog_categories.html"><i class="flaticon-vinyl"></i>blog category I</a></li>-->
 <!--          <li>-->

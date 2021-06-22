@@ -39,13 +39,13 @@
 
                   <img src="{{song.imageUrl}}" alt="img">
                   <div class="top_song_artist_contnt">
-                    <h1><a href="#">{{song.nameSong}}</a></h1>
-                    <p class="various_artist_text"><a href="#">{{song.author}}</a></p>
+                    <h1><a [routerLink]="['/user/songs/comments/',song.id]">{{song.nameSong}}</a></h1>
+                    <p class="various_artist_text"><a >{{song.author}}</a></p>
                   </div>
 
                 </div>
               </li>
-              <li class="text-center song_title_width"><a href="#">{{song?.artist?.nameArtist}}</a></li>
+              <li class="text-center song_title_width"><a [routerLink]="['/user/artists/comments/',song?.artist?.id]">{{song?.artist?.nameArtist}}</a></li>
               <li class="text-center">{{song.likes}}</li>
               <li class="text-center">{{song.views}}</li>
               <li class="top_song_list_picks featured_list_dropdown">
