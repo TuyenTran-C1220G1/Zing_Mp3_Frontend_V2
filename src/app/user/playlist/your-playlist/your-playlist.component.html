@@ -35,7 +35,7 @@
         <div class="album_list_wrapper2">
           <div class="album_list_wrapper album_list_wrapper_shop">
             <ul class="album_list_name m24_cover">
-              <li>STT</li>
+              <li>#</li>
               <li class="song_title_width">Image Playlist</li>
               <li class="text-center">Playlists</li>
               <li class="text-center" style="color: white">White</li>
@@ -45,17 +45,16 @@
               <li class="text-center">remove</li>
             </ul>
             <ul class="album_inner_list_padding" *ngFor="let p of myPlaylist ; index as i">
-              <li><a href="#"><span class="play_no">{{i + 1}}</span><span class="play_hover"><i
-                class="flaticon-play-button"></i></span></a></li>
+              <li>{{i + 1}}</li>
               <li class="song_title_width">
                 <div class="top_song_artist_wrapper">
+                  <a [routerLink]="['/user/playlistSong/',p.id]"><img src="{{p.image}}" alt="img"></a>
 
-                  <img src="{{p.image}}" alt="img">
 
                 </div>
 
               </li>
-              <li class="text-center"><a [routerLink]="['/user/playlists/comments/',p.id]">{{p.namePlaylist}}</a></li>
+              <li class="text-center"><a [routerLink]="['/user/playlistSong/',p.id]">{{p.namePlaylist}}</a></li>
               <li class="text-center" style="color: white">White</li>
               <li class="text-center"><a href="#">{{p.likes}}</a></li>
               <li class="text-center"><a [routerLink]="['/user/playlistSong/',p.id]">{{p.songs.length}} Tracks</a></li>

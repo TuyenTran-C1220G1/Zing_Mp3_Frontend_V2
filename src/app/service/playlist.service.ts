@@ -56,4 +56,8 @@ export class PlaylistService {
     return this.http.get<Playlist>(`${API_URL}/playlists/${idPlaylist}/songs/${idSong}`);
   }
 
+  searchPlaylist(name: string): Observable<any> {
+    return this.http.get<any>(`${API_URL}/playlists/search/${name}`);
+  }
+
 }
