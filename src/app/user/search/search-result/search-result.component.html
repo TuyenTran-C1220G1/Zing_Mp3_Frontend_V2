@@ -107,3 +107,44 @@
   </div>
 
 </div>
+
+
+<div class="album_inner_list auti m24_cover">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div class="album_list_wrapper2">
+          <div>
+            <h2>search results for artist</h2>
+          </div>
+          <div class="album_list_wrapper album_list_wrapper_shop">
+            <ul class="album_list_name m24_cover">
+              <li>#</li>
+              <li class="song_title_width">Artist</li>
+              <li class="song_title_width">Name</li>
+              <li class="text-center">Gender</li>
+              <li class="text-center">Likes</li>
+<!--              <li class="text-center">Tracks</li>-->
+            </ul>
+            <ul class="album_inner_list_padding" *ngFor="let ar of artistsSearch,index as i">
+              <li>{{i + 1}}</li>
+              <li class="song_title_width">
+                <div class="top_song_artist_wrapper">
+                  <img src="{{ar.avatar}}" alt="img" >
+                </div>
+              </li>
+              <li class="song_title_width"><a [routerLink]="['/user/detail/artists/',ar.id]">{{ar.nameArtist}}</a></li>
+              <li class="text-center"><a>{{ar.gender}}</a></li>
+              <li class="text-center"><a>{{ar.likes}}</a></li>
+<!--              <li class="text-center">-->
+<!--                <a [routerLink]="['/user/playlistSong/',pl.id]">{{pl.songs.length}} Tracks</a>-->
+<!--              </li>-->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

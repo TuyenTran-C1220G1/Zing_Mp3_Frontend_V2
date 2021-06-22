@@ -39,5 +39,9 @@ export class ArtistService {
     return this.http.get<Artist>(`${API_URL}/artists/delete/${id}`);
   }
 
+  searchArtist(name: string): Observable<Artist[]> {
+    return this.http.get<Artist[]>(`${API_URL}/artists/search/${name}`);
+  }
+
 
 }

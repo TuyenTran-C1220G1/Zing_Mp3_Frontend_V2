@@ -7,6 +7,8 @@ import {SongService} from '../../../service/song.service';
 import {ListenMusicService} from '../../listen-music.service';
 import {PlaylistService} from '../../../service/playlist.service';
 import Swal from 'sweetalert2';
+import {Artist} from '../../../model/artist';
+import {ArtistService} from '../../../service/artist.service';
 
 
 @Component({
@@ -15,7 +17,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent implements OnInit {
-
+  id: number;
+  artistsSearch: Artist[] = [];
   songs: Song[] = [];
   playlists: Playlist[] = [];
   name: any;
@@ -26,13 +29,14 @@ export class SearchResultComponent implements OnInit {
   constructor(private httClient: HttpClient,
               private songService: SongService,
               private playlistService: PlaylistService,
+              private artistService: ArtistService,
               private router: Router,
               private listenMusicService: ListenMusicService,
               private activatedRoute: ActivatedRoute,) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.name = paramMap.get('name');
       this.searchSong(this.name);
-      this.searchPlaylist(this.name);
+
 
     });
   }
@@ -59,13 +63,22 @@ export class SearchResultComponent implements OnInit {
         }), $(document).on("click", function(e) {
           $("ul.tranding_more_option.tranding_open_option").removeClass("tranding_open_option")
         })
+
       });
+      this.searchPlaylist(this.name);
+      this.searchArtist(this.name);
     });
   }
 
   searchPlaylist(namePlaylist: string) {
     this.playlistService.searchPlaylist(namePlaylist).subscribe(playlists => {
       this.playlistsSearch= playlists;
+    });
+  }
+
+  searchArtist(nameArtist: string) {
+    this.artistService.searchArtist(nameArtist).subscribe(artistsSearch => {
+      this.artistsSearch= artistsSearch;
     });
   }
 
