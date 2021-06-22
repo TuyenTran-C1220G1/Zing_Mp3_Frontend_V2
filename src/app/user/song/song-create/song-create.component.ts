@@ -6,11 +6,10 @@ import {ArtistService} from "../../../service/artist.service";
 import {Artist} from "../../../model/artist";
 import {Genre} from "../../../model/genre";
 import {GenreService} from "../../../service/genre.service";
-import * as $ from "jquery";
 import Swal from "sweetalert2";
 
 
-
+declare var $:any;
 
 @Component({
   selector: 'app-song-create',
@@ -62,7 +61,9 @@ export class SongCreateComponent implements OnInit {
       songUrl: [''],
 
     })
-
+    $(function(){
+      $("select").niceSelect();
+    })
   }
 
   createSong() {

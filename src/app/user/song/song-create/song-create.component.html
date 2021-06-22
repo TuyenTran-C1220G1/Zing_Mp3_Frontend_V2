@@ -49,8 +49,8 @@
                 *ngIf="submitted && songForm.get('artist').hasError('required')">Artist is required!</span>
           <br>
           <div style="color: chocolate">Genre</div>
-          <div class="icon_form comments_form" style="color: chocolate">
-            <select class="browser-default custom-select" formControlName="genre">
+          <div class="icon_form comments_form " style="color: chocolate">
+            <select class="browser-default custom-select" formControlName="genre" >
               <option disabled>Select Genre</option>
               <option *ngFor="let genre of genres" [value]="genre.id">{{genre.name}}</option>
             </select>

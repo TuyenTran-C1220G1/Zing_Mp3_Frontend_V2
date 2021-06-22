@@ -39,21 +39,13 @@
           </div>
           <div class="various_song_playlist">
             <p><a [routerLink]="['/user/artists/comments/',artist.id]">{{artist.nameArtist}}</a></p>
-
           </div>
         </div>
       </div>
-      <div class="blog_pagination_section m24_cover">
-        <ul>
-          <li>
-            <a href="#" class="prev"> <i class="flaticon-left-arrow"></i> </a>
-          </li>
-          <li>
-            <a href="#" class="next"><i class="flaticon-right-arrow"></i></a>
-          </li>
-        </ul>
+      <div style="margin: auto">
+        <ngb-pagination [collectionSize]="artists.length" [(page)]="page" [maxSize]="5" [rotate]="true"
+                        [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
       </div>
-
     </div>
   </div>
 </div>

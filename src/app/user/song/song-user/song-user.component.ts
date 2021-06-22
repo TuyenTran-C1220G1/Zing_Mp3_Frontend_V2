@@ -19,7 +19,8 @@ export class SongUserComponent implements OnInit {
   songs: Song[] = [];
   song: Song;
   id: number;
-
+  page = 1;
+  pageSize = 10;
   subscription: Subscription;
 
   constructor(private songService: SongService, private router: Router,

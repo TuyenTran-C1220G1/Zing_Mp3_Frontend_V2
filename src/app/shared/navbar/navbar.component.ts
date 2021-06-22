@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {JwtResponse} from '../../interface/jwt-response';
 import {User} from '../../model/user';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../service/authentication.service';
-import * as $ from 'jquery';
 import Swal from 'sweetalert2';
 import {FormControl, FormGroup} from '@angular/forms';
+
+declare var $: any;
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +20,7 @@ export class NavbarComponent implements OnInit {
   user: User;
   formGroup = new FormGroup({
     searchName: new FormControl()
-  })
+  });
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService) {
@@ -38,6 +39,7 @@ export class NavbarComponent implements OnInit {
       }
     }
   }
+
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['']);
@@ -60,21 +62,25 @@ export class NavbarComponent implements OnInit {
       });
     });
   }
+
   ngOnInit() {
-    this.currentUser  = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    $(function() {
+      $('select').niceSelect();
+    });
   }
 
   openMenu() {
-      $('#sidebar').width(), 0 === $('#sidebar').offset().left ? $('#sidebar').animate({
-        left: -500
-      }, 'slow') : $('#sidebar').animate({
-        left: '0'
-      }, 'slow');
+    $('#sidebar').width(), 0 === $('#sidebar').offset().left ? $('#sidebar').animate({
+      left: -500
+    }, 'slow') : $('#sidebar').animate({
+      left: '0'
+    }, 'slow');
   }
 
   search() {
     const searchValue = this.formGroup.get('searchName').value;
-    this.router.navigate([`/user/search/${searchValue}`], { queryParams: { search: searchValue } }).then((e) => {
+    this.router.navigate([`/user/search/${searchValue}`], {queryParams: {search: searchValue}}).then((e) => {
     });
   }
 }

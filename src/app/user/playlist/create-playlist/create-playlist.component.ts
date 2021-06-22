@@ -50,7 +50,7 @@ export class CreatePlaylistComponent implements OnInit {
   }
   createPlaylist() {
     this.submitted = true;
-    if (this.myPlaylist.length<=20) {
+    if (this.myPlaylist.length<=10) {
       if (this.playlistForm.valid) {
         const playlists = this.playlistForm.value;
         playlists.image = this.avatar;

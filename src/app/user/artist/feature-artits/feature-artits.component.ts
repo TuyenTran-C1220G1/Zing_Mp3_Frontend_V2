@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Artist} from '../../../model/artist';
 import {ArtistService} from '../../../service/artist.service';
 import {Song} from '../../../model/song';
+import {SongService} from '../../../service/song.service';
+
 declare var $: any;
 
 
@@ -14,66 +16,67 @@ declare var $: any;
 
 export class FeatureArtitsComponent implements OnInit {
 
-  // @ts-ignore
   artists: Artist[] = [{
     id: null,
     nameArtist: null,
     description: null,
-    avatar:null,
+    avatar: null,
     dob: null,
     likes: null,
     gender: null,
-  },{
+  }, {
     id: null,
     nameArtist: null,
     description: null,
-    avatar:null,
+    avatar: null,
     dob: null,
     likes: null,
     gender: null,
-  },{
+  }, {
     id: null,
     nameArtist: null,
     description: null,
-    avatar:null,
+    avatar: null,
     dob: null,
     likes: null,
     gender: null,
-  },{
+  }, {
     id: null,
     nameArtist: null,
     description: null,
-    avatar:null,
+    avatar: null,
     dob: null,
     likes: null,
     gender: null,
-  },{
+  }, {
     id: null,
     nameArtist: null,
     description: null,
-    avatar:null,
+    avatar: null,
     dob: null,
     likes: null,
     gender: null,
-  },{
+  }, {
     id: null,
     nameArtist: null,
     description: null,
-    avatar:null,
+    avatar: null,
     dob: null,
     likes: null,
     gender: null,
   }];
-  artists2: Artist[];
+  songs: Song[];
+  id?: number;
 
-  constructor(private artistService: ArtistService) {
+  constructor(private artistService: ArtistService, private songService: SongService) {
   }
 
   ngOnInit() {
+    this.getSongOfArtist(this.id);
     this.artistService.getTopArtis().subscribe(artists => {
       this.artists = artists;
       $(document).ready(function() {
-        $(".featured_song_slider .owl-carousel").owlCarousel({
+        $('.featured_song_slider .owl-carousel').owlCarousel({
           loop: !0,
           margin: 15,
           autoplay: !0,
@@ -96,15 +99,27 @@ export class FeatureArtitsComponent implements OnInit {
               margin: 20
             }
           }
-        })
+        });
       });
-    }, error => {console.log('error:', error); });
+    }, error => {
+      console.log('error:', error);
+    });
 
   }
 
-  getTopArtist() {
-    this.artistService.getTopArtis().subscribe(artists => {
-      this.artists = artists;
-    }, error => {console.log('error:', error); });
+  // getTopArtist() {
+  //   this.artistService.getTopArtis().subscribe(artists => {
+  //     this.artists = artists;
+  //   }, error => {
+  //     console.log('error:', error);
+  //   });
+  // }
+
+  getSongOfArtist(id: number) {
+    this.songService.findAllSongByArtist(id).subscribe(songs => {
+        this.songs = songs;
+      }
+    );
   }
+
 }

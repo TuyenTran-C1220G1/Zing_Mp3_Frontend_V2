@@ -4,8 +4,9 @@ import {AuthenticationService} from '../../../service/authentication.service';
 import {ArtistService} from '../../../service/artist.service';
 // import * as $ from 'jquery';
 import Swal from 'sweetalert2';
-
 declare var $: any;
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-crete-artist',
@@ -18,6 +19,7 @@ export class CreteArtistComponent implements OnInit {
   submitted = false;
   avatar = '';
   artistForm: FormGroup;
+  today: any = this.formatDate(Date.now());
 
   constructor(private auth: AuthenticationService,
               private artistService: ArtistService,
@@ -30,6 +32,7 @@ export class CreteArtistComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.formatDate(this.today)
     // this.dobValidator(this.artistForm);
     this.artistForm = this.fb.group({
       nameArtist: ['', [Validators.required, Validators.max(20)]],
@@ -38,6 +41,10 @@ export class CreteArtistComponent implements OnInit {
       avatar: [''],
       gender: ['', [Validators.required]]
     });
+  }
+
+  formatDate(date: any) {
+    return (moment(date)).format('yyyy-MM-DD');
   }
 
   createArtist() {

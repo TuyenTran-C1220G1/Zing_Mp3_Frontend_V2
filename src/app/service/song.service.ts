@@ -54,7 +54,6 @@ export class SongService {
     return this.http.get<any>(`${API_URL}/songs/artists/${idArtist}`);
 
   }
-
   searchSong(name: string): Observable<any> {
     return this.http.get<any>(`${API_URL}/songs/search/${name}`);
   }
