@@ -43,7 +43,7 @@ export class CreteArtistComponent implements OnInit {
   createArtist() {
     this.submitted = true;
     console.log(this.artistForm)
-    if (this.artistForm.valid) {
+    if (this.artistForm.valid && this.avatar) {
       const artist = this.artistForm.value;
       artist.avatar = this.avatar;
       console.log(artist);
@@ -69,6 +69,8 @@ export class CreteArtistComponent implements OnInit {
       }, e => {
         console.log(e);
       });
+    }else{
+      // this.artistForm.
     }
     this.success = false;
   }

@@ -17,7 +17,8 @@ export class DetailArtistComponent implements OnInit {
   songs: Song[] = [{songUrl: null}, {songUrl: null}, {songUrl: null}];
   song: Song;
   artist?: Artist;
-
+  page = 1;
+  pageSize = 10;
   constructor(private artistService: ArtistService, private activatedRoute: ActivatedRoute,
               private songService: SongService, private listenMusicService: ListenMusicService) {
     this.activatedRoute.paramMap.subscribe(async (paramMap: ParamMap) => {
@@ -41,7 +42,7 @@ export class DetailArtistComponent implements OnInit {
 
   getAllSongByArtist(id: number) {
     this.songService.findAllSongByArtist(id).subscribe(songs => {
-      this.songs = songs.content;
+      this.songs = songs;
     });
   }
   getInforSong(song) {

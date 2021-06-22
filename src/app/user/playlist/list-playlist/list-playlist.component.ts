@@ -8,30 +8,21 @@ import {PlaylistService} from '../../../service/playlist.service';
   styleUrls: ['./list-playlist.component.css']
 })
 export class ListPlaylistComponent implements OnInit {
-  playlist: Playlist[] = [];
-  page = 0;
-  size = 10;
+  playlists: Playlist[] = [];
+  page = 1;
+  pageSize = 15;
   constructor(
     private playlistService: PlaylistService
   ) {
   }
 
   ngOnInit() {
-    this.getAllPlayList(this.page, this.size);
+    this.getAllPlayList();
   }
 
-  getAllPlayList(page, size) {
-    this.playlistService.getAll(page, size).subscribe(playLists => {
-      this.playlist = playLists;
+  getAllPlayList() {
+    this.playlistService.getAll().subscribe(playLists => {
+      this.playlists = playLists;
     });
-  }
-  next() {
-    this.page=1;
-    this.getAllPlayList(this.page, this.size);
-  }
-
-  previous() {
-    this.page=0;
-    this.getAllPlayList(this.page, this.size);
   }
 }

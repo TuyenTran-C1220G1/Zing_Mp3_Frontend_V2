@@ -74,7 +74,6 @@ export class NavbarComponent implements OnInit {
 
   search() {
     const searchValue = this.formGroup.get('searchName').value;
-    // @ts-ignore
     this.router.navigate([`/user/search/${searchValue}`], { queryParams: { search: searchValue } }).then((e) => {
     });
   }

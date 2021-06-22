@@ -67,12 +67,6 @@ export class FeatureArtitsComponent implements OnInit {
   artists2: Artist[];
 
   constructor(private artistService: ArtistService) {
-    // console.log('vao contructor')
-    // this.artistService.getTopArtis().subscribe(artists => {
-    //   console.log(artists);
-    //   this.artists = artists;
-    //   console.log('đã lấy được')
-    // }, error => {console.log('error:', error); });
   }
 
   ngOnInit() {

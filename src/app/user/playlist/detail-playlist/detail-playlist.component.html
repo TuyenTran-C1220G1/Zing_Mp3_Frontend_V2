@@ -59,7 +59,7 @@
                 <li class="text-center">favourites</li>
                 <li class="text-center">remove</li>
               </ul>
-              <ul class="album_inner_list_padding" *ngFor="let song of playlist.songs; index as i">
+              <ul class="album_inner_list_padding" *ngFor="let song of playlist.songs| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
                 <li><a style="cursor:pointer;" (click)="getInforSong(song)"><span class="play_no">{{i + 1}}</span><span class="play_hover"><i
                   class="flaticon-play-button"></i></span></a></li>
                 <li class="song_title_width">
@@ -79,17 +79,13 @@
                 <li class="text-center "><a type="button" (click)="remoteSong(playlist.id,song.id)"><i class="fas fa-times-circle"></i></a></li>
               </ul>
             </div>
-            <div class="lang_apply_btn home_btn m24_cover">
-              <ul>
-                <li>
-                  <a href="#">view all</a>
-                </li>
-              </ul>
-
-
-            </div>
 
           </div>
+        </div>
+
+        <div style="margin: auto">
+          <ngb-pagination [collectionSize]="playlist.songs.length" [(page)]="page" [maxSize]="5" [rotate]="true"
+                          [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
         </div>
       </div>
     </div>

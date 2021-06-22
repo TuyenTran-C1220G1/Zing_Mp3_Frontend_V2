@@ -136,6 +136,10 @@ const routes: Routes = [
     path: 'contact',
     component: ContactComponent,
   },
+  {
+    path: 'search/:name' ,
+    component: SearchResultComponent,
+  },
 ];
 
 @NgModule({

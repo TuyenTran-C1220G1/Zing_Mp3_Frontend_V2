@@ -14,8 +14,8 @@ export class PlaylistService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(page: number, size: number): Observable<Playlist[]> {
-    return this.http.get<Playlist[]>(API_URL + `/playlists/list?page=${page}&size=${size}`);
+  getAll(): Observable<Playlist[]> {
+    return this.http.get<Playlist[]>(API_URL + `/playlists/list`);
   }
 
   createNewPlaylist(playlist: Playlist): Observable<Playlist> {

@@ -32,7 +32,7 @@
               <li class="text-center">Likes</li>
               <li class="text-center">Songs</li>
             </ul>
-            <ul class="album_inner_list_padding" *ngFor="let playlist of playlist; index as i">
+            <ul class="album_inner_list_padding" *ngFor="let playlist of playlists| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
               <li><a href="#"><span class="play_no">{{i + 1}}</span><span class="play_hover"></span></a></li>
               <li class="song_title_width">
                 <div class="top_song_artist_wrapper">
@@ -47,18 +47,11 @@
               </li>
             </ul>
           </div>
-
-          <div class="blog_pagination_section m24_cover">
-            <ul>
-              <li>
-                <a type="button" class="prev" (click)="previous()" > <i class="flaticon-left-arrow"></i> </a>
-              </li>
-              <li>
-                <a type="button" class="next" (click)="next()"><i class="flaticon-right-arrow"></i></a>
-              </li>
-            </ul>
-          </div>
         </div>
+      </div>
+      <div style="margin: auto">
+        <ngb-pagination [collectionSize]="playlists.length" [(page)]="page" [maxSize]="5" [rotate]="true"
+                        [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
       </div>
     </div>
   </div>
