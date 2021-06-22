@@ -59,37 +59,33 @@
                 <li class="text-center">favourites</li>
                 <li class="text-center">remove</li>
               </ul>
-              <ul class="album_inner_list_padding" *ngFor="let song of playlist.songs; index as i">
+              <ul class="album_inner_list_padding" *ngFor="let song of playlist.songs| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
                 <li><a style="cursor:pointer;" (click)="getInforSong(song)"><span class="play_no">{{i + 1}}</span><span class="play_hover"><i
                   class="flaticon-play-button"></i></span></a></li>
                 <li class="song_title_width">
                   <div class="top_song_artist_wrapper">
                     <img src="{{song.imageUrl}}" alt="img">
                     <div class="top_song_artist_contnt">
-                      <h1><a href="#">{{song.nameSong}}</a></h1>
+                      <h1><a [routerLink]="['/user/songs/comments/',song.id]">{{song.nameSong}}</a></h1>
                       <p class="various_artist_text"><a href="#">{{song.author}}</a></p>
                     </div>
                   </div>
                 </li>
-                <li class="text-center top_song_artist_contnt"><a href="#">{{song?.artist?.nameArtist}}</a></li>
-                <li class="text-center "><a href="#" style="color: white">{{song?.likes}}</a></li>
-                <li class="text-center "><a href="#">{{song?.likes}}</a></li>
-                <li class="text-center"><a href="#">{{song?.views}}</a></li>
-                <li class="text-center"><a href="#"><i class="fas fa-heart"></i></a></li>
+                <li class="text-center top_song_artist_contnt"><a [routerLink]="['/user/artists/comments/',song?.artist?.id]">{{song?.artist?.nameArtist}}</a></li>
+                <li class="text-center "><a  style="color: white">{{song?.likes}}</a></li>
+                <li class="text-center "><a >{{song?.likes}}</a></li>
+                <li class="text-center"><a >{{song?.views}}</a></li>
+                <li class="text-center"><a ><i class="fas fa-heart"></i></a></li>
                 <li class="text-center "><a type="button" (click)="remoteSong(playlist.id,song.id)"><i class="fas fa-times-circle"></i></a></li>
               </ul>
             </div>
-            <div class="lang_apply_btn home_btn m24_cover">
-              <ul>
-                <li>
-                  <a href="#">view all</a>
-                </li>
-              </ul>
-
-
-            </div>
 
           </div>
+        </div>
+
+        <div style="margin: auto">
+          <ngb-pagination [collectionSize]="playlist.songs.length" [(page)]="page" [maxSize]="5" [rotate]="true"
+                          [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@
     <div class="m24_logo_wrapper">
       <div class="m24_logo_div">
         <a routerLink="/">
-          <img src="assets/images/logo10.png" alt="logo">
+          <img src="assets/images/mylogo.png" alt="logo">
         </a>
       </div>
       <div id="toggle">
@@ -49,10 +49,13 @@
                 <a routerLink="/user/allsongs"><i class="fas fa-caret-right"></i>All Songs</a>
               </li>
               <li class="parent">
-                <a routerLink="/user/yourplaylists"><i class="fas fa-caret-right"></i>My Playlists</a>
+                <a routerLink="/user/allartists"><i class="fas fa-caret-right"></i>All Artists</a>
               </li>
               <li class="parent">
-                <a routerLink="/user/yoursongs"><i class="fas fa-caret-right"></i>My Songs</a>
+                <a *ngIf="currentUser" routerLink="/user/yourplaylists"><i class="fas fa-caret-right"></i>My Playlists</a>
+              </li>
+              <li class="parent">
+                <a *ngIf="currentUser" routerLink="/user/yoursongs"><i class="fas fa-caret-right"></i>My Songs</a>
               </li>
             </ul>
           </li>

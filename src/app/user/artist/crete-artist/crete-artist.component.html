@@ -27,14 +27,14 @@
           <div class="icon_form comments_form">
             <input type="text" class="form-control" formControlName="nameArtist">
             <i class="fas fa-music"></i>
-          </div>
-          <span style="color: red" *ngIf="submitted && artistForm.get('nameArtist').hasError('required')">
+            <span style="color: red" *ngIf="submitted && artistForm.get('nameArtist').hasError('required')">
             Name Artist is required!</span>
+          </div>
           <div class="row ">
             <div class="col-3" style="color: chocolate">Select gender:</div>
             <br>
             <span style="color: red"
-                 *ngIf="submitted && artistForm.get('gender').hasError('required')">Gender is required!</span><br>
+                 *ngIf="submitted && artistForm.get('gender').hasError('required')">Please selection Gender</span><br>
             <div class="col-7 row " style="color: chocolate" >
               <div class="col-4">
                 <input type="radio" id="male" name="gender" value="male" formControlName="gender">
@@ -67,8 +67,9 @@
           <div class="icon_form comments_form">
             <textarea class="form-control" formControlName="description"></textarea>
             <i class="fas fa-file"></i>
+            <span style="color: red" *ngIf="submitted && artistForm.get('description').hasError('required')">Description is required!</span>
           </div>
-          <span style="color: red" *ngIf="submitted && artistForm.get('description').hasError('required')">Description is required!</span>
+          <br>
           <div style="color: chocolate">Image Playlist</div>
           <div class="icon_form comments_form">
             <app-image (giveURLtoCreate)="onChangeAvatar($event)"></app-image>
@@ -77,7 +78,7 @@
         </div>
       </div>
       <div class="lang_apply_btn_wrapper " style="margin-left: auto">
-        <button type="submit" class="btn btn-danger" style="margin-right: 20px; background: #ff3b1b">Create
+        <button type="submit" class="btn btn-danger" style="margin-right: 20px; background: #ff3b1b" >Create
         </button>
         <button (click)="resetForm()" type="button" class="btn btn-danger"
                 style="margin-right: 20px; background: #ff3b1b">Cancel

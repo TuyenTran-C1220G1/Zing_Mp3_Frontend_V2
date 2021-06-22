@@ -4,10 +4,10 @@
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="indx_title_left_wrapper m24_cover">
-          <h2>All Song</h2>
+          <h2>search results</h2>
           <ul>
-            <li><a routerLink="/">Home</a> &nbsp;&nbsp;&nbsp;/</li>
-            <li>All Songs</li>
+            <li><a routerLink="/">Home</a></li>
+<!--            <li>All Songs</li>-->
           </ul>
         </div>
       </div>
@@ -27,8 +27,8 @@
               <li>#</li>
               <li class="song_title_width">Song Title</li>
               <li class="text-center song_title_width">Artist</li>
-              <li class="text-center">Like</li>
-              <li class="text-center">View</li>
+              <li class="text-center">Likes</li>
+              <li class="text-center">Views</li>
               <li class="text-center">AddPlaylist</li>
             </ul>
             <ul class="album_inner_list_padding" *ngFor="let song of songs; index as i">
@@ -39,13 +39,13 @@
 
                   <img src="{{song.imageUrl}}" alt="img">
                   <div class="top_song_artist_contnt">
-                    <h1><a href="#">{{song.nameSong}}</a></h1>
-                    <p class="various_artist_text"><a href="#">{{song.author}}</a></p>
+                    <h1><a [routerLink]="['/user/songs/comments/',song.id]">{{song.nameSong}}</a></h1>
+                    <p class="various_artist_text"><a >{{song.author}}</a></p>
                   </div>
 
                 </div>
               </li>
-              <li class="text-center song_title_width"><a href="#">{{song?.artist?.nameArtist}}</a></li>
+              <li class="text-center song_title_width"><a [routerLink]="['/user/artists/comments/',song?.artist?.id]">{{song?.artist?.nameArtist}}</a></li>
               <li class="text-center">{{song.likes}}</li>
               <li class="text-center">{{song.views}}</li>
               <li class="top_song_list_picks featured_list_dropdown">

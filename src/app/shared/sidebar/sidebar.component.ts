@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../../service/authentication.service';
+import {JwtResponse} from '../../interface/jwt-response';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,7 +11,26 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() {
+  currentUser: JwtResponse;
+  hasRoleUser = false;
+  user: User;
+
+  constructor(private router: Router,
+              private authenticationService: AuthenticationService) {
+    // this.authenticationService.currentUser.subscribe(value => {
+    //   this.currentUser = value;
+    // });
+    this.authenticationService.currentUserSubject.asObservable().subscribe(user => {
+      this.currentUser = user;
+    });
+    if (this.currentUser) {
+      const roleList = this.currentUser.roles;
+      for (const role of roleList) {
+        if (role.authority === 'ROLE_USER') {
+          this.hasRoleUser = true;
+        }
+      }
+    }
   }
 
   ngOnInit() {
