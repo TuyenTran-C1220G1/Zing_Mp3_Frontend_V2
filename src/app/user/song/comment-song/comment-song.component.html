@@ -28,6 +28,9 @@
               <p>Description : {{song.description}}</p>
               <p>Views : {{song.views}}</p>
               <p>Likes : {{song.likes}}</p>
+              <div class="lang_apply_btn" style="padding-top: 13px;">
+                <a (click)="getInforSong(song)" ><i  class="flaticon-play-button"></i> play song</a>
+              </div>
 <!--              <div class="lang_apply_btn author_btn">-->
 <!--                <ul>-->
 <!--                  <li>-->
@@ -71,7 +74,7 @@
           </div>
           <div class="text_wrapper">
             <div class="contect_form_footer m24_cover" >
-              <input type="text" name="name" formControlName="content" placeholder="be the first to comment">
+              <input type="text" name="name" formControlName="content" placeholder="Write your comments here">
             </div>
             <div class="lang_apply_btn comment_btn" style="padding-left: 900px">
               <ul>

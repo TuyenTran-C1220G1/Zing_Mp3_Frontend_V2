@@ -55,7 +55,7 @@
                 <li class="song_title_width">Genre</li>
                 <li class="text-center">like</li>
                 <li class="text-center">view</li>
-                <li class="text-center">favourites</li>
+                <li style="text-align: right">comment</li>
               </ul>
               <ul class="album_inner_list_padding" *ngFor="let song of songs| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ; index as i">
                 <li><a style="cursor:pointer;" (click)="getInforSong(song)"><span class="play_no">{{i + 1}}</span><span class="play_hover"><i
@@ -64,15 +64,15 @@
                   <div class="top_song_artist_wrapper">
                     <img src="{{song.imageUrl}}" alt="img">
                     <div class="top_song_artist_contnt">
-                      <h1><a href="#">{{song.nameSong}}</a></h1>
-                      <p class="various_artist_text"><a href="#">{{song.author}}</a></p>
+                      <h1><a>{{song.nameSong}}</a></h1>
+                      <p class="various_artist_text"><a>{{song.author}}</a></p>
                     </div>
                   </div>
                 </li>
                 <li class="song_title_width top_song_artist_contnt"><a >{{song.genre.name}}</a></li>
-                <li class="text-center "><a href="#">{{song?.likes}}</a></li>
-                <li class="text-center"><a href="#">{{song?.views}}</a></li>
-                <li class="text-center"><a href="#"><i class="fas fa-heart"></i></a></li>
+                <li class="text-center "><a>{{song?.likes}}</a></li>
+                <li class="text-center"><a>{{song?.views}}</a></li>
+                <li><a  [routerLink]="['/user/songs/comments/',song.id]" > <i class="fa fa-comment" ></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
               </ul>
             </div>
           </div>

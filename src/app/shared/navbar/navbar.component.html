@@ -14,28 +14,59 @@
 
     <div class="m24_header_right_Wrapper d-none d-sm-none d-md-none d-lg-none d-xl-block">
       <div class="m24_signin_wrapper" style="margin-top: 7px;cursor: pointer;" *ngIf="!currentUser">
-        <a  data-toggle="modal" data-target="#login_modal">Login / </a>
-        <a  data-toggle="modal" data-target="#register_modal">Register</a>
+        <a data-toggle="modal" data-target="#login_modal">Login / </a>
+        <a data-toggle="modal" data-target="#register_modal">Register</a>
       </div>
       <div *ngIf="currentUser">
         <div class="crm_message_dropbox_wrapper" *ngIf="currentUser" style="padding-left: 20px">
-          <div class="nice-select budge_noti_wrapper" tabindex="0">
-            <a  class="blog_image" ><img style="width: 45px;height: 45px;border-radius: 50%;display: inline" src="{{currentUser.avatar}}" alt="img"></a>
-            <p style="display: inline"> </p>
+          <div class="nice-select budge_noti_wrapper w3-container" tabindex="0">
+            <img style="width: 45px;height: 45px;border-radius: 50%;display: inline" src="{{currentUser.avatar}}"
+                 alt="img">
             <ul class="list pullDown" style="height: 100px;width: 200px">
-              <li><a routerLink="/user/edit">Edit profile</a>
+              <li>
               </li>
-              <li><a style="padding-left: 17px;font-size:17px;" routerLink="#" (click)="logout()">Logout</a>
+              <li>
               </li>
             </ul>
           </div>
         </div>
         <div class="m24_signin_wrapper" style="margin-top: 7px;">
-          <a>{{currentUser.username}}</a>
+          <a class="w3-dropdown-hover" style="background:none; margin-right: 20px ">{{currentUser.username}}
+            <div class="w3-dropdown-content w3-bar-block w3-border" style="margin-right: 200px;border-radius: 50%;">
+              <a class="w3-bar-item w3-button" routerLink="/user/edit">Edit profile <i class="fa fa-gear"></i></a>
+              <a class="w3-bar-item w3-button" (click)="logout()">Logout &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i
+                class="fa fa-sign-out"></i> </a>
+            </div>
+          </a>
+          <!--          <a href="#" ></a>-->
         </div>
       </div>
-
     </div>
+
+<!--    <div class="m24_header_right_Wrapper d-none d-sm-none d-md-none d-lg-none d-xl-block">-->
+<!--      <div class="m24_signin_wrapper" style="margin-top: 7px;cursor: pointer;" *ngIf="!currentUser">-->
+<!--        <a  data-toggle="modal" data-target="#login_modal">Login / </a>-->
+<!--        <a  data-toggle="modal" data-target="#register_modal">Register</a>-->
+<!--      </div>-->
+<!--      <div *ngIf="currentUser">-->
+<!--        <div class="crm_message_dropbox_wrapper" *ngIf="currentUser" style="padding-left: 20px">-->
+<!--          <div class="nice-select budge_noti_wrapper" tabindex="0">-->
+<!--            <a  class="blog_image" ><img style="width: 45px;height: 45px;border-radius: 50%;display: inline" src="{{currentUser.avatar}}" alt="img"></a>-->
+<!--            <p style="display: inline"> </p>-->
+<!--            <ul class="list pullDown" style="height: 100px;width: 200px">-->
+<!--              <li><a routerLink="/user/edit">Edit profile</a>-->
+<!--              </li>-->
+<!--              <li><a style="padding-left: 17px;font-size:17px;" routerLink="#" (click)="logout()">Logout</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="m24_signin_wrapper" style="margin-top: 7px;">-->
+<!--          <a>{{currentUser.username}}</a>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
 
     <div class="m24_navigation_wrapper">
       <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
@@ -56,6 +87,9 @@
               </li>
               <li class="parent">
                 <a *ngIf="currentUser" routerLink="/user/yoursongs"><i class="fas fa-caret-right"></i>My Songs</a>
+              </li>
+              <li class="parent">
+                <a *ngIf="currentUser" routerLink="/user/artists/create"><i class="fas fa-caret-right"></i>Create Artist</a>
               </li>
             </ul>
           </li>
@@ -143,17 +177,17 @@
 <!--          </div>-->
         </div>
       </div>
-      <div class="m24_navi_langauage_box">
-        <div class="theme-switch-wrapper">
-          <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <span class="slider round"></span>
-          </label>
-        </div>
-        <div class="lang_list_wrapper d-none d-sm-none d-md-none d-lg-none d-xl-block">
-          <a data-toggle="modal" data-target="#myModal">languages <i class="fas fa-language"></i></a>
-        </div>
-      </div>
+<!--      <div class="m24_navi_langauage_box">-->
+<!--        <div class="theme-switch-wrapper">-->
+<!--          <label class="theme-switch" for="checkbox">-->
+<!--            <input type="checkbox" id="checkbox" />-->
+<!--            <span class="slider round"></span>-->
+<!--          </label>-->
+<!--        </div>-->
+<!--        <div class="lang_list_wrapper d-none d-sm-none d-md-none d-lg-none d-xl-block">-->
+<!--          <a data-toggle="modal" data-target="#myModal">languages <i class="fas fa-language"></i></a>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@ import {SongService} from "../../../service/song.service";
 import {Playlist} from "../../../model/playlist";
 import {PlaylistService} from "../../../service/playlist.service";
 import {ListenMusicService} from '../../listen-music.service';
+import Swal from 'sweetalert2';
 declare var $: any;
 @Component({
   selector: 'app-song-list',
@@ -16,6 +17,7 @@ export class SongListComponent implements OnInit {
   playlists: Playlist[]=[];
   page = 1;
   pageSize =10;
+  playlist: Playlist;
 
   constructor(private songService: SongService, private playlistService: PlaylistService,
               private listenMusicService: ListenMusicService) {
@@ -49,10 +51,47 @@ export class SongListComponent implements OnInit {
     });
   }
 
- 
 
-  addSongToPlaylist(idPlaylist:number,idSong:number){
-    this.playlistService.addSongToPlaylist(idPlaylist,idSong).subscribe();
+
+  addSongToPlaylist(idPlaylist: number, idSong: number) {
+    this.playlistService.findById(idPlaylist).subscribe(playlist1 => {
+      if (playlist1.songs.length < 10) {
+        this.playlistService.addSongToPlaylist(idPlaylist, idSong).subscribe(playlist1 => {
+          this.playlist = playlist1;
+          $(function() {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            // @ts-ignore
+            Toast.fire({
+              icon: 'success',
+              type: 'success',
+              title: 'Add successfully',
+            });
+          });
+
+        },error => {
+
+
+        })
+      }$(function() {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        // @ts-ignore
+        Toast.fire({
+          icon: 'error',
+          type: 'success',
+          title: 'Limited number of songs',
+        });
+      });
+    })
   }
   getInforSong(song) {
     this.listenMusicService.statusSong.next(true);

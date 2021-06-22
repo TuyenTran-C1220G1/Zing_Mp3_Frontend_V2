@@ -46,7 +46,7 @@
 
                 </div>
               </li>
-              <li class="text-center song_title_width"><a [routerLink]="['/user/artists/comments/',song?.artist?.id]">{{song?.artist?.nameArtist}}</a></li>
+              <li class="text-center song_title_width"><a [routerLink]="['/user/detail/artists/',song?.artist?.id]">{{song?.artist?.nameArtist}}</a></li>
               <li class="text-center">{{song.likes}}</li>
               <li class="text-center">{{song.views}}</li>
               <li class="top_song_list_picks featured_list_dropdown">
@@ -86,13 +86,13 @@
               <li class="text-center">Songs</li>
             </ul>
             <ul class="album_inner_list_padding" *ngFor="let pl of playlistsSearch,index as i">
-              <li><a href="#"><span class="play_no">{{i + 1}}</span><span class="play_hover"></span></a></li>
+              <li>{{i + 1}}</li>
               <li class="song_title_width">
                 <div class="top_song_artist_wrapper">
                   <img src="{{pl.image}}" alt="img" >
                 </div>
               </li>
-              <li class="song_title_width"><a [routerLink]="['/user/playlists/comments/',pl.id]">{{pl.namePlaylist}}</a></li>
+              <li class="song_title_width"><a [routerLink]="['/user/playlistSong/',pl.id]">{{pl.namePlaylist}}</a></li>
               <li class="text-center"><a>{{pl.views}}</a></li>
               <li class="text-center"><a>{{pl.likes}}</a></li>
               <li class="text-center">
