@@ -60,7 +60,6 @@ export class SongCreateComponent implements OnInit {
       album: [''],
       imageUrl: [''],
       songUrl: [''],
-
     })
 
   }
@@ -95,7 +94,7 @@ export class SongCreateComponent implements OnInit {
           Toast.fire({
             icon: 'success',
             type: 'success',
-            title: 'update Song successfully',
+            title: 'Create song successfully',
           });
         });
         this.songForm.reset();
@@ -114,7 +113,7 @@ export class SongCreateComponent implements OnInit {
         Toast.fire({
           icon: 'error',
           type: 'error',
-          title: 'Create new failed',
+          title: 'Create failed',
         });
       });
     }

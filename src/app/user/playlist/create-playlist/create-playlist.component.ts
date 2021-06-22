@@ -88,8 +88,8 @@ export class CreatePlaylistComponent implements OnInit {
       // @ts-ignore
       Toast.fire( {
         icon: 'error',
-        type: 'success',
-        title: 'The number of Playlists is too limited',
+        type: 'error',
+        title: 'Create failed ',
       });
     });
   }
