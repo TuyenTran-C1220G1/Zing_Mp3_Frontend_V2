@@ -24,6 +24,7 @@ import {CommentPlaylistComponent} from './playlist/comment-playlist/comment-play
 import {CreteArtistComponent} from './artist/crete-artist/crete-artist.component';
 import {AllArtistComponent} from './artist/all-artist/all-artist.component';
 import {DetailArtistComponent} from './artist/detail-artist/detail-artist.component';
+import {ContactComponent} from './contact/contact.component';
 
 
 const routes: Routes = [
@@ -130,6 +131,10 @@ const routes: Routes = [
   {
     path: 'detail/artists/:id',
     component: DetailArtistComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
   },
 ];
 

@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="indx_title_left_wrapper m24_cover">
-          <h2>All Playlist</h2>
+          <h2>All Playlists</h2>
           <ul>
             <li><a routerLink="/">Home</a></li>
 <!--            <li>All Songs In Playlist</li>-->
@@ -28,9 +28,9 @@
               <li>#</li>
               <li class="song_title_width">Playlist</li>
               <li class="song_title_width">Name Playlist</li>
-              <li class="text-center">View</li>
-              <li class="text-center">Like</li>
-              <li class="text-center">List Song</li>
+              <li class="text-center">Views</li>
+              <li class="text-center">Likes</li>
+              <li class="text-center">Songs</li>
             </ul>
             <ul class="album_inner_list_padding" *ngFor="let playlist of playlist; index as i">
               <li><a href="#"><span class="play_no">{{i + 1}}</span><span class="play_hover"></span></a></li>
