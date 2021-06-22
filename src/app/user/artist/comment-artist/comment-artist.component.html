@@ -30,7 +30,7 @@
               <p>Likes : {{artist.likes}}</p>
               <p>Date Of BirthDay : {{artist.dob}}</p>
               <p>Total Song : {{songs.length}}</p>
-                            <div class="lang_apply_btn author_btn">
+              <div class="lang_apply_btn author_btn">
                 <ul>
                   <li>
                     <a [routerLink]="['/user/detail/artists/',artist.id]"><i class="flaticon-play-button"></i>All Song</a>
@@ -49,8 +49,9 @@
           </div>
           <div class="comment_heading_bottom m24_cover">
             <h1>
-              <i #likeElement (click)="handleLikeAritst(artist.id)" class="fa fa-heart" >
-              </i> like
+              <a *ngIf="currentUser" style="cursor: pointer" ><i  #likeElement (click)="handleLikeAritst(artist.id)" style="font-size: 20px" class="fa fa-heart" ></i> like</a>
+              <a *ngIf="!currentUser" style="cursor: pointer" href="#login_modal" data-toggle="modal" data-dismiss="modal" ><i style="font-size: 20px"  class="fa fa-heart"  style="color: black">
+              </i> like</a>
             </h1>
           </div>
           <div class="comment_heading_bottom m24_cover">
@@ -77,8 +78,8 @@
             <div class="lang_apply_btn comment_btn">
               <ul>
                 <li>
-                  <a type="button" (click)="getPostComment(artist.id)"> <i class="flaticon-play-button"></i>post comment</a>
-                  <!--                  <button style="color: #c82333"><i class="flaticon-play-button-1" style="color: #c82333"></i>POST COMMENT</button>-->
+                  <a type="button" *ngIf="currentUser" (click)="getPostComment(artist.id)"> <i class="flaticon-play-button"></i>post comment</a>
+                  <a type="button" *ngIf="!currentUser" href="#login_modal" data-toggle="modal" data-dismiss="modal"> <i class="flaticon-play-button"></i>post comment</a>
                 </li>
               </ul>
             </div>

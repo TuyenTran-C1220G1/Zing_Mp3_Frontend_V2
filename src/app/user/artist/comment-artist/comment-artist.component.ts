@@ -7,9 +7,9 @@ import {Artist} from '../../../model/artist';
 import {ArtistService} from '../../../service/artist.service';
 import {LikeArist} from '../../../model/like-arist';
 import {CommentArtistService} from '../../../service/comment-artist.service';
+import {AuthenticationService} from '../../../service/authentication.service';
+import {JwtResponse} from '../../../interface/jwt-response';
 import {Song} from '../../../model/song';
-import {SongService} from '../../../service/song.service';
-import {ListenMusicService} from '../../listen-music.service';
 
 @Component({
   selector: 'app-comment-artist',
@@ -18,9 +18,10 @@ import {ListenMusicService} from '../../listen-music.service';
 })
 export class CommentArtistComponent implements OnInit {
   songs: Song[] = [{songUrl: null}, {songUrl: null}, {songUrl: null}];
-  song: Song;
   success: boolean;
   submitted = false;
+  currentUser: JwtResponse;
+  hasRoleUser =  false;
   commentArists: CommentArist[] = [];
   artist: Artist = {
     likes: null,
@@ -37,14 +38,24 @@ export class CommentArtistComponent implements OnInit {
               private httClient: HttpClient,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
-              private songService: SongService,
-              private listenMusicService: ListenMusicService) {
-    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+              private authenticationService: AuthenticationService) {
+      this.authenticationService.currentUserSubject.asObservable().subscribe(user => {
+        this.currentUser = user;
+      });
+      if (this.currentUser) {
+        const roleList = this.currentUser.roles;
+        for (const role of roleList) {
+          if (role.authority === 'ROLE_USER') {
+            this.hasRoleUser = true;
+          }
+        }
+      }
+      this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
       this.getAllComment(this.id);
       this.getArtist(this.id);
     });
-    this.commentArtistService.statusLike(this.id).subscribe(data => {
+      this.commentArtistService.statusLike(this.id).subscribe(data => {
         this.statusLike = data;
         if (this.statusLike) {
           this.likeElement.nativeElement.style.color = 'red';
@@ -101,11 +112,5 @@ export class CommentArtistComponent implements OnInit {
     this.commentArtistService.likeArtist(id).subscribe(newLikePL => {
       this.getArtist(id);
     });
-  }
-  getInforSong(song) {
-    this.listenMusicService.statusSong.next(true);
-    this.listenMusicService.songs = this.songs;
-    this.listenMusicService.songObject.next(song);
-    this.listenMusicService.openFile(song);
   }
 }
