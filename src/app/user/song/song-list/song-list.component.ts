@@ -14,7 +14,8 @@ export class SongListComponent implements OnInit {
 
   songs: Song[] = [];
   playlists: Playlist[]=[];
-
+  page = 1;
+  pageSize =15;
 
   constructor(private songService: SongService, private playlistService: PlaylistService,
               private listenMusicService: ListenMusicService) {
@@ -32,6 +33,7 @@ export class SongListComponent implements OnInit {
         $("ul.tranding_more_option.tranding_open_option").removeClass("tranding_open_option")
       })
     });
+
   }
 
   getMyPlaylist(){
@@ -43,7 +45,7 @@ export class SongListComponent implements OnInit {
 
   getAll() {
     this.songService.getAll().subscribe(songs => {
-      this.songs = songs.content;
+      this.songs = songs;
     }, error => {
       console.log("error", error)
     });
@@ -58,4 +60,5 @@ export class SongListComponent implements OnInit {
     this.listenMusicService.songObject.next(song);
     this.listenMusicService.openFile(song);
   }
+
 }

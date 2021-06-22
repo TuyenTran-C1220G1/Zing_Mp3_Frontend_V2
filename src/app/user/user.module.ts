@@ -21,7 +21,7 @@ import {SongCreateComponent} from './song/song-create/song-create.component';
 import {UploadModule} from '../upload/upload.module';
 import {UserEditComponent} from './user-edit/user-edit.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCarouselModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SongUserComponent} from './song/song-user/song-user.component';
 import {SongPlayComponent} from './song/song-play/song-play.component';
 import {YourPlaylistComponent} from './playlist/your-playlist/your-playlist.component';
@@ -33,6 +33,7 @@ import {CommentArtistComponent} from './artist/comment-artist/comment-artist.com
 import {CreteArtistComponent} from './artist/crete-artist/crete-artist.component';
 import {AllArtistComponent} from './artist/all-artist/all-artist.component';
 import {DetailArtistComponent} from './artist/detail-artist/detail-artist.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -103,6 +104,8 @@ import {DetailArtistComponent} from './artist/detail-artist/detail-artist.compon
         ReactiveFormsModule,
         NgbCarouselModule,
         FormsModule,
+        NgxPaginationModule,
+        NgbModule,
     ],
 
 })

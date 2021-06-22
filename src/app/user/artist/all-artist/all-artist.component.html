@@ -25,7 +25,7 @@
           <h1>All Artists</h1>
         </div>
       </div>
-      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let artist of artists">
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let artist of artists| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
         <div class="treanding_slider_main_box top_artist_wrapper_new m24_cover">
           <a routerLink="/user/detail/artists/{{artist.id}}"><img src="{{artist.avatar}}" alt="img"></a>
 
@@ -43,7 +43,6 @@
           </div>
         </div>
       </div>
-
       <div class="blog_pagination_section m24_cover">
         <ul>
           <li>
@@ -54,6 +53,7 @@
           </li>
         </ul>
       </div>
+
     </div>
   </div>
 </div>

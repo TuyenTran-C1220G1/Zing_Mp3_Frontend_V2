@@ -21,6 +21,8 @@ export class DetailPlaylistComponent implements OnInit {
   songs: Song[] = [{songUrl:null},{songUrl:null},{songUrl:null}];
   song: Song;
   playlist?: Playlist;
+  page = 1;
+  pageSize = 10;
 
   constructor(private playlistService: PlaylistService,
               private httClient: HttpClient,

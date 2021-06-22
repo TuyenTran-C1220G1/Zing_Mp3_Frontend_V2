@@ -12,7 +12,8 @@ import {ArtistService} from '../../../service/artist.service';
 })
 export class AllArtistComponent implements OnInit {
   artists: Artist[] = [];
-
+  page = 1;
+  pageSize = 8;
   constructor(private artistService: ArtistService) {
   }
 
