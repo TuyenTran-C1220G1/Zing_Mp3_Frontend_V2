@@ -9,7 +9,7 @@
         <div class="featured_artist_list m24_cover" >
           <img src="{{artists[0]?.avatar}}" class="img-responsive" alt="img">
           <div class="featured_artist_detail">
-            <p><a [routerLink]="['/user/songs/comments/',artists[0]?.id]">{{artists[0]?.nameArtist}}</a></p>
+            <p><a [routerLink]="['/user/songs/comments',artists[0]?.id]">{{artists[0]?.nameArtist}}</a></p>
             <p class="various_artist_text"><a href="#">51 tracks</a> {{artists[0].likes}} Like</p>
             <div class="lang_apply_btn">
               <ul>

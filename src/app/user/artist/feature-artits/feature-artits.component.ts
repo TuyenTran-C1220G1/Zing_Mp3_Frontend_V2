@@ -78,6 +78,7 @@ export class FeatureArtitsComponent implements OnInit {
   ngOnInit() {
     this.artistService.getTopArtis().subscribe(artists => {
       this.artists = artists;
+      console.log(this.artists);
       $(document).ready(function() {
         $(".featured_song_slider .owl-carousel").owlCarousel({
           loop: !0,
