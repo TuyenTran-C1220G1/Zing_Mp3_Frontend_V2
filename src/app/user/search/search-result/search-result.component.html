@@ -14,13 +14,14 @@
     </div>
   </div>
 </div>
+
 <div class="album_inner_list auti m24_cover">
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-lg-12">
         <div class="album_list_wrapper2">
-          <div class="lang_apply_btn home_btn m24_cover" style="padding-bottom: 20px;padding-top: -10px">
-            <a (click)="getInforSong(songs[0])">Play all</a>
+          <div>
+            <h2>search results for song</h2>
           </div>
           <div class="album_list_wrapper album_list_wrapper_shop">
             <ul class="album_list_name m24_cover">
@@ -45,7 +46,7 @@
 
                 </div>
               </li>
-              <li class="text-center song_title_width"><a [routerLink]="['/user/artists/comments/',song?.artist?.id]">{{song?.artist?.nameArtist}}</a></li>
+              <li class="text-center song_title_width"><a [routerLink]="['/user/detail/artists/',song?.artist?.id]">{{song?.artist?.nameArtist}}</a></li>
               <li class="text-center">{{song.likes}}</li>
               <li class="text-center">{{song.views}}</li>
               <li class="top_song_list_picks featured_list_dropdown">
@@ -61,15 +62,89 @@
               <li class="text-center top_song_artist_playlist">
             </ul>
           </div>
-          <div class="lang_apply_btn home_btn m24_cover">
-            <ul>
-              <li>
-                <a href="#">view all</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="album_inner_list auti m24_cover">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div class="album_list_wrapper2">
+          <div>
+            <h2>search results for playlist</h2>
+          </div>
+          <div class="album_list_wrapper album_list_wrapper_shop">
+            <ul class="album_list_name m24_cover">
+              <li>#</li>
+              <li class="song_title_width">Playlist</li>
+              <li class="song_title_width">Name Playlist</li>
+              <li class="text-center">Views</li>
+              <li class="text-center">Likes</li>
+              <li class="text-center">Songs</li>
+            </ul>
+            <ul class="album_inner_list_padding" *ngFor="let pl of playlistsSearch,index as i">
+              <li>{{i + 1}}</li>
+              <li class="song_title_width">
+                <div class="top_song_artist_wrapper">
+                  <img src="{{pl.image}}" alt="img" >
+                </div>
+              </li>
+              <li class="song_title_width"><a [routerLink]="['/user/playlistSong/',pl.id]">{{pl.namePlaylist}}</a></li>
+              <li class="text-center"><a>{{pl.views}}</a></li>
+              <li class="text-center"><a>{{pl.likes}}</a></li>
+              <li class="text-center">
+                <a [routerLink]="['/user/playlistSong/',pl.id]">{{pl.songs.length}} Tracks</a>
               </li>
             </ul>
           </div>
         </div>
       </div>
+
     </div>
   </div>
+
+</div>
+
+
+<div class="album_inner_list auti m24_cover">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div class="album_list_wrapper2">
+          <div>
+            <h2>search results for artist</h2>
+          </div>
+          <div class="album_list_wrapper album_list_wrapper_shop">
+            <ul class="album_list_name m24_cover">
+              <li>#</li>
+              <li class="song_title_width">Artist</li>
+              <li class="song_title_width">Name</li>
+              <li class="text-center">Gender</li>
+              <li class="text-center">Likes</li>
+<!--              <li class="text-center">Tracks</li>-->
+            </ul>
+            <ul class="album_inner_list_padding" *ngFor="let ar of artistsSearch,index as i">
+              <li>{{i + 1}}</li>
+              <li class="song_title_width">
+                <div class="top_song_artist_wrapper">
+                  <img src="{{ar.avatar}}" alt="img" >
+                </div>
+              </li>
+              <li class="song_title_width"><a [routerLink]="['/user/detail/artists/',ar.id]">{{ar.nameArtist}}</a></li>
+              <li class="text-center"><a>{{ar.gender}}</a></li>
+              <li class="text-center"><a>{{ar.likes}}</a></li>
+<!--              <li class="text-center">-->
+<!--                <a [routerLink]="['/user/playlistSong/',pl.id]">{{pl.songs.length}} Tracks</a>-->
+<!--              </li>-->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>

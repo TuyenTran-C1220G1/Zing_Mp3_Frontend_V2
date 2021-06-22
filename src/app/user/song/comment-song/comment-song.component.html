@@ -28,6 +28,10 @@
               <p>Description : {{song.description}}</p>
               <p>Views : {{song.views}}</p>
               <p>Likes : {{song.likes}}</p>
+              <p>Artist : {{song.artist.nameArtist}}</p>
+              <div class="lang_apply_btn" style="padding-top: 13px;">
+                <a (click)="getInforSong(song)" ><i  class="flaticon-play-button"></i> play song</a>
+              </div>
 <!--              <div class="lang_apply_btn author_btn">-->
 <!--                <ul>-->
 <!--                  <li>-->
@@ -58,7 +62,7 @@
           </div>
           <div class="comments_Box"  *ngFor="let component of commentSongs; index as i">
             <div class="img_wrapper">
-              <img style="width: 50px" src="{{component.user.avatar}}" class="" alt="author_img" />
+              <img src="{{component.user.avatar}}" class="" alt="author_img" />
             </div>
             <div class="text_wrapper">
               <div class="author_detail">
@@ -71,9 +75,9 @@
           </div>
           <div class="text_wrapper">
             <div class="contect_form_footer m24_cover" >
-              <input type="text" name="name" formControlName="content" placeholder="be the first to comment">
+              <input type="text" name="name" formControlName="content" placeholder="Write your comments here">
             </div>
-            <div class="lang_apply_btn comment_btn">
+            <div class="lang_apply_btn comment_btn" style="padding-left: 900px">
               <ul>
                 <li>
                   <a type="button" *ngIf="currentUser" (click)="getPostComment(song.id)"> <i class="flaticon-play-button"></i>post comment</a>

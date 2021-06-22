@@ -17,40 +17,36 @@ export class TreandingSongsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getNewSong();
-    $(function() {
-      $('.treanding_song_slider .owl-carousel').owlCarousel({
-        loop: !0,
-        margin: 15,
-        autoplay: !1,
-        smartSpeed: 1200,
-        responsiveClass: !0,
-        navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
-        responsive: {
-          0: {
-            items: 1,
-            nav: !0
-          },
-          600: {
-            items: 3,
-            nav: !0
-          },
-          1000: {
-            items: 5,
-            nav: !0,
-            loop: !0,
-            margin: 20
-          }
-        }
-      });
-    });
-  }
-
-  getNewSong() {
     this.songService.getNewSong().subscribe(songs => {
       this.songs = songs;
+      $(function() {
+        $('.treanding_song_slider .owl-carousel').owlCarousel({
+          loop: !0,
+          margin: 15,
+          autoplay: !1,
+          smartSpeed: 1200,
+          responsiveClass: !0,
+          navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
+          responsive: {
+            0: {
+              items: 1,
+              nav: !0
+            },
+            600: {
+              items: 3,
+              nav: !0
+            },
+            1000: {
+              items: 5,
+              nav: !0,
+              loop: !0,
+              margin: 20
+            }
+          }
+        });
+      });
+
     }, error => {console.log('error', error); });
   }
-
 
 }

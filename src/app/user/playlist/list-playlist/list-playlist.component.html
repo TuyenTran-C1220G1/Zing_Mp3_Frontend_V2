@@ -33,13 +33,13 @@
               <li class="text-center">Songs</li>
             </ul>
             <ul class="album_inner_list_padding" *ngFor="let playlist of playlists| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
-              <li><a href="#"><span class="play_no">{{i + 1}}</span><span class="play_hover"></span></a></li>
+              <li>{{i + 1}}</li>
               <li class="song_title_width">
                 <div class="top_song_artist_wrapper">
-                  <img src="{{playlist.image}}" alt="img" >
+                  <a [routerLink]="['/user/playlistSong/',playlist.id]"><img src="{{playlist.image}}" alt="img" ></a>
                 </div>
               </li>
-              <li class="song_title_width"><a [routerLink]="['/user/playlists/comments/',playlist.id]">{{playlist.namePlaylist}}</a></li>
+              <li class="song_title_width"><a [routerLink]="['/user/playlistSong/',playlist.id]">{{playlist.namePlaylist}}</a></li>
               <li class="text-center"><a>{{playlist.views}}</a></li>
               <li class="text-center"><a>{{playlist.likes}}</a></li>
               <li class="text-center">

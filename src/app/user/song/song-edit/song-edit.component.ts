@@ -79,7 +79,7 @@ export class SongEditComponent implements OnInit {
 
   editSong(id: number) {
     this.submitted = true;
-    if (this.editForm.valid) {
+    if (this.editForm.valid ) {
       const song = this.editForm.value;
       song.imageUrl = this.avatar;
       song.songUrl = this.files;

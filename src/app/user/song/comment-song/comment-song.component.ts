@@ -10,6 +10,8 @@ import {SongCommentService} from '../../../service/song-comment.service';
 import {AuthenticationService} from '../../../service/authentication.service';
 import {JwtResponse} from '../../../interface/jwt-response';
 import {User} from '../../../model/user';
+import {ListenMusicService} from '../../listen-music.service';
+import {Playlist} from '../../../model/playlist';
 
 @Component({
   selector: 'app-comment-song',
@@ -26,6 +28,8 @@ export class CommentSongComponent implements OnInit {
   song: Song = {
     likes:null
   };
+  songs: Song[] = [];
+
   commentSongForm: FormGroup;
   likeSong: LikeSong = {
   };
@@ -38,7 +42,8 @@ export class CommentSongComponent implements OnInit {
               private httClient: HttpClient,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private listenMusicService:ListenMusicService) {
     this.authenticationService.currentUserSubject.asObservable().subscribe(user => {
       this.currentUser = user;
     });
@@ -82,6 +87,7 @@ export class CommentSongComponent implements OnInit {
   getSong(id: number) {
     this.songService.findById(id).subscribe(songs => {
       this.song = songs;
+      this.songs.push(songs);
     });
   }
 
@@ -110,4 +116,12 @@ export class CommentSongComponent implements OnInit {
     })
   }
 
+  getInforSong(song) {
+    console.log('song',song);
+    console.log('listsong',this.songs);
+    this.listenMusicService.statusSong.next(true);
+    this.listenMusicService.songs = this.songs;
+    this.listenMusicService.songObject.next(song);
+    this.listenMusicService.openFile(song);
+  }
 }

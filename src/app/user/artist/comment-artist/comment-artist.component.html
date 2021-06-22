@@ -6,8 +6,9 @@
         <div class="indx_title_left_wrapper m24_cover">
           <h2>Artist</h2>
           <ul>
-            <li><a routerLink="">Home</a> /</li>
-            <li><a routerLink="/user/allartists">All Artitst</a></li>
+            <li><a routerLink="">Home&nbsp;/&nbsp;</a> </li>
+            <li><a routerLink="/user/allartists">All Artitst&nbsp;/</a></li>
+            <li><a [routerLink]="['/user/detail/artists/',artist.id]">Artist</a></li>
           </ul>
         </div>
 
@@ -26,18 +27,12 @@
             </div>
             <div class="jp_blog_single_client_cont">
               <h3 style="color: red" >{{artist.nameArtist}}</h3>
-              <p style="font-style: italic">{{artist.description}}</p>
+              <p>Description: {{artist.description}}</p>
               <p>Gender : {{artist.gender}}</p>
               <p>Likes : {{artist.likes}}</p>
               <p>Date Of BirthDay : {{artist.dob}}</p>
               <p>Total Song : {{artist.songs.length}}</p>
-              <div class="lang_apply_btn author_btn">
-                <ul>
-                  <li>
-                    <a [routerLink]="['/user/detail/artists/',artist.id]"><i class="flaticon-play-button"></i>All Song</a>
-                  </li>
-                </ul>
-              </div>
+
             </div>
           </div>
           <div class="leave_comment_wrapper m24_cover">
@@ -61,7 +56,7 @@
           </div>
           <div class="comments_Box"  *ngFor="let component of commentArists; index as i">
             <div class="img_wrapper">
-              <img style="width: 50px" src="{{component.user.avatar}}" class="" alt="author_img" />
+              <img src="{{component.user.avatar}}" class="" alt="author_img" />
             </div>
             <div class="text_wrapper">
               <div class="author_detail">
@@ -74,9 +69,9 @@
           </div>
           <div class="text_wrapper">
             <div class="contect_form_footer m24_cover" >
-              <input type="text" name="name" formControlName="content" placeholder="be the first to comment">
+              <input type="text" name="name" formControlName="content" placeholder="Write your comments here">
             </div>
-            <div class="lang_apply_btn comment_btn">
+            <div class="lang_apply_btn comment_btn" style="padding-left: 900px">
               <ul>
                 <li>
                   <a type="button" *ngIf="currentUser" (click)="getPostComment(artist.id)"> <i class="flaticon-play-button"></i>post comment</a>

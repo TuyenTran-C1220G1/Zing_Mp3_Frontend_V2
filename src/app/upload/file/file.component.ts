@@ -13,8 +13,11 @@ export class FileComponent implements OnInit {
   ref: AngularFireStorageReference;
   downloadURL: string;
   checkUploadFile :boolean = true;
+  checkUploadHidde :boolean = false;
   @Output()
   giveURLtoCreate = new EventEmitter<string>();
+  @Output()
+  statusRequired = new EventEmitter<boolean>();
   @ViewChild('inputSong',null) inputSong;
   constructor(private httpClient: HttpClient,
               private afStorage: AngularFireStorage) {
@@ -25,8 +28,11 @@ export class FileComponent implements OnInit {
   }
 
   onFileChanged(event) {
+    this.checkUploadHidde = true;
     this.checkUploadFile = true;
     this.selectedFile = null;
+    this.statusRequired.emit(true);
+    console.log(this.statusRequired);
     let files: FileList = event.target.files;
       if (files.length > 0) {
         if(event.target.files[0].name.match(/\.(avi|mp3|mp4|mpeg|ogg)$/i)){

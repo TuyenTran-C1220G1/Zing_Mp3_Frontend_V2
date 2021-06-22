@@ -24,14 +24,14 @@
 
         </div>
         <div class="login_form_wrapper">
-          <div style="color: chocolate">Name Playlist</div>
+          <div >Name Playlist</div>
           <div class="icon_form comments_form">
             <input type="text" class="form-control" formControlName="namePlaylist">
             <i class="fas fa-music"></i>
           </div>
           <span style="color: red" *ngIf="submitted && playlistForm.get('namePlaylist').hasError('required')">Name Playlist is required!</span>
           <br>
-          <div style="color: chocolate">Genre</div>
+          <div >Genre</div>
           <div class="icon_form comments_form" style="color: chocolate">
             <select class="browser-default custom-select" formControlName="genre">
               <option disabled>Select Genre</option>
@@ -40,13 +40,13 @@
           </div>
           <span style="color: red" *ngIf="submitted && playlistForm.get('genre').hasError('required')">Genre is required!</span>
           <br>
-          <div style="color: chocolate">Description</div>
+          <div >Description</div>
           <div class="icon_form comments_form">
             <textarea class="form-control" formControlName="description"></textarea>
             <i class="fas fa-file"></i>
           </div>
           <span style="color: red" *ngIf="submitted && playlistForm.get('description').hasError('required')">Description is required!</span>
-          <div style="color: chocolate">Image Playlist</div>
+          <div >Image Playlist</div>
           <div class="icon_form comments_form">
             <app-image (giveURLtoCreate)="onChangeAvatar($event)"></app-image>
             <i class="fas fa-image"></i>

@@ -23,7 +23,7 @@
               <h1>Update Profile</h1>
             </div>
             <div class="login_form_wrapper">
-              <label style="color: chocolate">User name</label>
+              <label >User name</label>
               <div class="icon_form comments_form">
                 <input type="text" formControlName="username" class="form-control" readonly>
                 <i class="fas fa-user"></i>
@@ -37,7 +37,7 @@
 <!--                <span style="color: red" >{{checkSuccess.message}}</span>-->
 <!--              </div>-->
 
-              <label style="color: chocolate">Address</label>
+              <label >Address</label>
               <div class="icon_form comments_form">
                 <input type="text" formControlName="address" class="form-control">
                 <i class="fas fa-address-card"></i>
@@ -50,7 +50,7 @@
 <!--                <span style="color: red" >{{checkSuccess.message}}</span>-->
 <!--              </div>-->
 
-              <label style="color: chocolate">Email</label>
+              <label >Email</label>
               <div class="icon_form comments_form">
                 <input type="text" formControlName="email" class="form-control">
                 <i class="fas fa-envelope"></i>
@@ -65,7 +65,7 @@
 <!--              </div>-->
 
 
-              <label style="color: chocolate">Phone</label>
+              <label >Phone</label>
               <div class="icon_form comments_form">
                 <input type="text" formControlName="phone" class="form-control">
                 <i class="fas fa-phone"></i>
@@ -79,7 +79,7 @@
 <!--                <span style="color: red" >{{checkSuccess.message}}</span>-->
 <!--              </div>-->
 
-              <label style="color: chocolate">Avatar</label>
+              <label >Avatar</label>
               <div class="icon_form comments_form">
                 <app-image (giveURLtoCreate)="onChangeAvatar($event)"></app-image>
 <!--                <input type="text" formControlName="avatar" class="form-control" name="full_name">-->
@@ -96,12 +96,13 @@
 
 
             </div>
+
             <div class="lang_apply_btn_wrapper m24_cover">
               <div class="lang_apply_btn">
-                <button class="button_like_a" type="submit">update</button>
+                <button class="button_like_a" type="submit" >update</button>
               </div>
               <div class="cancel_wrapper">
-                <a href="#" class="" data-dismiss="modal">cancel</a>
+                <a routerLink="/" class="" data-dismiss="modal" style="margin-right: 20px">cancel</a>
               </div>
 
             </div>

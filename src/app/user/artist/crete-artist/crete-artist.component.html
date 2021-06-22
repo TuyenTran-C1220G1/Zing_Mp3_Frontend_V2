@@ -23,7 +23,7 @@
           <h1 style="margin: auto">Create Artist</h1>
         </div>
         <div class="login_form_wrapper">
-          <div style="color: chocolate">Name Artist</div>
+          <div >Name Artist</div>
           <div class="icon_form comments_form">
             <input type="text" class="form-control" formControlName="nameArtist">
             <i class="fas fa-music"></i>
@@ -31,11 +31,11 @@
             Name Artist is required!</span>
           </div>
           <div class="row ">
-            <div class="col-3" style="color: chocolate">Select gender:</div>
+            <div class="col-3" >Select gender:</div>
             <br>
             <span style="color: red"
                  *ngIf="submitted && artistForm.get('gender').hasError('required')">Please selection Gender</span><br>
-            <div class="col-7 row " style="color: chocolate" >
+            <div class="col-7 row "  >
               <div class="col-4">
                 <input type="radio" id="male" name="gender" value="male" formControlName="gender">
                 <label for="male">Male</label><br>
@@ -52,9 +52,9 @@
             </div>
           </div><br>
           <div class="row">
-            <div class="col-3" style="color: chocolate">Birthday:</div>
+            <div class="col-3" >Birthday:</div>
             <div class="col-6">
-              <input type="date" class="form-control" formControlName="dob">
+              <input type="date" class="form-control" formControlName="dob" [max]="today">
               <span style="color: red" class="alert alert-danger" role="alert"
                     *ngIf="artistForm.hasError('invalidDob') && artistForm.get('dob').touched">You are from future
                 </span>
@@ -63,14 +63,14 @@
             </div>
           </div>
           <br>
-          <div style="color: chocolate">Description</div>
+          <div >Description</div>
           <div class="icon_form comments_form">
             <textarea class="form-control" formControlName="description"></textarea>
             <i class="fas fa-file"></i>
             <span style="color: red" *ngIf="submitted && artistForm.get('description').hasError('required')">Description is required!</span>
           </div>
           <br>
-          <div style="color: chocolate">Image Playlist</div>
+          <div >Image Playlist</div>
           <div class="icon_form comments_form">
             <app-image (giveURLtoCreate)="onChangeAvatar($event)"></app-image>
             <i class="fas fa-image"></i>

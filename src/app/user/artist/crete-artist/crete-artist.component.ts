@@ -4,7 +4,7 @@ import {AuthenticationService} from '../../../service/authentication.service';
 import {ArtistService} from '../../../service/artist.service';
 // import * as $ from 'jquery';
 import Swal from 'sweetalert2';
-
+import * as moment from 'moment';
 declare var $: any;
 
 @Component({
@@ -18,6 +18,7 @@ export class CreteArtistComponent implements OnInit {
   submitted = false;
   avatar = '';
   artistForm: FormGroup;
+  today: any = this.formatDate(Date.now());
 
   constructor(private auth: AuthenticationService,
               private artistService: ArtistService,
@@ -39,11 +40,14 @@ export class CreteArtistComponent implements OnInit {
       gender: ['', [Validators.required]]
     });
   }
+  formatDate(date: any) {
+    return (moment(date)).format('yyyy-MM-DD');
+  }
 
   createArtist() {
     this.submitted = true;
     console.log(this.artistForm)
-    if (this.artistForm.valid && this.avatar) {
+    if (this.artistForm.valid) {
       const artist = this.artistForm.value;
       artist.avatar = this.avatar;
       console.log(artist);
