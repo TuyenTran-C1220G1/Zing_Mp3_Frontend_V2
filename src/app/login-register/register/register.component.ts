@@ -82,11 +82,13 @@ export class RegisterComponent implements OnInit {
     console.log(this.registerForm);
     if (this.registerForm.valid) {
       console.log('form valid');
-      const user: User = {
+      let user: User = {
         username: this.registerForm.value.username,
         password: this.registerForm.value.pwGroup.password,
-        phone: this.registerForm.value.phone
+        phone: this.registerForm.value.phone,
+        avatar: "./assets/images/author2.jpg",
       };
+      console.log('user',user);
       this.userService.register(user).subscribe((data) => {
         this.submitted = false;
         this.registerForm.reset();

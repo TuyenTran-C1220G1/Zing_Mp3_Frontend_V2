@@ -26,7 +26,8 @@ export class CommentSongComponent implements OnInit {
   user: User;
   hasRoleUser = false;
   song: Song = {
-    likes:null
+    likes:null,
+    artist:{nameArtist:null}
   };
   songs: Song[] = [];
 
