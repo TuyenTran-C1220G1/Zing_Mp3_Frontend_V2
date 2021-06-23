@@ -26,8 +26,9 @@
             <div class="jp_blog_single_client_cont">
               <h3 style="color: red" >{{song.nameSong}}</h3>
               <p>Description : {{song.description}}</p>
-              <p>Views : {{song.views}}</p>
+<!--              <p>Views : {{song.views}}</p>-->
               <p>Likes : {{song.likes}}</p>
+              <p>Artist : {{song.artist.nameArtist}}</p>
               <div class="lang_apply_btn" style="padding-top: 13px;">
                 <a (click)="getInforSong(song)" ><i  class="flaticon-play-button"></i> play song</a>
               </div>
@@ -50,7 +51,7 @@
           </div>
           <div class="comment_heading_bottom m24_cover">
             <h1>
-              <a *ngIf="currentUser" style="cursor: pointer" ><i  #likeElement (click)="handleLikeSong(song.id)" style="font-size: 20px" class="fa fa-heart" ></i> like</a>
+              <a *ngIf="currentUser" style="cursor: pointer" ><i  #likeElement (click)="handleLikeSong(song.id)" [ngStyle]="{ 'color': (statusLike ? 'red' : 'black') }" style="font-size: 20px" class="fa fa-heart" ></i> like</a>
               <a *ngIf="!currentUser" style="cursor: pointer" href="#login_modal" data-toggle="modal" data-dismiss="modal" ><i style="font-size: 20px"  class="fa fa-heart"  style="color: black">
               </i> like</a>
             </h1>

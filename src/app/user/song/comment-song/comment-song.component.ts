@@ -26,7 +26,8 @@ export class CommentSongComponent implements OnInit {
   user: User;
   hasRoleUser = false;
   song: Song = {
-    likes:null
+    likes:null,
+    artist:{nameArtist:null}
   };
   songs: Song[] = [];
 
@@ -47,6 +48,7 @@ export class CommentSongComponent implements OnInit {
     this.authenticationService.currentUserSubject.asObservable().subscribe(user => {
       this.currentUser = user;
     });
+
     if (this.currentUser) {
       const roleList = this.currentUser.roles;
       for (const role of roleList) {
@@ -79,14 +81,14 @@ export class CommentSongComponent implements OnInit {
   }
 
   getAllComment(id: number) {
-    this.songCommentService.allCommentInSong(id).subscribe(comment => {
-      this.commentSongs = comment;
+    this.songCommentService.allCommentInSong(id).subscribe(async comment => {
+      this.commentSongs = await comment;
     });
   }
 
   getSong(id: number) {
-    this.songService.findById(id).subscribe(songs => {
-      this.song = songs;
+    this.songService.findById(id).subscribe(async songs => {
+      this.song = await songs;
       this.songs.push(songs);
     });
   }

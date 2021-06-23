@@ -109,9 +109,9 @@ export class ListenMusicService {
   setVolume(event) {
     this.audioObj.volume = event.target.value;
   }
-  async openFile(song: Song) {
-   const a = await this.streamObserver(song.songUrl).subscribe(event => {
-      this.songObject.next(song);
+   async openFile(song: Song) {
+    const a = await this.streamObserver(song.songUrl).subscribe(event => {
+       this.songObject.next(song);
     });
   }
   // @ts-ignore

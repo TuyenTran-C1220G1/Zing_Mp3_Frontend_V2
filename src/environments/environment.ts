@@ -6,14 +6,14 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080',
   firebaseConfig : {
-    apiKey: 'AIzaSyCMAyDYrQkeD6h3_0clTdESzpPXV6e6MPo',
-    authDomain: 'zingmp3-4bcaf.firebaseapp.com',
-    databaseURL: 'https://zingmp3-4bcaf-default-rtdb.firebaseio.com',
-    projectId: 'zingmp3-4bcaf',
-    storageBucket: 'zingmp3-4bcaf.appspot.com',
-    messagingSenderId: '299675955641',
-    appId: '1:299675955641:web:3af8bec68dbae845b04668',
-    measurementId: 'G-C2MVX75JWW'
+    apiKey: "AIzaSyCf73DjCou5elcgrko0RnV6UVmAucyIly0",
+    authDomain: "zing-aec15.firebaseapp.com",
+    databaseURL: 'https://zing-aec15-default-rtdb.firebaseio.com',
+    projectId: "zing-aec15",
+    storageBucket: "zing-aec15.appspot.com",
+    messagingSenderId: "945797916148",
+    appId: "1:945797916148:web:87da079f4217fc4373c5a1",
+    measurementId: "G-05YY39DRN9"
   }
 };
 

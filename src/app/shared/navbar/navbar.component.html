@@ -100,7 +100,7 @@
       <form [formGroup]="formGroup">
         <div class="navi_searchbar_wrapper">
           <i class="flaticon-magnifying-glass"></i>
-          <input (input)="search()" formControlName="searchName" type="text" id="" placeholder="Search for Songs, Artists, Playlists and More.." style="width: 450px" />
+          <input (click)="search()" formControlName="searchName" type="text" id="" placeholder="Search for Songs, Artists, Playlists and More.." style="width: 450px" />
 <!--          <button type="submit">Search</button>-->
         </div>
       </form>

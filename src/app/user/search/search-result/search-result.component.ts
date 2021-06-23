@@ -53,8 +53,8 @@ export class SearchResultComponent implements OnInit {
 
 
   searchSong(nameSong: string) {
-    this.songService.searchSong(nameSong).subscribe(songs => {
-      this.songs = songs;
+    this.songService.searchSong(nameSong).subscribe(async songs => {
+      this.songs = await songs;
       $(document).ready(function() {
         $(".m24_tranding_more_icon").on("click", function(e) {
           if (e.preventDefault(), e.stopImmediatePropagation(), void 0 !== $(this).attr("data-other")) var t = $(this).parent().parent();
@@ -71,14 +71,14 @@ export class SearchResultComponent implements OnInit {
   }
 
   searchPlaylist(namePlaylist: string) {
-    this.playlistService.searchPlaylist(namePlaylist).subscribe(playlists => {
-      this.playlistsSearch= playlists;
+    this.playlistService.searchPlaylist(namePlaylist).subscribe(async playlists => {
+      this.playlistsSearch= await playlists;
     });
   }
 
   searchArtist(nameArtist: string) {
-    this.artistService.searchArtist(nameArtist).subscribe(artistsSearch => {
-      this.artistsSearch= artistsSearch;
+    this.artistService.searchArtist(nameArtist).subscribe(async artistsSearch => {
+      this.artistsSearch= await artistsSearch;
     });
   }
 

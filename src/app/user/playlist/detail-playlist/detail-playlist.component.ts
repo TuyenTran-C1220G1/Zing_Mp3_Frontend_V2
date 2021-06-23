@@ -53,25 +53,48 @@ export class DetailPlaylistComponent implements OnInit {
     this.listenMusicService.openFile(song);
   }
   remoteSong(id:number, idSong: number){
-    return this.playlistService.remoteSongInPlaylist(id,idSong).subscribe(playlist1=>{
-      this.getPlaylist(id)
-    ;
-      },error => {
-      $(function() {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000
-        });
-        // @ts-ignore
-        Toast.fire( {
-          icon: 'error',
-          type: 'success',
-          title: 'You do not have permission',
-        });
-      });
+    Swal.fire({
+      title: 'Are you sure want to remove?',
+      text: 'You will not be able to recover this playlist!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        this.playlistService.remoteSongInPlaylist(id,idSong).subscribe(playlist1=>{
+          this.getPlaylist(id)
+          ;
+        },error => {
+          $(function() {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            // @ts-ignore
+            Toast.fire( {
+              icon: 'error',
+              type: 'success',
+              title: 'You do not have permission',
+            });
+          });
+        })
+        Swal.fire(
+          'Deleted!',
+          'Your playlist has been deleted.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your song playlist is safe :)',
+          'error'
+        )
+      }
     })
+
   }
 
 

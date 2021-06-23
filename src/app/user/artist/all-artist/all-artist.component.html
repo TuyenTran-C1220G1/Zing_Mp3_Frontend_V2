@@ -43,17 +43,11 @@
           </div>
         </div>
       </div>
-      <div class="blog_pagination_section m24_cover">
-        <ul>
-          <li>
-            <a href="#" class="prev"> <i class="flaticon-left-arrow"></i> </a>
-          </li>
-          <li>
-            <a href="#" class="next"><i class="flaticon-right-arrow"></i></a>
-          </li>
-        </ul>
-      </div>
-
     </div>
+  </div>
+  <br>
+  <div style="margin: auto" class="col-2">
+    <ngb-pagination [collectionSize]="artists.length" [(page)]="page" [maxSize]="5" [rotate]="true"
+                    [ellipses]="false" [boundaryLinks]="true" style="margin: auto"></ngb-pagination>
   </div>
 </div>

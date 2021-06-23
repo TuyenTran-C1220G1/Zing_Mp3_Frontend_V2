@@ -8,6 +8,8 @@ import {Genre} from "../../../model/genre";
 import {GenreService} from "../../../service/genre.service";
 import * as $ from "jquery";
 import Swal from "sweetalert2";
+import {FileComponent} from '../../../upload/file/file.component';
+import {ImageComponent} from '../../../upload/image/image.component';
 
 
 
@@ -24,6 +26,9 @@ export class SongCreateComponent implements OnInit {
   files = '';
   artists: Artist[] = []
   genres: Genre[] = []
+  dataChildMp3: boolean = true;
+  dataChildImage: boolean = true;
+
   songForm: FormGroup = new FormGroup({
       songUrl: new FormControl(''),
       imageUrl : new FormControl('')
@@ -40,9 +45,9 @@ export class SongCreateComponent implements OnInit {
 
 
   onChangeAvatar($event) {
-      this.avatar = $event;
-      if(this.avatar != ""){
-      }
+    this.dataChildImage = true;
+    this.avatar = $event;
+
   }
 
   onChangeFile($event) {
@@ -71,7 +76,7 @@ export class SongCreateComponent implements OnInit {
     console.log('avatar:',this.avatar)
     console.log('songForm:',this.songForm.value)
 
-    if (this.songForm.valid && this.avatar && this.files) {
+    if (this.songForm.valid && this.files) {
       const song = this.songForm.value;
       song.imageUrl = this.avatar;
       song.songUrl = this.files;
@@ -103,20 +108,20 @@ export class SongCreateComponent implements OnInit {
         console.log(e);
       });
     }else{
-      $(function() {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000
-        });
-        // @ts-ignore
-        Toast.fire({
-          icon: 'error',
-          type: 'error',
-          title: 'Create failed',
-        });
-      });
+      // $(function() {
+      //   const Toast = Swal.mixin({
+      //     toast: true,
+      //     position: 'top-end',
+      //     showConfirmButton: false,
+      //     timer: 3000
+      //   });
+      //   // @ts-ignore
+      //   Toast.fire({
+      //     icon: 'error',
+      //     type: 'error',
+      //     title: 'Create new failed',
+      //   });
+      // });
     }
     this.success = false;
   }
@@ -133,4 +138,13 @@ export class SongCreateComponent implements OnInit {
   resetForm() {
     this.songForm.reset();
   }
+
+  getDataFromChild(childMp3: FileComponent) {
+    this.dataChildMp3 = childMp3.checkUploadHidde;
+  }
+
+  onchangeStatusMp3($event) {
+    this.dataChildMp3 = $event;
+  }
+
 }

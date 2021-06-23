@@ -41,8 +41,8 @@ export class DetailArtistComponent implements OnInit {
   }
 
   getAllSongByArtist(id: number) {
-    this.songService.findAllSongByArtist(id).subscribe(songs => {
-      this.songs = songs;
+    this.songService.findAllSongByArtist(id).subscribe(async songs => {
+      this.songs = await songs;
     });
   }
   getInforSong(song) {

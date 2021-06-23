@@ -13,10 +13,15 @@ export class ImageComponent implements OnInit {
   ref: AngularFireStorageReference;
   downloadURL: string;
   checkUploadAvatar :boolean = true;
+  checkUploadHidde :boolean = false;
   @Output()
   giveURLtoCreate = new EventEmitter<string>();
   @Output()
   sendAvatarUrl = new EventEmitter<string>();
+  @Output()
+  statusRequired = new EventEmitter<boolean>();
+
+
   @ViewChild('inputImage',null) inputImage;
 
   constructor(private httClient: HttpClient,
@@ -26,6 +31,8 @@ export class ImageComponent implements OnInit {
   }
   onFileChanged(event) {
     this.checkUploadAvatar = true;
+    this.checkUploadHidde = true;
+    this.statusRequired.emit(true);
     let files: FileList = event.target.files;
     if (files.length > 0) {
       if(event.target.files[0].name.match(/\.(jpg|png|jpeg|gif)$/i)){

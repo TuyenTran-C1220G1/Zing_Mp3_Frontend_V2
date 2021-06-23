@@ -28,7 +28,9 @@
             <p>{{playlist.songs.length}} Tracks</p>
             <div class="artist_btn m24_cover">
               <div class="lang_apply_btn">
-                  <a (click)="getInforSong(playlist.songs[0])" ><i  class="flaticon-play-button"></i> play all</a>
+                  <a *ngIf="playlist.songs.length <= 0"><i  class="flaticon-play-button"></i> play all</a>
+                  <a *ngIf="playlist.songs.length > 0" (click)="getInforSong(playlist.songs[0])" ><i  class="flaticon-play-button"></i> play all</a>
+<!--                  <a *ngIf="playlist.songs.length" (click)="getInforSong(playlist.songs[0])" ><i  class="flaticon-play-button"></i> play all</a>-->
               </div>
               <div class="cancel_wrapper">
                 <a [routerLink]="['/user/playlists/comments/',playlist.id]"><i class="fas fa-comment"></i>Comment</a>

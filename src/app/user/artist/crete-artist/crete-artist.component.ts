@@ -5,6 +5,8 @@ import {ArtistService} from '../../../service/artist.service';
 // import * as $ from 'jquery';
 import Swal from 'sweetalert2';
 import * as moment from 'moment';
+import {Artist} from '../../../model/artist';
+
 declare var $: any;
 
 @Component({
@@ -19,6 +21,7 @@ export class CreteArtistComponent implements OnInit {
   avatar = '';
   artistForm: FormGroup;
   today: any = this.formatDate(Date.now());
+  // artists: Artist[];
 
   constructor(private auth: AuthenticationService,
               private artistService: ArtistService,
@@ -40,6 +43,7 @@ export class CreteArtistComponent implements OnInit {
       gender: ['', [Validators.required]]
     });
   }
+
   formatDate(date: any) {
     return (moment(date)).format('yyyy-MM-DD');
   }
@@ -47,7 +51,7 @@ export class CreteArtistComponent implements OnInit {
   createArtist() {
     this.submitted = true;
     console.log(this.artistForm)
-    if (this.artistForm.valid && this.avatar) {
+    if (this.artistForm.valid) {
       const artist = this.artistForm.value;
       artist.avatar = this.avatar;
       console.log(artist);
@@ -78,10 +82,64 @@ export class CreteArtistComponent implements OnInit {
     }
     this.success = false;
   }
+  // createArtist() {
+  //   this.submitted = true;
+  //   console.log(this.artistForm);
+  //   for (let i = 0; i < this.artists.length; i++) {
+  //     if (this.artists[i].nameArtist == this.artistForm.value.nameArtist) {
+  //       return $(function() {
+  //         const Toast = Swal.mixin({
+  //           toast: true,
+  //           position: 'top-end',
+  //           showConfirmButton: false,
+  //           timer: 3000
+  //         });
+  //         // @ts-ignore
+  //         Toast.fire({
+  //           icon: 'error',
+  //           type: 'success',
+  //           title: 'Singers already exist ',
+  //         });
+  //       });
+  //       return;
+  //     }
+  //   }
+  //   if (this.artistForm.valid && this.avatar) {
+  //     const artist = this.artistForm.value;
+  //     artist.avatar = this.avatar;
+  //     console.log(artist);
+  //     this.artistService.saveArtist(artist).subscribe(() => {
+  //       this.success = true;
+  //       this.submitted = false;
+  //       console.log(artist);
+  //       $(function() {
+  //         const Toast = Swal.mixin({
+  //           toast: true,
+  //           position: 'top-end',
+  //           showConfirmButton: false,
+  //           timer: 3000
+  //         });
+  //         // @ts-ignore
+  //         Toast.fire({
+  //           icon: 'success',
+  //           type: 'success',
+  //           title: ' Successful artist creation',
+  //         });
+  //       });
+  //       this.artistForm.reset();
+  //     }, e => {
+  //       console.log(e);
+  //     });
+  //   } else {
+  //     // this.artistForm.
+  //   }
+  //   this.success = false;
+  // }
 
   resetForm() {
     this.artistForm.reset();
   }
+
   // dobValidator(control: AbstractControl) {
   //   let currentDate = new Date();
   //   if (control.value) {
