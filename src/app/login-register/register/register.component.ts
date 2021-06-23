@@ -82,7 +82,7 @@ export class RegisterComponent implements OnInit {
     console.log(this.registerForm);
     if (this.registerForm.valid) {
       console.log('form valid');
-      let user: User = {
+      const user: User = {
         username: this.registerForm.value.username,
         password: this.registerForm.value.pwGroup.password,
         phone: this.registerForm.value.phone,
@@ -113,7 +113,7 @@ export class RegisterComponent implements OnInit {
         this.showlogin.nativeElement.click();
 
       }, (data) => {
-        console.log(data);
+        console.log('error:',data);
         if (data.error === this.error1.message) {
           this.checkSuccess.messagedb = this.error1.message;
           this.checkSuccess.message = 'The username is existed! Please try again!';
