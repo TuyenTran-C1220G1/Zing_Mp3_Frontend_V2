@@ -94,7 +94,6 @@ export class RegisterComponent implements OnInit {
         this.registerForm.reset();
         this.checkSuccess.status = true;
         console.log(data);
-        // tslint:disable-next-line:only-arrow-functions
         $(function() {
           const Toast = Swal.mixin({
             toast: true,

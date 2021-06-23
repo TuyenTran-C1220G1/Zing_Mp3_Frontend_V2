@@ -45,7 +45,7 @@
           </div>
           <div class="comment_heading_bottom m24_cover">
             <h1>
-              <a *ngIf="currentUser" style="cursor: pointer" ><i  #likeElement (click)="handleLikeAritst(artist.id)" style="font-size: 20px" class="fa fa-heart" ></i> like</a>
+              <a *ngIf="currentUser" style="cursor: pointer" ><i  #likeElement (click)="handleLikeAritst(artist.id)" [ngStyle]="{ 'color': (statusLike ? 'red' : 'black') }" style="font-size: 20px" class="fa fa-heart" ></i> like</a>
               <a *ngIf="!currentUser" style="cursor: pointer" href="#login_modal" data-toggle="modal" data-dismiss="modal" ><i style="font-size: 20px"  class="fa fa-heart"  style="color: black">
               </i> like</a>
             </h1>
