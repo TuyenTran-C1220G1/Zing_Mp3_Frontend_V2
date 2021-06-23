@@ -15,6 +15,8 @@ export class FileComponent implements OnInit {
   checkUploadFile :boolean = true;
   @Output()
   giveURLtoCreate = new EventEmitter<string>();
+  @Output()
+  statusRequired = new EventEmitter();
   @ViewChild('inputSong',null) inputSong;
   constructor(private httpClient: HttpClient,
               private afStorage: AngularFireStorage) {
@@ -27,6 +29,7 @@ export class FileComponent implements OnInit {
   onFileChanged(event) {
     this.checkUploadFile = true;
     this.selectedFile = null;
+    this.statusRequired.emit(true);
     let files: FileList = event.target.files;
       if (files.length > 0) {
         if(event.target.files[0].name.match(/\.(avi|mp3|mp4|mpeg|ogg)$/i)){
@@ -34,7 +37,8 @@ export class FileComponent implements OnInit {
           return;
         }
       }
-    this.checkUploadFile = false;
+      this.statusRequired.emit(false);
+      this.checkUploadFile = false;
   }
 
   onUpload(event) {
