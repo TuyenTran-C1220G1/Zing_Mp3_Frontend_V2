@@ -2,7 +2,7 @@ import {Component, OnInit, DoCheck, OnDestroy, ViewChild, ElementRef} from '@ang
 import {ActivatedRoute} from '@angular/router';
 import {Song} from '../../../model/song';
 import {Subscription} from 'rxjs';
-import {UserService} from '../../../service/user/user.service';
+import {UserService} from '../../../service/user.service';
 import {ListenMusicService} from '../../../service/listen-music.service';
 
 

@@ -9,12 +9,13 @@ import {JwtInterceptor} from './helper/jwt-interceptor';
 import {DemoAuthGuardComponent} from './demo-auth-guard/demo-auth-guard.component';
 import {LayoutModule} from './layout/layout.module';
 import {AngularFireModule} from '@angular/fire';
-import {environment} from '../environments/environment';
+
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {UploadModule} from './upload/upload.module';
 import {LogoutModule} from './logout/logout.module';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {environment} from '../environments/environment.prod';
 
 @NgModule({
   declarations: [

@@ -5,8 +5,7 @@ import {SongService} from '../../../service/song.service';
 import {Router} from '@angular/router';
 
 import {Subscription} from 'rxjs';
-import {UserService} from '../../../service/user/user.service';
-import * as $ from 'jquery';
+import {UserService} from '../../../service/user.service';
 import Swal from 'sweetalert2';
 import {ListenMusicService} from '../../../service/listen-music.service';
 

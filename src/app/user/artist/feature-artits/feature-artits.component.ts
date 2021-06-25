@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Artist} from '../../../model/artist';
 import {ArtistService} from '../../../service/artist.service';
-import {Song} from '../../../model/song';
 declare var $: any;
 
 

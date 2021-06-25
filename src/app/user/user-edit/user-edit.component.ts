@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {UserService} from '../../service/user/user.service';
+import {UserService} from '../../service/user.service';
 import * as $ from 'jquery';
 import Swal from 'sweetalert2';
 import {AuthenticationService} from '../../service/authentication.service';

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild, DoCheck} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../service/user/user.service';
+import {UserService} from '../../service/user.service';
 import {User} from '../../model/user';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
