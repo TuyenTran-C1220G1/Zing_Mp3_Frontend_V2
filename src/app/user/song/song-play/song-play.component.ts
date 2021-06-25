@@ -1,9 +1,9 @@
 import {Component, OnInit, DoCheck, OnDestroy, ViewChild, ElementRef} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {ListenMusicService} from '../../listen-music.service';
 import {Song} from '../../../model/song';
 import {Subscription} from 'rxjs';
 import {UserService} from '../../../service/user/user.service';
+import {ListenMusicService} from '../../../service/listen-music.service';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class SongPlayComponent implements OnInit {
   // @ts-ignore
   @ViewChild('mixElement') mixElement: ElementRef;
 
-  constructor(private route: ActivatedRoute, private listenMusicService: ListenMusicService, private userService: UserService) {
+  constructor(private route: ActivatedRoute, public listenMusicService: ListenMusicService, private userService: UserService) {
     this.listenMusicService.getState().subscribe(state => {
       this.listenMusicService.songObject.asObservable().subscribe(song => {
         this.song = song;

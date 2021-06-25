@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Song} from '../../../model/song';
-import {Playlist} from '../../../model/playlist';
 import {Artist} from '../../../model/artist';
 import {ArtistService} from '../../../service/artist.service';
 import {ActivatedRoute, ParamMap, Route} from '@angular/router';
 import {SongService} from '../../../service/song.service';
-import {ListenMusicService} from '../../listen-music.service';
+import {ListenMusicService} from '../../../service/listen-music.service';
+
 
 @Component({
   selector: 'app-detail-artist',
@@ -20,7 +20,7 @@ export class DetailArtistComponent implements OnInit {
   page = 1;
   pageSize = 10;
   constructor(private artistService: ArtistService, private activatedRoute: ActivatedRoute,
-              private songService: SongService, private listenMusicService: ListenMusicService) {
+              private songService: SongService, public listenMusicService: ListenMusicService) {
     this.activatedRoute.paramMap.subscribe(async (paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
       // @ts-ignore

@@ -10,8 +10,8 @@ import {SongCommentService} from '../../../service/song-comment.service';
 import {AuthenticationService} from '../../../service/authentication.service';
 import {JwtResponse} from '../../../interface/jwt-response';
 import {User} from '../../../model/user';
-import {ListenMusicService} from '../../listen-music.service';
-import {Playlist} from '../../../model/playlist';
+import {ListenMusicService} from '../../../service/listen-music.service';
+
 
 @Component({
   selector: 'app-comment-song',

@@ -5,7 +5,8 @@ import {Artist} from "../../../model/artist";
 import {Genre} from "../../../model/genre";
 import {ArtistService} from "../../../service/artist.service";
 import {GenreService} from "../../../service/genre.service";
-import {ListenMusicService} from '../../listen-music.service';
+import {ListenMusicService} from '../../../service/listen-music.service';
+
 
 @Component({
   selector: 'app-top-song',
@@ -20,7 +21,7 @@ export class TopSongComponent implements OnInit {
   constructor(private songService: SongService,
               private artistService: ArtistService,
               private genreService: GenreService,
-              private listenMusicService: ListenMusicService) {
+              public listenMusicService: ListenMusicService) {
     this.songService.getYourSong().subscribe(songs => {
       this.songs = songs;
       console.log(this.songs);

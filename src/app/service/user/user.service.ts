@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../../environments/environment.prod';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../../model/user';
-import {any} from 'codelyzer/util/function';
 
 const API_URL = `${environment.apiUrl}`;
 @Injectable({

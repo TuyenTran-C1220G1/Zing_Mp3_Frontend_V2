@@ -3,8 +3,9 @@ import {Song} from "../../../model/song";
 import {SongService} from "../../../service/song.service";
 import {Playlist} from "../../../model/playlist";
 import {PlaylistService} from "../../../service/playlist.service";
-import {ListenMusicService} from '../../listen-music.service';
+
 import Swal from 'sweetalert2';
+import {ListenMusicService} from '../../../service/listen-music.service';
 declare var $: any;
 @Component({
   selector: 'app-song-list',

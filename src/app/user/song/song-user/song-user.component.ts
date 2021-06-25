@@ -3,11 +3,12 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Song} from '../../../model/song';
 import {SongService} from '../../../service/song.service';
 import {Router} from '@angular/router';
-import {ListenMusicService} from '../../listen-music.service';
+
 import {Subscription} from 'rxjs';
 import {UserService} from '../../../service/user/user.service';
 import * as $ from 'jquery';
 import Swal from 'sweetalert2';
+import {ListenMusicService} from '../../../service/listen-music.service';
 
 @Component({
   selector: 'app-song-user',

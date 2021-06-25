@@ -4,11 +4,11 @@ import {Playlist} from '../../../model/playlist';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {SongService} from '../../../service/song.service';
-import {ListenMusicService} from '../../listen-music.service';
 import {PlaylistService} from '../../../service/playlist.service';
 import Swal from 'sweetalert2';
 import {Artist} from '../../../model/artist';
 import {ArtistService} from '../../../service/artist.service';
+import {ListenMusicService} from '../../../service/listen-music.service';
 
 
 @Component({

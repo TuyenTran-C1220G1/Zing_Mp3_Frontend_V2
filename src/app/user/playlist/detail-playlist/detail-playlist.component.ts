@@ -6,9 +6,10 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Song} from '../../../model/song';
 import {Playlist} from '../../../model/playlist';
 import {SongService} from '../../../service/song.service';
-import {ListenMusicService} from '../../listen-music.service';
+
 import * as $ from 'jquery';
 import Swal from 'sweetalert2';
+import {ListenMusicService} from '../../../service/listen-music.service';
 
 
 @Component({
@@ -96,7 +97,5 @@ export class DetailPlaylistComponent implements OnInit {
     })
 
   }
-
-
 }
 
